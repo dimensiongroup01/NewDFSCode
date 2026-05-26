@@ -1,8 +1,3 @@
 {
-  "/page": "app/page.js",
-  "/about-us/page": "app/about-us/page.js",
-  "/services/page": "app/services/page.js",
-  "/merchant-banking/page": "app/merchant-banking/page.js",
-  "/stock-broking/page": "app/stock-broking/page.js",
-  "/annual/page": "app/annual/page.js"
+  "/page": "app/page.js"
 }
