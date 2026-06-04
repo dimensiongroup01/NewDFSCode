@@ -4,12 +4,13 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   output: 'standalone',
+
   experimental: {
     optimizePackageImports: ['gsap', 'lenis'],
   },
-images: {
-    unoptimized: process.env.NODE_ENV === 'development',
-    formats: ['image/avif', 'image/webp'],
+
+  images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -29,13 +30,14 @@ images: {
       }
     ]
   },
-  webpack: (config, { dev, isServer }) => {
-    // Avoid dev-time PackFile cache memory spikes on constrained environments.
+
+  webpack: (config, { dev }) => {
     if (dev) {
       config.cache = false;
     }
     return config;
   },
+
   async redirects() {
     return [
       { source: '/about-us.html', destination: '/about-us', permanent: true },

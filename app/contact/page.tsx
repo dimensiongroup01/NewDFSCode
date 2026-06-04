@@ -1,15 +1,11 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import PageHero from '@/components/PageHero';
-import ScrollFusion3D from '@/components/ScrollFusion3D';
 import ScrollReveal from '@/components/ScrollReveal';
 import StoryChapter from '@/components/StoryChapter';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
-
-const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
-const WEB3FORMS_ACCESS_KEY = '155ba557-b395-4943-95b9-3350f9419ebc';
 
 type FormData = {
   name: string;
@@ -36,18 +32,12 @@ export default function ContactPage() {
   const [errorMsg, setErrorMsg] = useState('');
   const [result, setResult] = useState('');
 
-  /* =========================
-     HANDLE INPUT CHANGE
-  ========================= */
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  /* =========================
-     VALIDATION (FIXED ERROR)
-  ========================= */
   function validateForm() {
     if (!data.name.trim()) {
       setErrorMsg('Name is required');
@@ -57,16 +47,13 @@ export default function ContactPage() {
       setErrorMsg('Enter a valid email');
       return false;
     }
-    if (data.phone.length < 10) {
+    if (data.phone.trim().length < 10) {
       setErrorMsg('Enter valid phone number');
       return false;
     }
     return true;
   }
 
-  /* =========================
-     STEP 1 → REVIEW
-  ========================= */
   function handleReview(e: React.FormEvent) {
     e.preventDefault();
 
@@ -77,9 +64,6 @@ export default function ContactPage() {
     setStep('review');
   }
 
-  /* =========================
-     STEP 2 → CONFIRM SUBMIT
-  ========================= */
   async function handleConfirm() {
     if (!validateForm()) return;
 
@@ -87,23 +71,24 @@ export default function ContactPage() {
     setErrorMsg('');
 
     try {
-      const formData = new globalThis.FormData();
-      formData.append('access_key', WEB3FORMS_ACCESS_KEY);
-      formData.append('name', data.name.trim());
-      formData.append('email', data.email.trim());
-      formData.append('phone', data.phone.trim());
-      formData.append('service', data.service);
-      formData.append('message', data.message.trim());
-
-      const response = await fetch(WEB3FORMS_ENDPOINT, {
+      const response = await fetch('/api/message', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name.trim(),
+          email: data.email.trim(),
+          phone: data.phone.trim(),
+          service: data.service,
+          message: data.message.trim(),
+        }),
       });
 
       const json = await response.json();
-      setResult(json.success ? 'Success!' : 'Error');
+      setResult(response.ok ? 'Success!' : 'Error');
 
-      if (!json.success) {
+      if (!response.ok || !json.success) {
         throw new Error(json.message || 'Submission failed.');
       }
 
@@ -117,9 +102,6 @@ export default function ContactPage() {
     }
   }
 
-  /* =========================
-     FORM UI
-  ========================= */
   function renderForm() {
     return (
       <form
@@ -138,7 +120,7 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <label htmlFor="contact-name" className="block text-sm font-semibold text-slate-800 mb-2">
+          <label htmlFor="contact-name" className="mb-2 block text-sm font-semibold text-slate-800">
             Full Name
           </label>
           <input
@@ -155,7 +137,7 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <label htmlFor="contact-email" className="block text-sm font-semibold text-slate-800 mb-2">
+          <label htmlFor="contact-email" className="mb-2 block text-sm font-semibold text-slate-800">
             Email Address
           </label>
           <input
@@ -172,7 +154,7 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <label htmlFor="contact-phone" className="block text-sm font-semibold text-slate-800 mb-2">
+          <label htmlFor="contact-phone" className="mb-2 block text-sm font-semibold text-slate-800">
             Phone Number
           </label>
           <input
@@ -190,7 +172,7 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <label htmlFor="contact-service" className="block text-sm font-semibold text-slate-800 mb-2">
+          <label htmlFor="contact-service" className="mb-2 block text-sm font-semibold text-slate-800">
             Service Area
           </label>
           <select
@@ -207,7 +189,7 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <label htmlFor="contact-message" className="block text-sm font-semibold text-slate-800 mb-2">
+          <label htmlFor="contact-message" className="mb-2 block text-sm font-semibold text-slate-800">
             Message
           </label>
           <textarea
@@ -221,7 +203,7 @@ export default function ContactPage() {
         </div>
 
         {errorMsg && (
-          <p id="contact-form-feedback" className="text-red-600 text-sm" role="alert">
+          <p id="contact-form-feedback" className="text-sm text-red-600" role="alert">
             {errorMsg}
           </p>
         )}
@@ -235,13 +217,10 @@ export default function ContactPage() {
     );
   }
 
-  /* =========================
-     REVIEW UI
-  ========================= */
   function renderReview() {
     return (
       <div className="space-y-4">
-        <h3 className="font-bold text-lg">Review Your Details</h3>
+        <h3 className="text-lg font-bold">Review Your Details</h3>
 
         <p><b>Name:</b> {data.name}</p>
         <p><b>Email:</b> {data.email}</p>
@@ -250,11 +229,11 @@ export default function ContactPage() {
         <p><b>Message:</b> {data.message}</p>
 
         <div className="flex gap-3">
-          <button onClick={() => setStep('form')} className="btn-secondary">
+          <button type="button" onClick={() => setStep('form')} className="btn-secondary">
             Edit
           </button>
 
-          <button onClick={handleConfirm} className="btn-primary">
+          <button type="button" onClick={handleConfirm} className="btn-primary">
             {submitting ? 'Sending...' : 'Confirm & Send'}
           </button>
         </div>
@@ -262,14 +241,12 @@ export default function ContactPage() {
     );
   }
 
-  /* =========================
-     SUCCESS UI
-  ========================= */
   function renderSuccess() {
     return (
-      <div className="text-green-600 space-y-3" role="alert">
-        <h3>Message Sent Successfully ✅</h3>
+      <div className="space-y-3 text-green-600" role="alert">
+        <h3>Message Sent Successfully</h3>
         <button
+          type="button"
           onClick={() => {
             setData(initialData);
             setResult('');
@@ -282,14 +259,12 @@ export default function ContactPage() {
     );
   }
 
-  /* =========================
-     ERROR UI
-  ========================= */
   function renderError() {
     return (
-      <div className="text-red-600 space-y-3" role="alert">
+      <div className="space-y-3 text-red-600" role="alert">
         <p>{errorMsg}</p>
         <button
+          type="button"
           onClick={() => {
             setResult('');
             setStep('form');
@@ -301,9 +276,6 @@ export default function ContactPage() {
     );
   }
 
-  /* =========================
-     MAIN RETURN
-  ========================= */
   return (
     <>
       <SiteHeader />
@@ -311,7 +283,7 @@ export default function ContactPage() {
       <main className="p-6">
         <PageHero kicker="Get In Touch" title="Contact Us" subtitle="Send us a message" />
 
-        <div className="max-w-xl mx-auto mt-8">
+        <div className="mx-auto mt-8 max-w-xl">
           <div aria-live="polite" aria-atomic="true" role="status" className="sr-only">
             {step === 'success' && 'Message sent successfully. Thank you for contacting us.'}
             {step === 'error' && errorMsg}
@@ -323,9 +295,8 @@ export default function ContactPage() {
           {step === 'error' && renderError()}
         </div>
 
-        {/* <ScrollFusion3D /> */}
-        <StoryChapter 
-          title="Building Trust Through Every Conversation" 
+        <StoryChapter
+          title="Building Trust Through Every Conversation"
           detail="Our team is ready to discuss your financial objectives and craft tailored solutions."
         />
         <ScrollReveal />

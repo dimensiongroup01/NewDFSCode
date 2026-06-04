@@ -53,20 +53,20 @@ export default function SiteHeader() {
             : 'border-b border-slate-100 shadow-none'
         }`}
       >
-        <div className="mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <div className="flex min-h-20 w-full items-center justify-between gap-4 px-4 sm:px-6 lg:px-10 xl:px-12 2xl:px-16">
 
           {/* â”€â”€ Logo â”€â”€ */}
           <Link
             href="/home"
             prefetch={false}
-            className="inline-flex max-w-[13rem] shrink-0 items-center rounded-lg focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#00B4D8] sm:max-w-[14.5rem] md:max-w-none"
+            className="inline-flex max-w-[15rem] shrink-0 items-center rounded-lg focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#00B4D8] sm:max-w-[17rem] md:max-w-none"
           >
             <Image
               src="/images/logo.svg"
               alt="Dimension Financial"
-              width={270}
-              height={68}
-              className="h-11 w-auto object-contain sm:h-12 md:h-14"
+              width={340}
+              height={86}
+              className="h-14 w-auto object-contain sm:h-16 md:h-[4.5rem]"
             />
           </Link>
 

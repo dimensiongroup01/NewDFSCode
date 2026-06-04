@@ -914,17 +914,11 @@ video {
 .max-w-4xl {
   max-width: 56rem;
 }
-.max-w-6xl {
-  max-width: 72rem;
-}
-.max-w-7xl {
-  max-width: 80rem;
-}
-.max-w-\[13rem\] {
-  max-width: 13rem;
-}
 .max-w-\[14ch\] {
   max-width: 14ch;
+}
+.max-w-\[15rem\] {
+  max-width: 15rem;
 }
 .max-w-\[240px\] {
   max-width: 240px;
@@ -2259,19 +2253,40 @@ summary:focus-visible {
 }
 
 .section-shell {
-  margin-left: auto;
-  margin-right: auto;
   width: 100%;
-  max-width: 72rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+
+  .section-shell {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
 
   .section-shell {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .section-shell {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1536px) {
+
+  .section-shell {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 }
 
@@ -3317,10 +3332,6 @@ label {
     height: 2.5rem;
   }
 
-  .sm\:h-12 {
-    height: 3rem;
-  }
-
   .sm\:h-16 {
     height: 4rem;
   }
@@ -3353,8 +3364,8 @@ label {
     width: 280px;
   }
 
-  .sm\:max-w-\[14\.5rem\] {
-    max-width: 14.5rem;
+  .sm\:max-w-\[17rem\] {
+    max-width: 17rem;
   }
 
   .sm\:grid-cols-2 {
@@ -3565,10 +3576,6 @@ label {
     aspect-ratio: auto;
   }
 
-  .md\:h-14 {
-    height: 3.5rem;
-  }
-
   .md\:h-24 {
     height: 6rem;
   }
@@ -3591,6 +3598,10 @@ label {
 
   .md\:h-\[340px\] {
     height: 340px;
+  }
+
+  .md\:h-\[4\.5rem\] {
+    height: 4.5rem;
   }
 
   .md\:h-\[460px\] {
@@ -3865,9 +3876,9 @@ label {
     padding: 2.5rem;
   }
 
-  .lg\:px-8 {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  .lg\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   .lg\:py-14 {
@@ -3915,9 +3926,19 @@ label {
   .xl\:gap-10 {
     gap: 2.5rem;
   }
+
+  .xl\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }
 
 @media (min-width: 1536px) {
+
+  .\32xl\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 
   .\32xl\:px-4 {
     padding-left: 1rem;
