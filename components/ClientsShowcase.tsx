@@ -4,8 +4,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 
-const clients = [
+type Client = {
+  id: string;
+  short: string;
+  name: string;
+  imageSrcs: string[];
+  initials: string;
+  accent: string;
+  color: string;
+  description: string;
+};
+
+const clients: Client[] = [
   {
+    id: 'indian-oil-corporation',
     short: 'Indian Oil',
     name: 'Indian Oil Corporation Limited',
     imageSrcs: [
@@ -17,6 +29,7 @@ const clients = [
     description: 'Representative client relationship from DFS institutional and debt market execution experience.'
   },
   {
+    id: 'national-cooperative-development-corporation',
     short: 'NCDC',
     name: 'National Cooperative Development Corporation',
     imageSrcs: [
@@ -28,6 +41,7 @@ const clients = [
     description: 'Illustrative of the institution-focused approach DFS follows across advisory and debt securities work.'
   },
   {
+    id: 'nhpc-limited',
     short: 'NHPC',
     name: 'NHPC Limited',
     imageSrcs: [
@@ -39,6 +53,7 @@ const clients = [
     description: 'Part of the broader client network served through compliant, process-led market support.'
   },
   {
+    id: 'krishak-bharati-cooperative-limited',
     short: 'KRIBHCO',
     name: 'Krishak Bharati Cooperative Limited',
     imageSrcs: [
@@ -50,6 +65,7 @@ const clients = [
     description: 'Reflects DFS experience supporting organizations with disciplined financial market execution.'
   },
   {
+    id: 'cement-corporation-of-india',
     short: 'CCI',
     name: 'Cement Corporation of India Limited',
     imageSrcs: [
@@ -59,6 +75,30 @@ const clients = [
     accent: 'from-blue-50 to-blue-50',
     color: '#c0392b',
     description: 'Shows the breadth of DFS relationships across corporates, institutions, and debt market participants.'
+  },
+  {
+    id: 'inspiring-agro-limited',
+    short: 'Inspiring Agro',
+    name: 'Inspiring Agro Limited',
+    imageSrcs: [
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQReVWZc2SlWFJAjsY0g-dhnE3wohHPNO9SLw&s',
+    ],
+    initials: 'IAL',
+    accent: 'from-green-50 to-white',
+    color: '#2f7d32',
+    description: 'Represents DFS client work across corporate advisory, capital market execution, and financial services mandates.'
+  },
+  {
+    id: 'himalaya-food-international',
+    short: 'Himalaya Food',
+    name: 'Himalaya Food International Ltd',
+    imageSrcs: [
+      'https://static.wixstatic.com/media/42670e_a880e532f8ac40f29a8ec78892244978~mv2.jpeg',
+    ],
+    initials: 'HFIL',
+    accent: 'from-blue-50 to-white',
+    color: '#1f5f8b',
+    description: 'Reflects DFS support for listed and corporate clients through disciplined advisory and execution-led services.'
   }
 ];
 
@@ -298,9 +338,9 @@ export default function ClientsShowcase() {
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-3">
-          {clients.map((_, idx) => (
+          {clients.map((client, idx) => (
             <button
-              key={idx}
+              key={client.id}
               onClick={() => {
                 setDirection(idx > activeIndex ? 1 : -1);
                 setActiveIndex(idx);

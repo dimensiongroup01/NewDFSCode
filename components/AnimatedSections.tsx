@@ -20,36 +20,31 @@ export default function AnimatedSections() {
     let ctx: { revert: () => void } | null = null;
 
     (async () => {
-      const [{ default: gsap }, { ScrollTrigger }] = await Promise.all([
-        import('gsap'),
-        import('gsap/ScrollTrigger')
-      ]);
-      if (!isActive) {
-        return;
+      try {
+        const [{ default: gsap }, { ScrollTrigger }] = await Promise.all([
+          import('gsap'),
+          import('gsap/ScrollTrigger')
+        ]);
+        if (!isActive) {
+          return;
+        }
+        gsap.registerPlugin(ScrollTrigger);
+
+        ctx = gsap.context(() => {
+          gsap.from('#insights-panel', {
+            y: 36,
+            opacity: 0,
+            duration: 0.9,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '#insights',
+              start: 'top 80%'
+            }
+          });
+        }, root);
+      } catch {
+        // Keep the section usable if animation chunks fail during dev refresh.
       }
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Skip reveal-card animations (handled separately in #services section)
-      // const cards = root.querySelectorAll('.reveal-card');
-      
-      ctx = gsap.context(() => {
-        // Services card animations moved to dedicated section
-        // gsap.from(cards, { ... });
-        // gsap.to(cards, { ... });
-
-        gsap.from('#insights-panel', {
-          y: 36,
-          opacity: 0,
-          duration: 0.9,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '#insights',
-            start: 'top 80%'
-          }
-        });
-      }, root);
-
-      // floatTween = gsap.to(cards, { ... });
     })();
 
     return () => {

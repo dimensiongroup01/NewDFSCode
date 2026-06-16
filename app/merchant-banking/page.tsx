@@ -14,52 +14,10 @@ export const metadata: Metadata = {
 
 // -- Data ---------------------------------------------------------------------
 
-const stats = [
-  { value: '33+', label: 'Years Combined Experience' },
-  { value: 'SEBI', label: 'Registered Merchant Banker' },
-  { value: '2009', label: 'Established' },
-  { value: '100%', label: 'Compliance-Led Execution' },
-];
-
 const services = [
   {
     id: '01',
-    title: 'SME Platform Listings',
-    icon: 'SL',
-    color: 'from-blue-50 to-blue-50',
-    border: 'border-blue-200',
-    accent: '#10284a',
-    summary: 'End-to-end support for listing your business on SME exchanges with disciplined preparation and investor-ready documentation.',
-    points: [
-      'Pre-listing strategy and readiness assessment',
-      'Documentation drafting and DRHP preparation',
-      'Regulatory compliance and SEBI filing support',
-      'Market positioning and investor relations',
-      'Post-listing compliance and reporting support',
-    ],
-  },
-  {
-    id: '02',
-    title: 'Main Board Migration',
-    icon: 'SL',
-    color: 'from-blue-50 to-blue-50',
-    border: 'border-blue-200',
-    accent: '#10284a',
-    summary: 'Structured migration advisory for SME-listed companies transitioning to the Main Board of BSE or NSE.',
-    points: [
-      'Strategic eligibility planning and gap analysis',
-      'Regulatory and SEBI compliance alignment',
-      'Restated financial documentation support',
-      'Market positioning and stakeholder communication',
-      'Post-migration governance and reporting framework',
-    ],
-  },
-  {
-    id: '03',
     title: 'IPO, FPO & Rights Issues',
-    icon: 'SL',
-    color: 'from-blue-50 to-blue-50',
-    border: 'border-blue-200',
     accent: '#10284a',
     summary: 'Complete management of public equity offerings including book-built IPOs, further public offers, and rights issue mandates.',
     points: [
@@ -71,11 +29,8 @@ const services = [
     ],
   },
   {
-    id: '04',
+    id: '02',
     title: 'Takeover & Open Offer',
-    icon: 'SL',
-    color: 'from-blue-50 to-blue-50',
-    border: 'border-blue-200',
     accent: '#10284a',
     summary: 'Advisory and execution support for acquirers and target companies navigating SEBI Takeover Code obligations.',
     points: [
@@ -87,11 +42,8 @@ const services = [
     ],
   },
   {
-    id: '05',
+    id: '03',
     title: 'Share Buyback',
-    icon: 'SL',
-    color: 'from-blue-50 to-amber-50',
-    border: 'border-blue-200',
     accent: '#7a3e00',
     summary: 'End-to-end management of share buyback programs for listed companies under SEBI Buyback Regulations.',
     points: [
@@ -103,11 +55,8 @@ const services = [
     ],
   },
   {
-    id: '06',
+    id: '04',
     title: 'Delisting of Securities',
-    icon: 'SL',
-    color: 'from-blue-50 to-white',
-    border: 'border-blue-200',
     accent: '#10284a',
     summary: 'Advisory support for voluntary delisting of shares in compliance with SEBI Delisting Regulations 2021.',
     points: [
@@ -119,11 +68,21 @@ const services = [
     ],
   },
   {
-    id: '07',
+    id: '05',
+    title: 'Capital Restructuring',
+    accent: '#10284a',
+    summary: 'Strategic advisory for capital structure optimization, including equity restructuring and corporate reorganization.',
+    points: [
+      'Capital restructuring strategy and design',
+      'Reduction of capital and reserve restructuring',
+      'Scheme documentation and NCLT filing support',
+      'Debt-equity conversion advisory',
+      'Regulatory and shareholder approval coordination',
+    ],
+  },
+  {
+    id: '06',
     title: 'Mergers, Acquisitions & Demergers',
-    icon: 'SL',
-    color: 'from-blue-50 to-white',
-    border: 'border-blue-200',
     accent: '#10284a',
     summary: 'Strategic M&A advisory across the full transaction lifecycle — from target identification through structured closure.',
     points: [
@@ -135,11 +94,8 @@ const services = [
     ],
   },
   {
-    id: '08',
+    id: '07',
     title: 'Valuation Services',
-    icon: 'SL',
-    color: 'from-blue-50 to-white',
-    border: 'border-blue-200',
     accent: '#10284a',
     summary: 'Independent, regulation-aligned valuation services for businesses, assets, and financial instruments across transaction contexts.',
     points: [
@@ -151,15 +107,12 @@ const services = [
     ],
   },
   {
-    id: '09',
+    id: '08',
     title: 'ESOP Advisory',
-    icon: 'SL',
-    color: 'from-blue-50 to-white',
-    border: 'border-blue-200',
     accent: '#6b4a00',
     summary: 'Comprehensive ESOP scheme design, regulatory compliance, and certification services for listed and unlisted companies.',
     points: [
-      "ESOP scheme framing and design",
+      'ESOP scheme framing and design',
       'SEBI ESOP guidelines compliance and certification',
       'Grant, vesting, and exercise schedule structuring',
       'Tax and accounting impact advisory',
@@ -167,27 +120,8 @@ const services = [
     ],
   },
   {
-    id: '10',
-    title: 'Preferential Allotment',
-    icon: 'SL',
-    color: 'from-blue-50 to-blue-50',
-    border: 'border-blue-200',
-    accent: '#10284a',
-    summary: 'End-to-end support for preferential allotment of shares and convertible instruments to selected investors.',
-    points: [
-      'Eligibility assessment and pricing as per SEBI norms',
-      'Offer document and resolution drafting',
-      'SEBI and exchange filing coordination',
-      'Investor communication and documentation',
-      'Post-allotment compliance and reporting',
-    ],
-  },
-  {
-    id: '11',
+    id: '09',
     title: 'Debt Placement & Advisory',
-    icon: 'SL',
-    color: 'from-slate-50 to-blue-50',
-    border: 'border-slate-200',
     accent: '#10284a',
     summary: 'Institutional debt placement and syndication advisory for bonds, debentures, and fixed deposit programs.',
     points: [
@@ -198,52 +132,30 @@ const services = [
       'Adherence to SEBI Regulations and Companies Act 2013',
     ],
   },
-  {
-    id: '12',
-    title: 'Capital Restructuring',
-    icon: 'SL',
-    color: 'from-blue-50 to-blue-50',
-    border: 'border-blue-200',
-    accent: '#10284a',
-    summary: 'Strategic advisory for capital structure optimization, including equity restructuring and corporate reorganization.',
-    points: [
-      'Capital restructuring strategy and design',
-      'Reduction of capital and reserve restructuring',
-      'Scheme documentation and NCLT filing support',
-      'Debt-equity conversion advisory',
-      'Regulatory and shareholder approval coordination',
-    ],
-  },
 ];
 
 const differentiators = [
   {
-    icon: 'SL',
     title: 'Value-Center Thinking',
     text: 'We function as a value center inside your transaction — not just an execution desk following instructions.',
   },
   {
-    icon: 'SL',
     title: 'Regulatory & Commercial Balance',
     text: 'Our solutions blend regulatory precision, industry understanding, and practical commercial judgment at every stage.',
   },
   {
-    icon: 'SL',
     title: 'Independent & Ethical Advisory',
     text: 'We deliver professional and transparent advice with implementation discipline and governance integrity built in.',
   },
   {
-    icon: 'SL',
     title: 'Partner-Level Oversight',
     text: 'Critical decisions and transaction transitions are reviewed at partner level before execution proceeds.',
   },
   {
-    icon: 'SL',
     title: 'Structured Delivery Benchmarks',
     text: 'Each mandate follows defined performance benchmarks to maintain quality, pace, and full accountability.',
   },
   {
-    icon: 'SL',
     title: 'Explicit Value-Risk Communication',
     text: 'We surface value levers and risk factors early so every stakeholder can take fully informed decisions.',
   },
@@ -285,85 +197,155 @@ const investorLinks = [
   { label: 'Complaint Redressal (SCORES)', href: 'https://scores.sebi.gov.in/' },
 ];
 
+// -- Service icon map ---------------------------------------------------------
+const serviceIcons: Record<string, string> = {
+  '01': '🏛️', '02': '⚖️', '03': '🔄', '04': '📋',
+  '05': '🏗️', '06': '🤝', '07': '📊', '08': '👥', '09': '💼',
+};
+
 // -- Page ---------------------------------------------------------------------
 
 export default function MerchantBankingPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main-content" tabIndex={-1} className="grid-overlay min-h-screen">
+      <main id="main-content" tabIndex={-1} className="min-h-screen bg-[#F6F8FA]">
 
-        {/* -- Hero -- */}
-        <section className="relative overflow-hidden border-b border-[#E2E8F0] bg-[linear-gradient(135deg,#F8FAFB,#EAF8FC)] py-20 md:py-28">
-          <div className="absolute inset-0 opacity-70 bg-[radial-gradient(circle_at_20%_20%,rgba(0,180,216,0.18)_0%,transparent_40%),radial-gradient(circle_at_80%_70%,rgba(255,105,0,0.08)_0%,transparent_40%)]" />
-          <div className="absolute -left-24 top-16 h-72 w-72 rounded-full bg-[#00B4D8]/12 blur-3xl" />
-          <div className="absolute -right-16 bottom-10 h-64 w-64 rounded-full bg-[#FF6900]/8 blur-3xl" />
+        {/* ── SEBI Registration Banner ── */}
+        <div className="bg-[#10284a] text-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-center gap-x-6 gap-y-1.5 text-center text-xs sm:text-sm">
+            <span className="flex items-center gap-2">
+              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#FF6900] text-[9px] font-black text-white">✓</span>
+              <span className="font-medium text-slate-300">SEBI Registered Merchant Banker</span>
+            </span>
+            <span className="hidden sm:block h-3.5 w-px bg-slate-600" />
+            <span className="font-bold tracking-widest text-[#00D4FF]">INM000013314</span>
+            <span className="hidden sm:block h-3.5 w-px bg-slate-600" />
+            <span className="flex items-center gap-2">
+              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#FF6900] text-[9px] font-black text-white">✓</span>
+              <span className="font-medium text-slate-300">BSE Debt Segment · INZ000313233</span>
+            </span>
+          </div>
+        </div>
 
-          <div className="section-shell relative z-10">
-            <div className="max-w-3xl">
-              <span className="inline-block rounded-full border border-[#E2E8F0] bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-[#007A96]">
-                SEBI Registered Merchant Banker
-              </span>
-              <h1 className="mt-5 text-4xl font-bold leading-tight text-[#10284a] md:text-6xl">
-                Full-Spectrum Merchant Banking for Growth & Institutional Mandates
-              </h1>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#334155] md:text-lg">
-                Dimension Financial Solutions delivers execution-focused merchant banking across equity capital markets, M&A advisory, debt placement, and corporate restructuring — with compliance precision and governance integrity at every stage.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/contact"
-                  className="rounded-lg bg-[#0096B7] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#007A96]"
-                >
-                  Discuss a Mandate
-                </Link>
-                <Link
-                  href="/about-us"
-                  className="rounded-lg border border-[#E2E8F0] bg-white px-6 py-3 text-sm font-semibold text-[#10284a] transition hover:border-[#00B4D8]"
-                >
-                  Our Team
-                </Link>
+        {/* ── Hero ── */}
+        <section className="relative overflow-hidden bg-[#10284a] pb-28 pt-16 md:pt-24">
+          {/* Decorative grid lines */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: 'linear-gradient(#00B4D8 1px,transparent 1px),linear-gradient(90deg,#00B4D8 1px,transparent 1px)',
+              backgroundSize: '60px 60px',
+            }}
+          />
+          {/* Ambient glows */}
+          <div className="absolute -left-32 top-0 h-[500px] w-[500px] rounded-full bg-[#0096B7]/20 blur-[100px]" />
+          <div className="absolute -right-32 bottom-0 h-[400px] w-[400px] rounded-full bg-[#FF6900]/15 blur-[90px]" />
+
+          <div className="section-shell relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* SEBI badge — prominent */}
+            <div className="inline-flex items-center gap-3 rounded-2xl border border-[#00D4FF]/30 bg-[#00D4FF]/10 px-5 py-3 backdrop-blur-sm">
+              <div className="flex flex-col">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#00D4FF]/70">SEBI Registered Merchant Banker</span>
+                <span className="mt-0.5 font-mono text-base font-black tracking-[0.15em] text-[#00D4FF] md:text-lg">INM000013314</span>
+              </div>
+              <div className="h-10 w-px bg-[#00D4FF]/20" />
+              <div className="flex flex-col">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Operating Since</span>
+                <span className="mt-0.5 font-bold text-white">2009</span>
               </div>
             </div>
 
-            {/* Stats row */}
-            <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {stats.map((s) => (
-                <div key={s.label} className="rounded-2xl border border-[#E2E8F0] bg-white/85 p-5 shadow-sm backdrop-blur-sm">
-                  <p className="text-2xl font-black text-[#007A96] md:text-3xl">{s.value}</p>
-                  <p className="mt-1 text-xs text-slate-600">{s.label}</p>
+            <h1 className="mt-8 max-w-4xl text-4xl font-black leading-[1.08] tracking-tight text-white md:text-6xl lg:text-7xl">
+              Full-Spectrum<br />
+              <span className="bg-gradient-to-r from-[#00D4FF] to-[#00B4D8] bg-clip-text text-transparent">
+                Merchant Banking
+              </span>
+              <br />for Growth & Institutional Mandates
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
+              Dimension Financial Solutions delivers execution-focused merchant banking across equity capital markets, M&A advisory, debt placement, and corporate restructuring — with compliance precision at every stage.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/contact"
+                className="rounded-xl bg-[#FF6900] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#FF6900]/30 transition hover:bg-[#e05c00] hover:shadow-xl"
+              >
+                Discuss a Mandate →
+              </Link>
+              <Link
+                href="/about-us"
+                className="rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+              >
+                Our Team
+              </Link>
+            </div>
+
+            {/* Credential strip */}
+            <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {[
+                { label: 'Registration', value: 'INM000013314', sub: 'SEBI Merchant Banker' },
+                { label: 'Exchange', value: 'BSE Member', sub: 'Debt Segment' },
+                { label: 'Broker Reg.', value: 'INZ000313233', sub: 'Stock Broker' },
+                { label: 'Execution', value: '100%', sub: 'Compliance-Led' },
+              ].map((s) => (
+                <div
+                  key={s.label}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm"
+                >
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#00D4FF]/60">{s.label}</p>
+                  <p className="mt-1 font-mono text-base font-black text-white md:text-lg">{s.value}</p>
+                  <p className="mt-0.5 text-[11px] text-slate-400">{s.sub}</p>
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Wave divider */}
+          <div className="absolute bottom-0 left-0 right-0 h-10 overflow-hidden">
+            <svg viewBox="0 0 1440 40" preserveAspectRatio="none" className="h-full w-full" fill="#F6F8FA">
+              <path d="M0,40 L0,20 Q360,0 720,20 Q1080,40 1440,20 L1440,40 Z" />
+            </svg>
+          </div>
         </section>
 
-        {/* -- Intro strip -- */}
-        <section className="section-shell py-12 md:py-16">
-          <div className="rounded-3xl border border-[#E2E8F0] bg-[linear-gradient(135deg,#ffffff,#EAF8FC)] p-6 shadow-sm md:p-10">
-            <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#FF6900]">Who We Are</p>
-                <h2 className="mt-2 font-display text-2xl text-[#10284a] md:text-3xl">
-                  A Compliance-First, Execution-Driven Merchant Banking Platform
+        {/* ── Who We Are ── */}
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white shadow-sm">
+            <div className="grid md:grid-cols-[1.3fr_0.7fr]">
+              <div className="p-8 md:p-12">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Who We Are</p>
+                <h2 className="mt-3 text-2xl font-bold text-[#10284a] md:text-3xl">
+                  A Compliance-First, Execution-Driven<br />Merchant Banking Platform
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-ink md:text-base">
-                  Dimension Financial Solutions Private Limited is a SEBI-registered Merchant Banker with over 15 years of institutional and capital market experience. We serve corporates, promoter groups, institutions, and trusts seeking reliable execution on complex financial mandates — from SME listings and IPOs to M&A transactions, buybacks, and institutional debt placement.
+                <p className="mt-5 text-sm leading-relaxed text-slate-600 md:text-base">
+                  Dimension Financial Solutions Private Limited is a SEBI-registered Merchant Banker, licensed in September 2025 and backed by over 15 years of capital market expertise. We partner with corporates, promoter groups, institutions, and trusts to execute complex financial mandates, including SME listings, IPOs, M&A transactions, buybacks, and institutional debt placements.
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-ink md:text-base">
+                <p className="mt-4 text-sm leading-relaxed text-slate-600 md:text-base">
                   Our operating philosophy positions us as a value center inside each transaction — not merely an execution agent. We invest in understanding each mandate deeply, structure solutions with regulatory precision, and maintain full transparency with all stakeholders through to closure.
                 </p>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2">
+
+              {/* SEBI Card — visually prominent */}
+              <div className="flex flex-col gap-3 bg-gradient-to-br from-[#10284a] to-[#0d1f3c] p-8 md:p-10">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#00D4FF]/70">Regulatory Credentials</p>
+
+                <div className="mt-2 rounded-2xl border border-[#00D4FF]/20 bg-[#00D4FF]/10 p-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#00D4FF]/60">SEBI Registration No.</p>
+                  <p className="mt-1 font-mono text-xl font-black tracking-widest text-[#00D4FF] md:text-2xl">INM000013314</p>
+                  <p className="mt-1 text-xs text-slate-400">Merchant Banker</p>
+                </div>
+
                 {[
-                  { label: 'SEBI Registration', value: 'Merchant Banker' },
                   { label: 'BSE Member', value: 'Debt Segment' },
                   { label: 'Stock Broker Reg.', value: 'INZ000313233' },
                   { label: 'Operating Since', value: '2009' },
                 ].map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-[#E2E8F0] bg-white p-4 text-center shadow-sm">
-                    <p className="text-xs text-[#FF6900] uppercase tracking-[0.15em]">{item.label}</p>
-                    <p className="mt-1 font-bold text-[#10284a]">{item.value}</p>
+                  <div key={item.label} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+                    <p className="text-xs text-slate-400">{item.label}</p>
+                    <p className="font-mono text-sm font-bold text-white">{item.value}</p>
                   </div>
                 ))}
               </div>
@@ -371,74 +353,79 @@ export default function MerchantBankingPage() {
           </div>
         </section>
 
-        {/* -- Services Grid -- */}
-        <section className="section-shell pb-16 md:pb-20">
+        {/* ── Services Grid ── */}
+        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#FF6900]">Our Services</p>
-            <h2 className="mt-2 font-display text-3xl text-[#10284a] md:text-4xl">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Our Services</p>
+            <h2 className="mt-2 text-3xl font-bold text-[#10284a] md:text-4xl">
               Comprehensive Merchant Banking Services
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink md:text-base">
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-500 md:text-base">
               From first public offerings to complex restructuring mandates, our service suite covers the full spectrum of capital market and corporate finance requirements.
             </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {services.map((svc) => (
               <article
                 key={svc.id}
-                className={`group relative overflow-hidden rounded-3xl border ${svc.border} bg-gradient-to-br ${svc.color} p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`}
+                className="group relative overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#00B4D8] hover:shadow-lg"
               >
-                {/* Top accent line */}
-                <div className="absolute inset-x-0 top-0 h-1 rounded-t-3xl" style={{ background: `linear-gradient(90deg, ${svc.accent}, transparent)` }} />
+                {/* Top accent bar */}
+                <div
+                  className="absolute inset-x-0 top-0 h-0.5"
+                  style={{ background: `linear-gradient(90deg, ${svc.accent}, transparent 70%)` }}
+                />
 
                 <div className="flex items-start gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm text-2xl">
-                    {svc.icon}
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#F0F7FF] text-xl shadow-inner">
+                    {serviceIcons[svc.id]}
                   </span>
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em]" style={{ color: svc.accent }}>
-                      {svc.id}
+                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF6900]">
+                      Service {svc.id}
                     </p>
-                    <h3 className="mt-0.5 text-lg font-bold leading-snug" style={{ color: svc.accent }}>
+                    <h3 className="mt-0.5 text-base font-bold leading-snug text-[#10284a]">
                       {svc.title}
                     </h3>
                   </div>
                 </div>
 
-                <p className="mt-4 text-sm leading-relaxed text-ink">
-                  {svc.summary}
-                </p>
+                <p className="mt-4 text-sm leading-relaxed text-slate-500">{svc.summary}</p>
 
                 <ul className="mt-4 space-y-1.5">
                   {svc.points.map((pt) => (
-                    <li key={pt} className="flex items-start gap-2 text-sm text-ink">
-                      <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: svc.accent }} />
+                    <li key={pt} className="flex items-start gap-2.5 text-sm text-slate-600">
+                      <span
+                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
+                        style={{ backgroundColor: svc.accent }}
+                      />
                       {pt}
                     </li>
                   ))}
                 </ul>
 
-                {/* Hover footer */}
-                <div className="mt-5 flex items-center gap-1 text-xs font-semibold opacity-0 transition-all duration-300 group-hover:opacity-100" style={{ color: svc.accent }}>
-                  <Link href="/contact" className="hover:underline">Discuss this service</Link>
-                  <span>-&gt;</span>
-                </div>
+                <Link
+                  href="/contact"
+                  className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-[#0096B7] opacity-0 transition-all duration-300 group-hover:opacity-100"
+                >
+                  Discuss this service <span>→</span>
+                </Link>
               </article>
             ))}
           </div>
         </section>
 
-        {/* -- Key Differentiators -- */}
-        <section className="section-shell pb-16 md:pb-20">
-          <div className="overflow-hidden rounded-3xl border border-[#E2E8F0] bg-[linear-gradient(135deg,#ffffff,#EAF8FC)] p-6 shadow-xl md:p-10">
+        {/* ── Why Choose Us ── */}
+        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-[#E2E8F0] bg-white p-8 shadow-sm md:p-12">
             <div className="mb-8">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#FF6900]">Why Dimension</p>
-              <h2 className="mt-2 font-display text-2xl text-[#10284a] md:text-3xl">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Why Dimension</p>
+              <h2 className="mt-2 text-2xl font-bold text-[#10284a] md:text-3xl">
                 Why Clients Choose Us for Critical Transactions
               </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink md:text-base">
-                We are a focused emerging merchant banker with high governance standards. Our approach is built around six core operating principles that clients experience at every stage of a mandate.
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500 md:text-base">
+                A focused emerging merchant banker with high governance standards — built around six core operating principles experienced at every stage of a mandate.
               </p>
             </div>
 
@@ -446,75 +433,82 @@ export default function MerchantBankingPage() {
               {differentiators.map((item, i) => (
                 <div
                   key={item.title}
-                  className="group rounded-2xl border border-[#E2E8F0] bg-white p-5 shadow-sm backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-[#00B4D8] hover:shadow-lg"
+                  className="group rounded-2xl border border-[#E2E8F0] p-5 transition duration-300 hover:-translate-y-1 hover:border-[#00B4D8] hover:shadow-md"
                 >
                   <div className="mb-3 flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FF6900]/15 text-lg">
-                      {item.icon}
-                    </span>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#FF6900]/70">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#10284a] font-mono text-[11px] font-black text-white">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                   </div>
-                  <h3 className="text-base font-semibold text-[#10284a]">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink">{item.text}</p>
+                  <h3 className="text-sm font-bold text-[#10284a]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-500">{item.text}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* -- Engagement Process -- */}
-        <section className="section-shell pb-16 md:pb-20">
-          <div className="rounded-3xl border border-[#E2E8F0] bg-[linear-gradient(135deg,#ffffff,#EAF8FC)] p-6 shadow-sm md:p-10">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#FF6900]">Execution Framework</p>
-            <h2 className="mt-2 font-display text-2xl text-[#10284a] md:text-3xl">
+        {/* ── Engagement Process ── */}
+        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-3xl bg-[#10284a] p-8 md:p-12">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Execution Framework</p>
+            <h2 className="mt-2 text-2xl font-bold text-white md:text-3xl">
               How We Move Mandates from Intent to Closure
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink md:text-base">
-              Every mandate at Dimension follows a structured four-stage engagement framework that ensures regulatory alignment, clear communication, and disciplined execution from start to finish.
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-400 md:text-base">
+              Every mandate at Dimension follows a structured four-stage engagement framework ensuring regulatory alignment, clear communication, and disciplined execution.
             </p>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-4">
+            <div className="mt-10 grid gap-4 md:grid-cols-4">
               {transitionFlow.map((item, i) => (
                 <div
                   key={item.step}
-                  className="group relative rounded-2xl border border-[#E2E8F0] bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#00B4D8] hover:shadow-lg"
+                  className="relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:border-[#00D4FF]/40 hover:bg-white/10"
                 >
-                  {/* connector line between steps */}
                   {i < transitionFlow.length - 1 && (
-                    <div className="absolute -right-2 top-8 z-10 hidden h-0.5 w-4 bg-[#E2E8F0] md:block" />
+                    <div className="absolute -right-2 top-9 z-10 hidden h-px w-4 bg-[#00D4FF]/30 md:block" />
                   )}
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#FF6900]">Step {item.step}</p>
-                  <h3 className="mt-2 font-display text-lg text-[#10284a]">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink">{item.detail}</p>
-                  <div className="mt-5 h-1 w-10 rounded-full bg-[#E2E8F0] transition-all duration-500 group-hover:w-20 group-hover:bg-[#00B4D8]" />
+                  <span className="font-mono text-3xl font-black text-[#00D4FF]/30">{item.step}</span>
+                  <h3 className="mt-2 text-base font-bold text-white">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-400">{item.detail}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* -- Regulatory Compliance -- */}
-        <section className="section-shell pb-16 md:pb-20">
-          <div className="rounded-3xl border border-[#E2E8F0] bg-[linear-gradient(135deg,#ffffff,#EAF8FC)] p-6 md:p-10">
-            <div className="grid gap-8 md:grid-cols-[1.3fr_0.7fr] md:items-start">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#FF6900]">Regulatory Compliance</p>
-                <h2 className="mt-2 font-display text-2xl text-[#10284a] md:text-3xl">
+        {/* ── Regulatory Compliance ── */}
+        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white shadow-sm">
+            <div className="grid md:grid-cols-[1.3fr_0.7fr]">
+              <div className="border-b border-[#E2E8F0] p-8 md:border-b-0 md:border-r md:p-12">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Regulatory Compliance</p>
+                <h2 className="mt-2 text-2xl font-bold text-[#10284a] md:text-3xl">
                   Fully Regulated. Governance-First.
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-ink md:text-base">
+                <p className="mt-5 text-sm leading-relaxed text-slate-600 md:text-base">
                   Dimension Financial Solutions Private Limited, as a SEBI-registered Merchant Banker and debt stock broker, strictly adheres to all applicable regulations including SEBI (Merchant Bankers) Regulations 1992, SEBI (Issue of Capital and Disclosure Requirements) Regulations 2018, SEBI (Buyback of Securities) Regulations 2018, SEBI (Substantial Acquisition of Shares and Takeovers) Regulations 2011, and the Companies Act 2013.
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-ink md:text-base">
+                <p className="mt-4 text-sm leading-relaxed text-slate-600 md:text-base">
                   Every transaction is structured and executed with full regulatory alignment, complete documentation, and transparent investor communication in line with SEBI's framework for investor protection and market integrity.
                 </p>
+
+                {/* Inline SEBI highlight */}
+                <div className="mt-8 inline-flex items-center gap-3 rounded-xl bg-[#F0F7FF] px-5 py-4 ring-1 ring-[#00B4D8]/20">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#10284a]">
+                    <svg className="h-5 w-5 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">SEBI Reg. No. (Merchant Banker)</p>
+                    <p className="font-mono text-lg font-black tracking-widest text-[#10284a]">INM000013314</p>
+                  </div>
+                </div>
               </div>
 
-              {/* Investor corner */}
-              <div>
-                <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#FF6900]">Investor Resources</p>
+              <div className="p-8 md:p-10">
+                <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[#FF6900]">Investor Resources</p>
                 <div className="space-y-2">
                   {investorLinks.map((link) => (
                     <a
@@ -522,10 +516,10 @@ export default function MerchantBankingPage() {
                       href={link.href}
                       target={link.href.startsWith('http') ? '_blank' : undefined}
                       rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="flex items-center justify-between rounded-xl border border-[#E2E8F0] bg-white px-4 py-2.5 text-sm font-medium text-[#10284a] transition hover:border-[#00B4D8] hover:bg-[#EAF8FC]"
+                      className="flex items-center justify-between rounded-xl border border-[#E2E8F0] bg-[#F6F8FA] px-4 py-2.5 text-sm font-medium text-[#10284a] transition hover:border-[#00B4D8] hover:bg-[#EAF8FC]"
                     >
                       {link.label}
-                      <span className="text-[#FF6900]">-&gt;</span>
+                      <span className="font-bold text-[#FF6900]">→</span>
                     </a>
                   ))}
                 </div>
@@ -534,35 +528,49 @@ export default function MerchantBankingPage() {
           </div>
         </section>
 
-        {/* -- CTA -- */}
-        <section className="section-shell pb-20 md:pb-28">
-          <div className="relative overflow-hidden rounded-3xl border border-[#E2E8F0] bg-[linear-gradient(135deg,#ffffff,#EAF8FC)] p-8 text-center shadow-2xl md:p-14">
-            <div className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_50%_0%,#00B4D8,transparent_60%)]" />
+        {/* ── CTA ── */}
+        <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#10284a] to-[#0d1f3c] p-10 text-center shadow-2xl md:p-16">
+            <div className="pointer-events-none absolute inset-0 opacity-[0.06]"
+              style={{
+                backgroundImage: 'radial-gradient(#00D4FF 1px,transparent 1px)',
+                backgroundSize: '24px 24px',
+              }}
+            />
+            <div className="absolute left-1/2 top-0 h-64 w-96 -translate-x-1/2 rounded-full bg-[#0096B7]/30 blur-3xl" />
+
             <div className="relative z-10">
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Ready to Begin?</p>
-              <h2 className="mt-3 font-display text-2xl text-[#10284a] md:text-4xl">
-                Discuss Your Mandate with Our Team
+              <h2 className="mt-3 text-3xl font-black text-white md:text-5xl">
+                Discuss Your Mandate<br />
+                <span className="bg-gradient-to-r from-[#00D4FF] to-[#00B4D8] bg-clip-text text-transparent">
+                  with Our Team
+                </span>
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-ink md:text-base">
+              <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-slate-400 md:text-base">
                 Whether you are planning an IPO, evaluating a merger, or structuring debt — our team is ready to assess your situation and provide a clear, compliance-aligned advisory path forward.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <Link
                   href="/contact"
-                  className="rounded-lg bg-[#0096B7] px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:bg-[#007A96] hover:shadow-xl"
+                  className="rounded-xl bg-[#FF6900] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#FF6900]/30 transition hover:bg-[#e05c00] hover:shadow-xl"
                 >
-                  Get in Touch
+                  Get in Touch →
                 </Link>
                 <Link
                   href="/about-us"
-                  className="rounded-lg border border-[#E2E8F0] bg-white px-8 py-3.5 text-sm font-semibold text-[#10284a] transition hover:border-[#00B4D8]"
+                  className="rounded-xl border border-white/20 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
                 >
                   Meet the Team
                 </Link>
               </div>
-              <p className="mt-6 text-xs text-slate-500">
-                SEBI Registration No. (Merchant Banking) — contact us for our registration details
-              </p>
+              {/* SEBI footnote */}
+              <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5">
+                <span className="h-2 w-2 rounded-full bg-[#00D4FF]" />
+                <span className="font-mono text-xs font-semibold text-slate-400">
+                  SEBI Reg. No. (Merchant Banker): <span className="text-[#00D4FF]">INM000013314</span>
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -572,6 +580,3 @@ export default function MerchantBankingPage() {
     </>
   );
 }
-
-
-

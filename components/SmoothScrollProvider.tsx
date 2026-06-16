@@ -24,30 +24,35 @@ export default function SmoothScrollProvider({
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
     const bootLenis = async () => {
-      const lenis = new Lenis({
-        duration: 0.75,
-        smoothWheel: true,
-        syncTouch: false,
-        wheelMultiplier: 0.9,
-        touchMultiplier: 1
-      });
-      lenisRef.current = lenis;
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-      const onLenisScroll = () => ScrollTrigger.update();
-      lenis.on('scroll', onLenisScroll);
+      try {
+        const lenis = new Lenis({
+          duration: 0.75,
+          smoothWheel: true,
+          syncTouch: false,
+          wheelMultiplier: 0.9,
+          touchMultiplier: 1
+        });
+        lenisRef.current = lenis;
+        const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+        const onLenisScroll = () => ScrollTrigger.update();
+        lenis.on('scroll', onLenisScroll);
 
-      const raf = (time: number) => {
-        lenis.raf(time);
+        const raf = (time: number) => {
+          lenis.raf(time);
+          rafId = requestAnimationFrame(raf);
+        };
+
         rafId = requestAnimationFrame(raf);
-      };
-
-      rafId = requestAnimationFrame(raf);
-      destroy = () => {
-        cancelAnimationFrame(rafId);
-        lenis.off('scroll', onLenisScroll);
-        lenis.destroy();
+        destroy = () => {
+          cancelAnimationFrame(rafId);
+          lenis.off('scroll', onLenisScroll);
+          lenis.destroy();
+          lenisRef.current = null;
+        };
+      } catch {
+        lenisRef.current?.destroy();
         lenisRef.current = null;
-      };
+      }
     };
 
     if ('requestIdleCallback' in window) {

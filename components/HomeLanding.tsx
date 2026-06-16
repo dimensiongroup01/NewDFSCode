@@ -128,6 +128,13 @@ const services = [
   }
 ];
 
+const aboutCards = [
+  { label: 'Established', value: 'Since 2009' },
+  { label: 'Merchant Banker', value: 'SEBI Registered Since September 2025', detail: 'INM000013314' },
+  { label: 'Stock Broking Debt Segment', value: 'Since 2023', detail: 'INZ000313233' },
+  { label: 'Debt Platform', value: 'Bondsadda Since 2023', detail: 'OBPPs at BSE' }
+];
+
 export default function HomeLanding() {
   return (
     <>
@@ -136,6 +143,122 @@ export default function HomeLanding() {
 
       {/* Hero */}
       <HomeHeroScene />
+
+      {/* About Us */}
+     <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-sky-50 py-20">
+  <div className="section-shell">
+    {/* Header */}
+    <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div>
+        <p className="text-sm font-semibold uppercase tracking-[0.35em] text-primary-dark">
+          About Us
+        </p>
+
+        <h2 className="mt-6 max-w-4xl font-display text-4xl font-bold leading-tight text-slate-950 md:text-5xl">
+          Built on Governance, Market Insight, and a
+          <span className="text-primary-dark"> Client-First Approach</span>
+        </h2>
+
+        <div className="mt-8 h-1 w-24 rounded-full bg-primary-dark" />
+      </div>
+
+      {/* Stats */}
+      <div className="grid gap-5 sm:grid-cols-2">
+        {aboutCards.map((item) => (
+          <div
+            key={item.label}
+            className="group rounded-2xl border border-slate-200 bg-white/80 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark/30 hover:shadow-xl"
+          >
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary-dark">
+              {item.label}
+            </p>
+
+            <p className="mt-4 text-2xl font-bold text-slate-950">
+              {item.value}
+            </p>
+
+            {item.detail && (
+              <p className="mt-2 text-sm font-medium text-slate-500">
+                {item.detail}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Content */}
+    <div className="mt-20 grid gap-10 lg:grid-cols-2">
+      {/* About */}
+      <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm lg:p-10">
+        <div className="mb-6 flex items-center gap-4">
+          <div className="h-10 w-1 rounded-full bg-primary-dark" />
+          <h3 className="font-display text-3xl font-bold text-slate-950">
+            Who We Are
+          </h3>
+        </div>
+
+        <div className="space-y-6 text-base leading-8 text-slate-600">
+          <p>
+            Dimension Financial Solutions Private Limited was formed to deliver
+            a comprehensive range of financial services with strong governance
+            and market discipline.
+          </p>
+
+          <p>
+            We are a SEBI-registered stock broker and BSE trading member on the
+            debt segment, with active capability as an Online Bond Platform
+            Provider (OBPP).
+          </p>
+
+          <p>
+            As a SEBI-registered Merchant Banker, we actively support capital
+            issue management, equity advisory, ESOP/ESOS structuring, and
+            business valuation services.
+          </p>
+        </div>
+      </div>
+
+      {/* What We Do */}
+      <div className="relative overflow-hidden rounded-3xl bg-[#0A355D] p-8 text-white shadow-xl lg:p-10">
+        <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-cyan-400/10 blur-3xl" />
+
+        <div className="relative">
+          <h3 className="font-display text-3xl font-bold md:text-4xl text-white">
+            What We Do
+          </h3>
+
+          <div className="mt-6 space-y-6 text-slate-200 leading-8">
+            <p className="text-white">
+              We deliver comprehensive financial advisory and capital market
+              services as a SEBI-registered Merchant Banker and debt market
+              Stock Broker.
+            </p>
+
+            <p className="text-white">
+              Our tailored solutions help corporates, institutions, provident
+              fund trusts, emerging enterprises, and retail investors achieve
+              sustainable growth, operational efficiency, and capital
+              optimization.
+            </p>
+
+            <p className="text-white">
+              With deep regulatory expertise and a client-centric culture, we
+              build enduring relationships while enabling access to capital
+              markets and investment opportunities.
+            </p>
+
+            <p className="text-white">
+              Our approach combines market knowledge, risk awareness, and
+              compliance-led execution to support long-term financial success.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Mission & Vision */}
       <section className="section-shell py-10 sm:py-12 md:py-16">

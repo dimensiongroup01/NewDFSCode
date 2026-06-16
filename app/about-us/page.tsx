@@ -2,7 +2,6 @@
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -46,15 +45,15 @@ const teamMembers = [
   { name: 'Utkarsh Bhatnagar',   image: '/images/ub new.jpeg',     designation: 'Debt Associate' },
   { name: 'Pratik Vishwakarma',  image: '/images/Pratik.jpg',      designation: 'Software Developer' },
   { name: 'Arjun Singh',         image: '/images/Arjun.jpeg',      designation: 'Accounts Executive' },
-  { name: 'Sanjeevani Rawat',    image: '/images/hr.jpeg',         designation: 'Senior HR Executive' },
+  { name: 'Mahima Suryan',      image: '/images/mahima.png',        designation: 'Company Secretary' },
   { name: 'Jaayminee Kondru',    image: '/images/jamuni.jpeg',     designation: 'Sales Executive' },
 ];
 
 const highlights = [
   { label: 'Established', value: 'Since 2009' },
-  { label: 'Merchant Banker', value: 'SEBI Registered' },
-  { label: 'Stock Broking', value: 'INZ000313233' },
-  { label: 'Debt Platform', value: 'OBPPs at BSE' }
+  { label: 'Merchant Banker', value: 'SEBI Registered Since September 2025', detail: 'INM000013314' },
+  { label: 'Stock Broking Debt Segment', value: 'Since 2023', detail: 'INZ000313233' },
+  { label: 'Debt Platform', value: 'Bondsadda Since 2023', detail: 'OBPPs at BSE' }
 ];
 
 const strengths = [
@@ -69,6 +68,10 @@ const strengths = [
   {
     title: 'Compliance-First Execution',
     text: 'Every engagement is structured around regulatory alignment, documentation clarity, and operational rigor.'
+  },
+  {
+    title: 'Financial Advisory Services',
+    text: 'Advisory for acquisition of company, managing open offers, M&A transactions, employee benefit schemes, and valuations. Advisory in respect of investment to institutions including PF and gratuity trusts, corporates, and individual investors.'
   }
 ];
 
@@ -95,56 +98,29 @@ const process = [
   }
 ];
 
-const storyMoments = [
-  {
-    src: '/images/page4_img1.jpg',
-    title: 'Institutional Advisory',
-    text: 'Structured execution for debt and equity transactions with compliance embedded at every step.'
-  },
-  {
-    src: '/images/page4_img4.jpg',
-    title: 'Relationship Depth',
-    text: 'Long-term client partnerships built on clarity, responsiveness, and market discipline.'
-  },
-  {
-    src: '/images/page5_img2.jpg',
-    title: 'Execution Focus',
-    text: 'Hands-on coordination from structuring through placement, documentation, and support.'
-  }
-];
-
-const cultureGallery = [
-  '/images/page1_img4.jpg',
-  '/images/page3_img2.jpg',
-  '/images/page4_img6.jpg',
-  '/images/page5_img1.jpg'
-];
-
 // -- TeamCard -----------------------------------------------------------------
-// aspect-[3/4] keeps every card the same proportions regardless of image size.
-// object-cover + object-center shows the full face without cropping.
-// Text sits BELOW the image in a white band — always visible, never overlapping.
+// Compact professional card design optimized for headshots
 function TeamCard({ member }: { member: { name: string; image: string; designation: string } }) {
   return (
-    <div className="group overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-      {/* Image — fixed aspect ratio = uniform heights across the row */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden">
+    <div className="group flex flex-col overflow-hidden rounded-xl border border-blue-100/40 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-aqua/50 hover:shadow-md">
+      {/* Image - fixed responsive height keeps cards compact across viewports */}
+      <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100/50 sm:h-56 lg:h-60">
         <Image
           src={member.image}
           alt={member.name}
           fill
-          className="object-cover object-top transition duration-700 group-hover:scale-105"
+          className="object-cover object-center transition duration-700 group-hover:scale-105"
         />
-        {/* Subtle bottom fade into the white name band */}
-        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white/60 to-transparent" />
+        {/* Subtle bottom gradient fade */}
+        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       </div>
 
-      {/* Name + Designation — always visible, below photo */}
-      <div className="border-t border-blue-50 bg-white px-3 py-3 text-center">
-        <p className="truncate text-sm font-bold text-[#10284a] sm:text-[15px]">
+      {/* Name + Designation — compact and clean */}
+      <div className="bg-white px-2.5 py-2 text-center sm:px-3 sm:py-2.5">
+        <p className="truncate text-xs font-semibold text-[#10284a] sm:text-sm">
           {member.name}
         </p>
-        <p className="mt-0.5 line-clamp-2 text-[11px] leading-snug text-[#007A96] sm:text-xs">
+        <p className="mt-0.5 line-clamp-2 text-[10px] font-medium text-aqua sm:text-[11px]">
           {member.designation}
         </p>
       </div>
@@ -158,166 +134,80 @@ export default function AboutPage() {
       <SiteHeader />
       <main id="main-content" tabIndex={-1} className="grid-overlay min-h-screen">
 
-        {/* -- Hero -- */}
-        <section className="relative overflow-hidden border-b border-[#E2E8F0] bg-[linear-gradient(135deg,#F8FAFB,#EAF8FC)] py-16 md:py-24">
-          <div className="absolute inset-0 opacity-60">
-            <div className="h-full w-full bg-[radial-gradient(circle_at_18%_18%,rgba(0,180,216,0.18)_0%,transparent_35%),radial-gradient(circle_at_82%_28%,rgba(255,105,0,0.1)_0%,transparent_34%)]" />
-          </div>
-          <div className="absolute -left-20 top-24 h-56 w-56 rounded-full bg-[#00B4D8]/16 blur-3xl" />
-          <div className="absolute -right-16 bottom-10 h-56 w-56 rounded-full bg-[#FF6900]/8 blur-3xl" />
-          <div className="section-shell relative z-10">
-            <div className="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
+        {/* -- About Overview -- */}
+        <section className="section-shell relative overflow-hidden bg-white py-16 md:py-20">
+          <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-[#EAF8FC] via-white to-transparent" />
+          <div className="absolute left-[-8rem] top-10 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute right-[-8rem] top-24 h-80 w-80 rounded-full bg-[#FF6900]/8 blur-3xl" />
+
+          <div className="relative rounded-[2rem] border border-[#DDEAF1] bg-white/88 p-5 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur md:p-8 lg:p-10">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-start lg:gap-12">
               <div>
-                <h1 className="mt-5 text-4xl font-bold leading-tight text-[#10284a] md:text-6xl">
-                  Trusted Debt Advisory and Capital Market Execution.
-                </h1>
-                <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#334155] md:text-lg">
-                  We support businesses, institutions, trusts, and investors with debt and equity market solutions through a regulatory-first, execution-driven framework.
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary-dark">
+                  About Us
                 </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Link
-                    href="/services"
-                    className="rounded-lg bg-[#0096B7] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#007A96]"
-                  >
-                    Explore Services
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="rounded-lg border border-[#E2E8F0] bg-white px-5 py-2.5 text-sm font-semibold text-[#10284a] transition hover:border-[#00B4D8]"
-                  >
-                    Contact Team
-                  </Link>
+                <p className="mt-6 max-w-3xl text-2xl font-semibold leading-snug text-[#0a355d] md:text-3xl md:leading-tight">
+                  Dimension Financial Solutions is a SEBI Registered partner delivering merchant banking, debt securities,
+                  and institutional financial advisory services.
+                </p>
+                <p className="mt-6 inline-block max-w-3xl rounded-full border border-primary/20 bg-[#EAF8FC] px-5 py-3 text-sm font-bold leading-6 text-[#0a355d] shadow-sm md:text-base">
+                  Built on Governance, Market Insight, and a Client-First Execution Culture
+                </p>
+
+                <div className="mt-10 space-y-5 rounded-2xl border border-[#E2E8F0] bg-[#F8FAFB] p-5 text-slate-800 md:p-6">
+                  <p className="text-sm leading-7 md:text-base">
+                    Dimension Financial Solutions Private Limited was formed to deliver a comprehensive range of financial
+                    services with strong governance and market discipline. We are a SEBI-registered stock broker and BSE
+                    trading member on the debt segment, with active capability as an Online Bond Platform Provider (OBPP).
+                  </p>
+                  <p className="text-sm leading-7 md:text-base">
+                    After registration as merchant banker with SEBI, we are also actively engaged in management of capital
+                    issues, equity advisory services, framing of employee benefit schemes - ESOP&apos;S, ESOS, and valuation
+                    of sales and business.
+                  </p>
                 </div>
-                <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              </div>
+
+              <div>
+                <div className="grid gap-4 sm:grid-cols-2">
                   {highlights.map((item) => (
-                    <div key={item.label} className="rounded-xl border border-[#E2E8F0] bg-white/85 p-4 shadow-sm backdrop-blur-sm">
-                      <p className="text-xs uppercase tracking-[0.14em] text-[#007A96]">{item.label}</p>
-                      <p className="mt-1 text-sm font-semibold text-[#10284a] md:text-base">{item.value}</p>
+                    <div
+                      key={item.label}
+                      className="group relative overflow-hidden rounded-2xl border border-[#DDEAF1] bg-gradient-to-b from-white to-[#F5FBFD] p-5 shadow-[0_16px_38px_rgba(15,23,42,0.07)] transition duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_22px_46px_rgba(0,122,150,0.13)]"
+                    >
+                      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#10284a] via-primary to-[#FF6900]" />
+                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary-dark">{item.label}</p>
+                      <p className="mt-3 text-lg font-bold leading-snug text-slate-950 md:text-xl">{item.value}</p>
+                      {'detail' in item ? (
+                        <p className="mt-2 text-sm font-semibold uppercase tracking-[0.08em] text-slate-600">
+                          {item.detail}
+                        </p>
+                      ) : null}
                     </div>
                   ))}
                 </div>
-              </div>
-              <div className="relative">
-                <div className="absolute -left-6 top-12 hidden h-28 w-28 rounded-full border border-[#00B4D8]/20 bg-white/60 blur-sm md:block" />
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="group relative overflow-hidden rounded-[2rem] border border-[#E2E8F0] bg-white shadow-[0_24px_60px_rgba(15,23,42,0.12)] backdrop-blur-sm sm:col-span-2">
-                    <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#10284a]/64 via-[#10284a]/10 to-transparent" />
-                    <Image
-                      src="/images/page4_img3.jpg"
-                      alt="Dimension Financial team collaboration"
-                      width={900}
-                      height={620}
-                      className="h-[300px] w-full object-cover transition duration-700 group-hover:scale-105 md:h-[340px]"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 z-20 p-5 md:p-6">
-                      <p className="text-xs uppercase tracking-[0.24em] text-white/75">Inside Dimension</p>
-                      <h2 className="mt-2 max-w-md text-2xl font-semibold leading-tight text-white md:text-3xl">
-                        Built on governance, market insight, and a client-first execution culture.
-                      </h2>
-                    </div>
-                  </div>
 
-                  <div className="group relative overflow-hidden rounded-[1.75rem] border border-[#E2E8F0] bg-white/85 p-4 shadow-xl backdrop-blur-sm">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/85 to-blue-50/70" />
-                    <div className="relative z-10">
-                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-sm">
-                        <Image
-                          src="/images/logo.svg"
-                          alt="Dimension Financial"
-                          width={56}
-                          height={56}
-                          className="h-11 w-11 object-contain transition duration-500 group-hover:scale-110"
-                        />
-                      </div>
-                      <p className="text-sm leading-relaxed text-slate-700 md:text-base">
-                        Dimension Financial Solutions Private Limited was formed to deliver a comprehensive range of financial services with strong governance and market discipline.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="group relative overflow-hidden rounded-[1.75rem] border border-white/35 bg-[#0d365a] p-4 shadow-xl">
-                    <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-blue-300/20 blur-2xl" />
-                    <div className="relative z-10">
-                      <p className="text-xs uppercase tracking-[0.18em] text-blue-100/80">Capability</p>
-                      <p className="mt-3 text-sm leading-relaxed text-white/90 md:text-base">
-                        We are a SEBI-registered stock broker and BSE trading member on the debt segment, with active capability as an Online Bond Platform Provider.
-                      </p>
-                    </div>
-                  </div>
+                <div className="mt-8 space-y-5 rounded-[1.75rem] border border-[#DDEAF1] bg-white p-5 text-slate-800 shadow-[0_18px_46px_rgba(15,23,42,0.07)] md:p-6">
+                  <h1 className="text-3xl font-bold leading-tight text-slate-950">What we do</h1>
+                  <p className="text-sm leading-7 md:text-base">
+                    Dimension Financial Solutions Private Limited is a SEBI-registered Merchant Banker and Stock Broker
+                    (debt market). We are committed to deliver comprehensive financial advisory and capital market services.
+                    As a trusted partner in financial Industry, we also provide tailored solutions that drives sustainable
+                    growth, operational efficiency, and capital optimization. Our commitment to excellence, deep regulatory
+                    understanding, and client-centric approach position us as the partner of choice for corporates,
+                    institutions, provident fund Trusts, upcoming enterprises and retail investors for their financial
+                    requirements including those related to capital market and as well in respect of investments. We believe
+                    in building enduring relationships, empowering growth, and shaping a prosperous financial future for all
+                    our stakeholders.
+                  </p>
+                  <p className="border-t border-[#E2E8F0] pt-5 text-sm leading-7 md:text-base">
+                    We maintain long-term relationships with clients who rely on us for recurring debt market requirements
+                    and timely execution. Our operating approach combines domain expertise, risk awareness, and compliance-led
+                    transaction support.
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* -- Firm Profile -- */}
-        <section className="section-shell py-16 md:py-20">
-          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-            <article className="card overflow-hidden p-6 md:p-8">
-              <p className="text-xs uppercase tracking-[0.18em] text-aqua">Firm Profile</p>
-              <h2 className="mt-2 font-display text-3xl md:text-4xl">What We Do</h2>
-              <div className="mt-5 grid gap-4 md:grid-cols-2">
-                <p className="text-sm leading-relaxed text-ink md:text-base">
-                  We are engaged in fund-raising assignments including Initial Public Offers and Rights Issues of equity. Alongside equity mandates, we actively place debt securities including bonds and debentures with provident funds, superannuation trusts, institutions, and corporates.
-                </p>
-                <p className="text-sm leading-relaxed text-ink md:text-base">
-                  We maintain long-term relationships with clients who rely on us for recurring debt market requirements and timely execution. Our operating approach combines domain expertise, risk awareness, and compliance-led transaction support.
-                </p>
-              </div>
-
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                {storyMoments.map((moment) => (
-                  <div
-                    key={moment.title}
-                    className="group overflow-hidden rounded-[1.5rem] border border-blue-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
-                  >
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={moment.src}
-                        alt={moment.title}
-                        fill
-                        className="object-cover transition duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#062540]/70 via-transparent to-transparent" />
-                    </div>
-                    <div className="p-4">
-                      <h3 className="text-lg font-semibold text-[#10284a]">{moment.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-ink">{moment.text}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </article>
-
-            <article className="relative overflow-hidden rounded-[2rem] border border-blue-200/80 bg-[#072847] p-6 shadow-xl md:p-8">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(103,232,249,0.18),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(147,197,253,0.18),transparent_34%)]" />
-              <div className="relative z-10">
-                <p className="text-xs uppercase tracking-[0.18em] text-blue-100/75">Visual Snapshot</p>
-                <h2 className="mt-2 font-display text-3xl text-white md:text-4xl">A more human view of our practice.</h2>
-                <p className="mt-4 text-sm leading-relaxed text-white/80 md:text-base">
-                  The firm blends institutional discipline with a collaborative, detail-oriented team culture. We wanted the page to show both the seriousness of the work and the people behind it.
-                </p>
-
-                <div className="mt-8 grid grid-cols-2 gap-3">
-                  {cultureGallery.map((src, index) => (
-                    <div
-                      key={src}
-                      className={`group relative overflow-hidden rounded-[1.5rem] border border-white/15 shadow-lg transition duration-500 hover:-translate-y-1 hover:shadow-2xl ${
-                        index === 0 ? 'col-span-2 h-48' : 'h-40'
-                      }`}
-                    >
-                      <Image
-                        src={src}
-                        alt="Dimension Financial culture and office moments"
-                        fill
-                        className="object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-[1deg]"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#031322]/60 via-transparent to-transparent" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </article>
           </div>
         </section>
 
@@ -327,7 +217,7 @@ export default function AboutPage() {
             <p className="text-xs uppercase tracking-[0.18em] text-aqua">Strengths</p>
             <h2 className="mt-2 font-display text-3xl md:text-4xl">Why Institutions Work With Us</h2>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {strengths.map((item) => (
               <article
                 key={item.title}
@@ -411,22 +301,21 @@ export default function AboutPage() {
         </section>
 
         {/* -- Our Team -- */}
-        <section className="section-shell pb-16 md:pb-20">
-          <article className="card p-6 md:p-8">
-            <div className="max-w-4xl">
-              <p className="text-xs uppercase tracking-[0.18em] text-aqua">Our Team</p>
-              <h2 className="mt-2 font-display text-3xl md:text-4xl">A Multi-Disciplinary Team</h2>
-              <p className="mt-4 text-sm leading-relaxed text-ink md:text-base">
+        <section className="section-shell pb-20 md:pb-28">
+          <article className="space-y-10 md:space-y-12">
+            {/* Section Header */}
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua">Our Team</p>
+              <h2 className="mt-3 font-display text-4xl font-semibold leading-tight text-[#10284a] md:text-5xl">
+                A Multi-Disciplinary Team
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-700 md:text-lg">
                 The team at <span className="font-semibold text-[#10284a]">Dimension Financial Solutions</span> combines intellectual depth, market experience, and practical execution capability to design solutions around each client&apos;s financial goals.
               </p>
             </div>
 
-            {/*
-              7 members in a 3-col grid ? rows of 3 / 3 / 1
-              Last lone card is centred with justify-items-center on the last row
-              using a wrapper trick: first 6 in a strict 3-col grid, last 1 centred below.
-            */}
-            <div className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3">
+            {/* Team Grid */}
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-5 xl:grid-cols-7">
               {teamMembers.map((member) => (
                 <TeamCard key={member.name} member={member} />
               ))}
@@ -476,5 +365,3 @@ export default function AboutPage() {
     </>
   );
 }
-
-

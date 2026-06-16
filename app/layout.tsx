@@ -2,6 +2,7 @@
 import './globals.css';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 import RouteFocusManager from '@/components/RouteFocusManager';
+import RuntimeEventGuard from '@/components/RuntimeEventGuard';
 
 export const metadata: Metadata = {
 
@@ -106,6 +107,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
+        <RuntimeEventGuard />
         <SmoothScrollProvider>
           <RouteFocusManager />
           {children}
