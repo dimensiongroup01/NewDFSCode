@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import Image from 'next/image';
@@ -28,8 +28,8 @@ const leadership = [
   {
     name: 'Vivek Gautam',
     role: 'Whole Time Director - Merchant Banking / Stock Broking',
-    image: '/images/vg.png',
-    bio: 'Mr. Vivek Gautam has 33+ years of experience in Merchant Banking, handling public & rights issues, private placements, mergers, acquisitions, buybacks, delisting, and corporate restructuring. He held senior positions in PNB Capital, Bajaj Capital, SPA Capital & SMC Capitals.'
+    image: '/images/Vivek sir new.jpeg',
+    bio: 'Mr. Vivek Gautam has 35+ years of experience in Merchant Banking, handling public & rights issues, private placements, mergers, acquisitions, buybacks, delisting, and corporate restructuring. He held senior positions in PNB Capital, Bajaj Capital, SPA Capital & SMC Capitals.'
   },
   {
     name: 'Surpriya Sharma',
@@ -40,20 +40,23 @@ const leadership = [
 ];
 
 const teamMembers = [
-  { name: 'Pragya Srivastav',    image: '/images/Pragyanew.jpeg',  designation: 'Accounts & Finance Assistant Manager' },
-  { name: 'Shlok Shah',          image: '/images/NEWSHLOK.jpeg',   designation: 'Software Developer' },
-  { name: 'Utkarsh Bhatnagar',   image: '/images/ub new.jpeg',     designation: 'Debt Associate' },
-  { name: 'Pratik Vishwakarma',  image: '/images/Pratik.jpg',      designation: 'Software Developer' },
-  { name: 'Arjun Singh',         image: '/images/Arjun.jpeg',      designation: 'Accounts Executive' },
-  { name: 'Mahima Suryan',      image: '/images/mahima.png',        designation: 'Company Secretary' },
-  { name: 'Jaayminee Kondru',    image: '/images/jamuni.jpeg',     designation: 'Sales Executive' },
+  { name: 'Pragya Srivastav', image: '/images/Pragyanew.jpeg', designation: 'Accounts & Finance Assistant Manager' },
+  { name: 'Ved Prakash', image: '/images/Ved Prakash.png', designation: 'Senior Sales Manager - Debt' },
+  { name: 'S Ghosh', image: '/images/SGOSH.png', designation: 'Senior Sales Manager - Debt' },
+  { name: 'Shlok Shah', image: '/images/NEWSHLOK.jpeg', designation: 'Software Developer' },
+  { name: 'Utkarsh Bhatnagar', image: '/images/ub new.jpeg', designation: 'Debt Associate' },
+  { name: 'Pratik Vishwakarma', image: '/images/Pratik.jpg', designation: 'Software Developer' },
+  { name: 'Arjun Singh', image: '/images/Arjun.jpeg', designation: 'Accounts Executive' },
+  { name: 'Mahima Suryan', image: '/images/mahima.png', designation: 'Company Secretary' },
+  { name: 'Anushka Chandra', image: '/images/HRnew.jpeg', designation: 'HR' },
+  { name: 'Jaayminee Kondru', image: '/images/jamuni.jpeg', designation: 'Sales Executive' },
 ];
 
 const highlights = [
-  { label: 'Established', value: 'Since 2009' },
-  { label: 'Merchant Banker', value: 'SEBI Registered Since September 2025', detail: 'INM000013314' },
-  { label: 'Stock Broking Debt Segment', value: 'Since 2023', detail: 'INZ000313233' },
-  { label: 'Debt Platform', value: 'Bondsadda Since 2023', detail: 'OBPPs at BSE' }
+  { label: 'Established', value: ' 2009' },
+  { label: 'Merchant Banker', value: 'SEBI Registered  September 2025', detail: 'INM000013314' },
+  { label: 'Stock Broking Debt Segment', value: ' 2023', detail: 'INZ000313233' },
+  { label: 'Debt Platform', value: 'Bondsadda  2023', detail: 'OBPPs at BSE' }
 ];
 
 const strengths = [
@@ -99,30 +102,36 @@ const process = [
 ];
 
 // -- TeamCard -----------------------------------------------------------------
-// Compact professional card design optimized for headshots
+// Premium matrix card — tall photo with slide-up name overlay
 function TeamCard({ member }: { member: { name: string; image: string; designation: string } }) {
   return (
-    <div className="group flex flex-col overflow-hidden rounded-xl border border-blue-100/40 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-aqua/50 hover:shadow-md">
-      {/* Image - fixed responsive height keeps cards compact across viewports */}
-      <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100/50 sm:h-56 lg:h-60">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+      {/* Photo area */}
+      <div className="relative w-full overflow-hidden bg-gradient-to-br from-[#EAF8FC] to-[#d0eaf5]" style={{aspectRatio: '3/4'}}>
         <Image
           src={member.image}
           alt={member.name}
           fill
-          className="object-cover object-center transition duration-700 group-hover:scale-105"
+          className="object-cover object-top transition-transform duration-700 group-hover:scale-108"
         />
-        {/* Subtle bottom gradient fade */}
-        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        {/* Dark gradient always visible at bottom for legibility */}
+        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#07203e]/90 via-[#07203e]/40 to-transparent" />
+
+        {/* Name plate — slides up on hover */}
+        <div className="absolute inset-x-0 bottom-0 translate-y-1 px-3 pb-4 transition-transform duration-400 group-hover:-translate-y-0">
+          <p className="truncate text-sm font-bold leading-tight text-white drop-shadow">
+            {member.name}
+          </p>
+          <p className="mt-1 line-clamp-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-cyan-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            {member.designation}
+          </p>
+        </div>
       </div>
 
-      {/* Name + Designation — compact and clean */}
-      <div className="bg-white px-2.5 py-2 text-center sm:px-3 sm:py-2.5">
-        <p className="truncate text-xs font-semibold text-[#10284a] sm:text-sm">
-          {member.name}
-        </p>
-        <p className="mt-0.5 line-clamp-2 text-[10px] font-medium text-aqua sm:text-[11px]">
-          {member.designation}
-        </p>
+      {/* Bottom strip — visible always on mobile, hidden on hover overlay */}
+      <div className="border-t border-blue-100 bg-white px-3 py-2.5 text-center md:hidden">
+        <p className="truncate text-xs font-semibold text-[#10284a]">{member.name}</p>
+        <p className="mt-0.5 line-clamp-2 text-[10px] font-medium text-aqua">{member.designation}</p>
       </div>
     </div>
   );
@@ -301,26 +310,33 @@ export default function AboutPage() {
         </section>
 
         {/* -- Our Team -- */}
-        <section className="section-shell pb-20 md:pb-28">
-          <article className="space-y-10 md:space-y-12">
+        <section className="relative overflow-hidden bg-gradient-to-b from-[#f0f7ff] via-white to-white pb-24 md:pb-32">
+          {/* Decorative background blobs */}
+          <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#0a355d]/8 blur-3xl" />
+          <div className="pointer-events-none absolute -right-24 bottom-10 h-72 w-72 rounded-full bg-cyan-300/10 blur-3xl" />
+
+          <div className="section-shell relative">
             {/* Section Header */}
-            <div className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua">Our Team</p>
-              <h2 className="mt-3 font-display text-4xl font-semibold leading-tight text-[#10284a] md:text-5xl">
-                A Multi-Disciplinary Team
+            <div className="mb-12 flex flex-col items-center text-center md:mb-16">
+              <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#EAF8FC] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-[#007A96]">
+                <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" /></svg>
+                Our People
+              </span>
+              <h2 className="font-display text-4xl font-bold leading-tight text-[#10284a] md:text-5xl">
+                Meet the Team
               </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-700 md:text-lg">
-                The team at <span className="font-semibold text-[#10284a]">Dimension Financial Solutions</span> combines intellectual depth, market experience, and practical execution capability to design solutions around each client&apos;s financial goals.
+              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 md:text-lg">
+                A multi-disciplinary group combining intellectual depth, market experience, and hands-on execution capability — all working around your financial goals.
               </p>
             </div>
 
-            {/* Team Grid */}
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-5 xl:grid-cols-7">
+            {/* Team Matrix Grid — 4 columns */}
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 md:gap-4 lg:gap-5">
               {teamMembers.map((member) => (
                 <TeamCard key={member.name} member={member} />
               ))}
             </div>
-          </article>
+          </div>
         </section>
 
         {/* -- Policies & Contact -- */}

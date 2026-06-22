@@ -25,7 +25,7 @@ const services = [
       "Underwriting in Public Issues including SME IPO's",
       'Qualified Institutional Placements (QIP)',
       'Private placement of equity securities',
-      'DRHP / RHP drafting and SEBI coordination',
+
     ],
   },
   {
@@ -95,32 +95,24 @@ const services = [
   },
   {
     id: '07',
-    title: 'Valuation Services',
+    title: 'Valuation & ESOP Advisory',
     accent: '#10284a',
     summary: 'Independent, regulation-aligned valuation services for businesses, assets, and financial instruments across transaction contexts.',
     points: [
       'Business and enterprise valuation',
+
       'Equity share valuation for M&A and compliance',
-      'Asset and property valuation',
-      'Financial instrument and ESOP valuation',
-      'Valuation for SEBI, NCLT, and Income Tax purposes',
-    ],
-  },
-  {
-    id: '08',
-    title: 'ESOP Advisory',
-    accent: '#6b4a00',
-    summary: 'Comprehensive ESOP scheme design, regulatory compliance, and certification services for listed and unlisted companies.',
-    points: [
       'ESOP scheme framing and design',
       'SEBI ESOP guidelines compliance and certification',
       'Grant, vesting, and exercise schedule structuring',
       'Tax and accounting impact advisory',
       'Board and shareholder resolution support',
+
     ],
   },
+
   {
-    id: '09',
+    id: '08',
     title: 'Debt Placement & Advisory',
     accent: '#10284a',
     summary: 'Institutional debt placement and syndication advisory for bonds, debentures, and fixed deposit programs.',
