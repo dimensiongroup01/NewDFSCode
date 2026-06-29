@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next';
 import Link from 'next/link';
-import InvestorTrackRecord from '@/components/InvestorTrackRecord';
+
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
@@ -68,7 +68,7 @@ export default function InvestorPage() {
         </div>
       </section>
 
-      <InvestorTrackRecord />
+      
 
       <section className="section-shell py-12 md:py-16">
         <p className="chapter-label">Compliance & Governance</p>

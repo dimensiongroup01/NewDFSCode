@@ -351,7 +351,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="space-y-3 text-sm md:text-base">
-                <a
+                {/* <a
                   href="/Documents/Policies/Investor Complaints Redressal Policy.pdf"
                   target="_blank"
                   className="block rounded-xl border border-blue-200 bg-white px-4 py-3 font-medium text-[#10284a] transition hover:border-blue-300"
@@ -364,7 +364,7 @@ export default function AboutPage() {
                   className="block rounded-xl border border-blue-200 bg-white px-4 py-3 font-medium text-[#10284a] transition hover:border-blue-300"
                 >
                   Code of Conduct and Ethics Policy
-                </a>
+                </a> */}
                 <a
                   href="mailto:contact@dimensionfinancial.co.in"
                   className="block rounded-xl border border-blue-200 bg-white px-4 py-3 font-medium text-[#10284a] transition hover:border-blue-300"
