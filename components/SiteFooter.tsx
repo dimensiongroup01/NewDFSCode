@@ -65,7 +65,7 @@ export default function SiteFooter() {
               <h4 className="font-display text-lg text-[#10284a]">Investor</h4>
               <div className="mt-4 space-y-3 text-sm font-medium text-[#556274]">
                 <p><Link href="/annual" className="transition hover:text-[#007A96]">Investor Corner</Link></p>
-                <p><Link href="/investor" className="transition hover:text-[#007A96]">Investor Information</Link></p>
+              
                 <p><Link href="/career" className="transition hover:text-[#007A96]">Careers</Link></p>
               </div>
             </div>
@@ -84,7 +84,7 @@ export default function SiteFooter() {
                 <p><a href="tel:01204151349" className="transition hover:text-[#007A96]">0120-4151349</a></p>
                 <p>
                   <a
-                    href="/Documents/Policies/Investor%20Complaints%20Redressal%20Policy.pdf"
+                    href="./images/icp.pdf"
                     target="_blank"
                     rel="noreferrer"
                     className="break-words transition hover:text-[#007A96]"
@@ -94,14 +94,14 @@ export default function SiteFooter() {
                 </p>
                 <p>
                   <a
-                    href="/Documents/Policies/Code%20of%20Conduct%20and%20Ethics%20Policy.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="break-words transition hover:text-[#007A96]"
-                  >
-                    Code of Conduct
-                  </a>
-                </p>
+                  href="/images/coe.pdf"
+                 target="_blank"
+                 rel="noreferrer"
+                  className="break-words transition hover:text-[#007A96]"
+>
+  Code of Conduct
+</a>
+</p>
               </div>
             </div>
           </div>
