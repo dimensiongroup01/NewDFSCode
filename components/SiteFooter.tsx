@@ -84,11 +84,7 @@ export default function SiteFooter() {
                 <p><a href="tel:01204151349" className="transition hover:text-[#007A96]">0120-4151349</a></p>
                 <p>
                   <a
-<<<<<<< HEAD
-                    href="/Documents/Policies/Investor Compliants Redressal Mechanism Policy (1).pdf"
-=======
-                    href="./images/icp.pdf"
->>>>>>> 9e7410a7386dd254bd4653eb7c60ba042ccb875b
+                    href="/images/icp.pdf"
                     target="_blank"
                     rel="noreferrer"
                     className="break-words transition hover:text-[#007A96]"
@@ -98,8 +94,7 @@ export default function SiteFooter() {
                 </p>
                 <p>
                   <a
-<<<<<<< HEAD
-                    href="/Documents/Policies/Code of Conduct & Ethics.pdf"
+                    href="/images/coe.pdf"
                     target="_blank"
                     rel="noreferrer"
                     className="break-words transition hover:text-[#007A96]"
@@ -107,16 +102,6 @@ export default function SiteFooter() {
                     Code of Conduct
                   </a>
                 </p>
-=======
-                  href="/images/coe.pdf"
-                 target="_blank"
-                 rel="noreferrer"
-                  className="break-words transition hover:text-[#007A96]"
->
-  Code of Conduct
-</a>
-</p>
->>>>>>> 9e7410a7386dd254bd4653eb7c60ba042ccb875b
               </div>
             </div>
           </div>

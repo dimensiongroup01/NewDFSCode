@@ -24,7 +24,7 @@ const services = [
       "Management of IPO's, FPO's and Rights Issues",
       "Underwriting in Public Issues including SME IPO's",
       'Qualified Institutional Placements (QIP)',
-      'Private placement of equity securities',
+      'Private placement of equity ',
 
     ],
   },
@@ -38,7 +38,7 @@ const services = [
       'Manager to Open Offer under SEBI Takeover Code',
       'Strategic planning for acquirer and target',
       'Offer document preparation and SEBI filing',
-      'Shareholder communication and post-offer support',
+      
     ],
   },
   {
@@ -87,7 +87,7 @@ const services = [
     summary: 'Strategic M&A advisory across the full transaction lifecycle — from target identification through structured closure.',
     points: [
       'Advisory on Merger, Demerger, and Amalgamation',
-      'Cross-border acquisition and divestment advisory',
+      
       'Due diligence coordination and transaction structuring',
       'Capital restructuring and scheme documentation',
       'NCLT filing support and regulatory coordination',
@@ -102,8 +102,8 @@ const services = [
       'Business and enterprise valuation',
 
       'Equity share valuation for M&A and compliance',
-      'ESOP scheme framing and design',
-      'SEBI ESOP guidelines compliance and certification',
+      'ESOP scheme framing and Certification',
+      
       'Grant, vesting, and exercise schedule structuring',
       'Tax and accounting impact advisory',
       'Board and shareholder resolution support',
@@ -153,41 +153,6 @@ const differentiators = [
   },
 ];
 
-const transitionFlow = [
-  {
-    step: '01',
-    title: 'Mandate Discovery',
-    detail: 'We align issuer intent, regulatory context, and market readiness before any solution is designed.',
-  },
-  {
-    step: '02',
-    title: 'Structuring & Documentation',
-    detail: 'Strategy is converted into transaction architecture, timelines, and a complete documentation framework.',
-  },
-  {
-    step: '03',
-    title: 'Market Execution',
-    detail: 'Our team coordinates placements, investor touchpoints, and transaction milestones with control and discipline.',
-  },
-  {
-    step: '04',
-    title: 'Post-Transaction Support',
-    detail: 'We continue with compliance follow-through, investor communication, and next-phase capital planning.',
-  },
-];
-
-const investorLinks = [
-  { label: 'Public Issues', href: '/Documents/MerchantBanking/public-issues' },
-  { label: 'Rights Issues', href: '/Documents/MerchantBanking/rights-issues' },
-  { label: 'Debt Offer Documents', href: '/Documents/MerchantBanking/debt-offer-documents' },
-  { label: 'Takeovers', href: '/Documents/MerchantBanking/takeovers' },
-  { label: 'Buybacks', href: '/Documents/MerchantBanking/buybacks' },
-  { label: 'Delisting', href: '/Documents/MerchantBanking/delisting' },
-  { label: 'Track Records', href: '/Documents/MerchantBanking/track-records' },
-  { label: 'Investor Charter', href: '/Documents/MerchantBanking/investor-charter' },
-  { label: 'Investor Complaints', href: '/Documents/MerchantBanking/investor-complaints' },
-  { label: 'Complaint Redressal (SCORES)', href: 'https://scores.sebi.gov.in/' },
-];
 
 // -- Service icon map ---------------------------------------------------------
 const serviceIcons: Record<string, string> = {
@@ -253,7 +218,7 @@ export default function MerchantBankingPage() {
               <span className="bg-gradient-to-r from-[#00D4FF] to-[#00B4D8] bg-clip-text text-transparent">
                 Merchant Banking
               </span>
-              <br />for Growth & Institutional Mandates
+              <br />Investment Banking Services
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
@@ -313,7 +278,7 @@ export default function MerchantBankingPage() {
                   A Compliance-First, Execution-Driven<br />Merchant Banking Platform
                 </h2>
                 <p className="mt-5 text-sm leading-relaxed text-slate-600 md:text-base">
-                  Dimension Financial Solutions Private Limited is a SEBI-registered Merchant Banker, licensed in September 2025 and backed by over 15 years of capital market expertise. We partner with corporates, promoter groups, institutions, and trusts to execute complex financial mandates, including SME listings, IPOs, M&A transactions, buybacks, and institutional debt placements.
+                  Dimension Financial Solutions Private Limited is a SEBI-registered Merchant Banker, since September 2025 and backed by over 17 years of capital market expertise. We partner with corporates, promoter groups, institutions, and trusts to execute complex financial mandates, including SME listings, IPOs, M&A transactions, buybacks, and institutional debt placements.
                 </p>
                 <p className="mt-4 text-sm leading-relaxed text-slate-600 md:text-base">
                   Our operating philosophy positions us as a value center inside each transaction — not merely an execution agent. We invest in understanding each mandate deeply, structure solutions with regulatory precision, and maintain full transparency with all stakeholders through to closure.
@@ -441,84 +406,9 @@ export default function MerchantBankingPage() {
         </section>
 
         {/* ── Engagement Process ── */}
-        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-          <div className="overflow-hidden rounded-3xl bg-[#10284a] p-8 md:p-12">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Execution Framework</p>
-            <h2 className="mt-2 text-2xl font-bold text-white md:text-3xl">
-              How We Move Mandates from Intent to Closure
-            </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-400 md:text-base">
-              Every mandate at Dimension follows a structured four-stage engagement framework ensuring regulatory alignment, clear communication, and disciplined execution.
-            </p>
+      
 
-            <div className="mt-10 grid gap-4 md:grid-cols-4">
-              {transitionFlow.map((item, i) => (
-                <div
-                  key={item.step}
-                  className="relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:border-[#00D4FF]/40 hover:bg-white/10"
-                >
-                  {i < transitionFlow.length - 1 && (
-                    <div className="absolute -right-2 top-9 z-10 hidden h-px w-4 bg-[#00D4FF]/30 md:block" />
-                  )}
-                  <span className="font-mono text-3xl font-black text-[#00D4FF]/30">{item.step}</span>
-                  <h3 className="mt-2 text-base font-bold text-white">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-400">{item.detail}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* ── Regulatory Compliance ── */}
-        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-          <div className="overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white shadow-sm">
-            <div className="grid md:grid-cols-[1.3fr_0.7fr]">
-              <div className="border-b border-[#E2E8F0] p-8 md:border-b-0 md:border-r md:p-12">
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Regulatory Compliance</p>
-                <h2 className="mt-2 text-2xl font-bold text-[#10284a] md:text-3xl">
-                  Fully Regulated. Governance-First.
-                </h2>
-                <p className="mt-5 text-sm leading-relaxed text-slate-600 md:text-base">
-                  Dimension Financial Solutions Private Limited, as a SEBI-registered Merchant Banker and debt stock broker, strictly adheres to all applicable regulations including SEBI (Merchant Bankers) Regulations 1992, SEBI (Issue of Capital and Disclosure Requirements) Regulations 2018, SEBI (Buyback of Securities) Regulations 2018, SEBI (Substantial Acquisition of Shares and Takeovers) Regulations 2011, and the Companies Act 2013.
-                </p>
-                <p className="mt-4 text-sm leading-relaxed text-slate-600 md:text-base">
-                  Every transaction is structured and executed with full regulatory alignment, complete documentation, and transparent investor communication in line with SEBI's framework for investor protection and market integrity.
-                </p>
-
-                {/* Inline SEBI highlight */}
-                <div className="mt-8 inline-flex items-center gap-3 rounded-xl bg-[#F0F7FF] px-5 py-4 ring-1 ring-[#00B4D8]/20">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#10284a]">
-                    <svg className="h-5 w-5 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">SEBI Reg. No. (Merchant Banker)</p>
-                    <p className="font-mono text-lg font-black tracking-widest text-[#10284a]">INM000013314</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-8 md:p-10">
-                <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[#FF6900]">Investor Resources</p>
-                <div className="space-y-2">
-                  {investorLinks.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target={link.href.startsWith('http') ? '_blank' : undefined}
-                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="flex items-center justify-between rounded-xl border border-[#E2E8F0] bg-[#F6F8FA] px-4 py-2.5 text-sm font-medium text-[#10284a] transition hover:border-[#00B4D8] hover:bg-[#EAF8FC]"
-                    >
-                      {link.label}
-                      <span className="font-bold text-[#FF6900]">→</span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* ── CTA ── */}
         <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
