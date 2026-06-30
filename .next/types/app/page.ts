@@ -1,4 +1,4 @@
-// File: C:\NewDFSCode\app\page.tsx
+// File: C:\Pratik\Complete Projects\Pratik Transfer\Dimension Group Website & App\DFS NEW CODING ( New )\DFS FINAL\version1\DFS\Dimension-Financial\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

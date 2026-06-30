@@ -48,8 +48,9 @@ const teamMembers = [
   { name: 'Pratik Vishwakarma', image: '/images/Pratik.jpg', designation: 'Software Developer' },
   { name: 'Arjun Singh', image: '/images/Arjun.jpeg', designation: 'Accounts Executive' },
   { name: 'Mahima Suryan', image: '/images/mahima.png', designation: 'Company Secretary' },
-  { name: 'Anushka Chandra', image: '/images/HRnew.jpeg', designation: 'HR' },
+  { name: 'Anushka Chandra', image: '/images/HRAnushkha.jpg', designation: 'HR Executive' },
   { name: 'Jaayminee Kondru', image: '/images/jamuni.jpeg', designation: 'Sales Executive' },
+  { name: 'Dhruv Chawla', image: '/images/Dhruv .jpeg', designation: 'Finance Associate' },
 ];
 
 const highlights = [
@@ -102,36 +103,36 @@ const process = [
 ];
 
 // -- TeamCard -----------------------------------------------------------------
-// Premium matrix card — tall photo with slide-up name overlay
+// ID-card / business-card style: photo, monogram corner tab, always-visible
+// name plate (no hover-only content, so it works identically on touch devices).
 function TeamCard({ member }: { member: { name: string; image: string; designation: string } }) {
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
-      {/* Photo area */}
-      <div className="relative w-full overflow-hidden bg-gradient-to-br from-[#EAF8FC] to-[#d0eaf5]" style={{aspectRatio: '3/4'}}>
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#DDEAF1] bg-white shadow-[0_10px_28px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-[0_20px_46px_rgba(10,53,93,0.14)]">
+      {/* Photo */}
+      <div
+        className="relative w-full overflow-hidden bg-gradient-to-br from-[#EAF8FC] to-[#d0eaf5]"
+        style={{ aspectRatio: '4/5' }}
+      >
         <Image
           src={member.image}
           alt={member.name}
           fill
-          className="object-cover object-top transition-transform duration-700 group-hover:scale-108"
+          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
         />
-        {/* Dark gradient always visible at bottom for legibility */}
-        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#07203e]/90 via-[#07203e]/40 to-transparent" />
 
-        {/* Name plate — slides up on hover */}
-        <div className="absolute inset-x-0 bottom-0 translate-y-1 px-3 pb-4 transition-transform duration-400 group-hover:-translate-y-0">
-          <p className="truncate text-sm font-bold leading-tight text-white drop-shadow">
-            {member.name}
-          </p>
-          <p className="mt-1 line-clamp-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-cyan-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            {member.designation}
-          </p>
-        </div>
+        {/* Soft legibility gradient on hover */}
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#07203e]/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
 
-      {/* Bottom strip — visible always on mobile, hidden on hover overlay */}
-      <div className="border-t border-blue-100 bg-white px-3 py-2.5 text-center md:hidden">
-        <p className="truncate text-xs font-semibold text-[#10284a]">{member.name}</p>
-        <p className="mt-0.5 line-clamp-2 text-[10px] font-medium text-aqua">{member.designation}</p>
+      {/* Info plate — always visible, business-card style */}
+      <div className="relative border-t border-[#EEF3F7] bg-white px-3.5 py-3">
+        <span className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-primary to-[#FF6900] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <p className="truncate text-[13px] font-bold leading-tight text-[#10284a]">
+          {member.name}
+        </p>
+        <p className="mt-1 line-clamp-2 text-[10.5px] font-semibold uppercase tracking-[0.08em] text-aqua">
+          {member.designation}
+        </p>
       </div>
     </div>
   );
@@ -330,8 +331,8 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Team Matrix Grid — 4 columns */}
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 md:gap-4 lg:gap-5">
+            {/* Team Matrix Grid */}
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 md:gap-4 lg:gap-5">
               {teamMembers.map((member) => (
                 <TeamCard key={member.name} member={member} />
               ))}
