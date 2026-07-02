@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'About Us',
   description:
     'Learn about Dimension Financial Solutions Private Limited, our leadership team, regulatory credentials, and institutional debt advisory experience since 2009.',
-  alternates: {
+  alternates: {git 
     canonical: '/about-us'
   }
 };
