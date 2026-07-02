@@ -8,19 +8,19 @@ export const metadata: Metadata = {
 
   metadataBase: new URL('https://dimensionfinancial.co.in'),
   title: {
-    default: 'Dimension Financial Services | SEBI-Registered Merchant Banker & Stock Broker',
+    default: 'Dimension Financial Solution Private Limited | SEBI-Registered Merchant Banker & Stock Broker',
     template: '%s | Dimension Financial Services'
   },
   description:
     'Dimension Financial Solutions Private Limited is a SEBI-registered Merchant Banker and Stock Broker offering merchant banking, debt placement, and debt segment stock broking services in India.',
-  applicationName: 'Dimension Financial Services',
+  applicationName: 'Dimension Financial Solutions Private Limited',
   keywords: [
     'Merchant Banker India',
     'SEBI registered merchant banker',
     'Debt placement services',
     'Stock broking debt segment',
     'BSE New Debt Segment',
-    'Dimension Financial Services'
+    'Dimension Financial Solutions'
   ],
   robots: {
     index: true,
@@ -50,11 +50,11 @@ export const metadata: Metadata = {
     ]
   },
   openGraph: {
-    title: 'Dimension Financial Services | Merchant Banking and Debt Advisory',
+    title: 'Dimension Financial Solutions | Merchant Banking and Debt Advisory',
     description:
       'SEBI-registered merchant banking, debt placement, and debt segment stock broking services for corporates, institutions, and investors.',
     url: 'https://dimensionfinancial.co.in',
-    siteName: 'Dimension Financial Services',
+    siteName: 'Dimension Financial Solutions Private Limited',
     locale: 'en_US',
     type: 'website',
 images: [
@@ -62,13 +62,13 @@ images: [
         url: '/images/logo.svg',
         width: 1200,
         height: 630,
-        alt: 'Dimension Financial Services'
+        alt: 'Dimension Financial Solutions Private Limited'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dimension Financial Services | Merchant Banking and Debt Advisory',
+    title: 'Dimension Financial Solutions | Merchant Banking and Debt Advisory',
     description:
       'SEBI-registered Merchant Banker and Stock Broker offering merchant banking, debt placement, and debt segment stock broking services.',
 images: ['/images/logo.svg']
@@ -87,8 +87,7 @@ export const viewport: Viewport = {
   viewportFit: 'cover'
 };
 
-export const fetchCache = 'force-no-store';
-
+export const fetchCache = 'force-no-store'; 
 export default function RootLayout({
   children
 }: Readonly<{

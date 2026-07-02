@@ -1,5 +1,6 @@
 {
   "/page": "app/page.js",
+  "/merchant-banking/page": "app/merchant-banking/page.js",
   "/about-us/page": "app/about-us/page.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/home/page": "app/home/page.js"
 }

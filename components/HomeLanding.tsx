@@ -1,4 +1,4 @@
-import SiteHeader from '@/components/SiteHeader';
+﻿import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import dynamic from 'next/dynamic';
 import HomeHeroScene from '@/components/HomeHeroScene';
@@ -112,20 +112,18 @@ export default function HomeLanding() {
                     a comprehensive range of financial services with strong governance
                     and market discipline.
                   </p>
-
                   <p>
-                    We are a SEBI-registered stock broker and BSE trading member on the
+We are a SEBI-registered Merchant Banker actively engaged in capital issue management, managing open offers, and providing advisory services for mergers and acquisitions (M&A), Employee Stock Ownership Plans (ESOPs), and comprehensive financial advisory solutions.
+</p>
+                  <p>
+                    We are a also SEBI-registered stock broker and BSE trading member on the
                     debt segment, with active capability as an Online Bond Platform
                     Provider (OBPP).
                   </p>
 
-                  <p>
-                    As a SEBI-registered Merchant Banker, we actively support capital
-                    issue management, equity advisory, ESOP/ESOS structuring, and
-                    business valuation services.
-                  </p>
+                 
                 </div>
-              </div>
+              </div> 
 
               {/* What We Do */}
               <div className="relative overflow-hidden rounded-3xl bg-[#0A355D] p-8 text-white shadow-xl lg:p-10">
@@ -208,39 +206,7 @@ export default function HomeLanding() {
               </div>
 
               {/* Vision and stats */}
-              <div className="flex flex-col gap-4 sm:gap-5">
-
-                {/* Vision card */}
-                <div
-                  data-reveal
-                  className="rounded-xl border border-[#E2E8F0] bg-gradient-to-b from-[#EAF8FC] to-white p-5 shadow-[0_16px_42px_rgba(47,155,255,0.08)] sm:rounded-[1.75rem] sm:p-6 md:p-7"
-                >
-                  <p className="text-xs uppercase tracking-[0.2em] text-aqua">Vision Statement</p>
-
-                  <p className="mt-3 text-sm leading-6 text-slate-700 sm:mt-4 sm:leading-7 md:text-base">
-                    We envision establishing ourselves as a trusted name in merchant banking by upholding the highest
-                    standards of ethical conduct, transparency, and client-centric service. Through unwavering integrity
-                    and a commitment to excellence, we aim to deliver innovative financial solutions that foster long-term
-                    value and sustainable growth.
-                  </p>
-                </div>
-
-                {/* Stats row */}
-                <div data-reveal className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
-                  {stats.map((item) => (
-                    <div
-                      key={item.label}
-                      className="rounded-xl border border-blue-100/90 bg-white/92 p-3 shadow-[0_8px_24px_rgba(15,23,42,0.05)] sm:rounded-[1.35rem] sm:p-5"
-                    >
-                      {/* Value shrinks gracefully on small screens */}
-                      <p className="text-xl font-bold text-[#0a355d] sm:text-2xl md:text-3xl">{item.value}</p>
-                      <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-slate-500 sm:mt-2 sm:text-xs sm:tracking-[0.16em]">
-                        {item.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {/*  */}
             </div>
           </div>
         </section>
