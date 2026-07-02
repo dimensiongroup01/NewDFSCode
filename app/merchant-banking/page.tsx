@@ -99,7 +99,7 @@ const services = [
     accent: '#10284a',
     summary: 'Independent, regulation-aligned valuation services for businesses, assets, and financial instruments across transaction contexts.',
     points: [
-      'Business and enterprise valuation',
+      
 
       'Equity share valuation for M&A and compliance',
       'ESOP scheme framing and Certification',

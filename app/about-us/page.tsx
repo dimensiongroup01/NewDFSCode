@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import Image from 'next/image';
@@ -40,17 +40,20 @@ const leadership = [
 ];
 
 const teamMembers = [
-  { name: 'Pragya Srivastav', image: '/images/Pragyanew.jpeg', designation: 'Accounts & Finance Assistant Manager' },
-  { name: 'Ved Prakash', image: '/images/Ved Prakash.png', designation: 'Senior Sales Manager - Debt' },
-  { name: 'S Ghosh', image: '/images/SGOSH.png', designation: 'Senior Sales Manager - Debt' },
+  { name: 'CA Pragya Srivastav', image: '/images/Pragyanew.jpeg', designation: 'Accounts & Finance ' },
+ 
   { name: 'Shlok Shah', image: '/images/NEWSHLOK.jpeg', designation: 'Software Developer' },
   { name: 'Utkarsh Bhatnagar', image: '/images/ub new.jpeg', designation: 'Debt Associate' },
   { name: 'Pratik Vishwakarma', image: '/images/Pratik.jpg', designation: 'Software Developer' },
-  { name: 'Arjun Singh', image: '/images/Arjun.jpeg', designation: 'Accounts Executive' },
+  { name: 'Dhruv Chawla', image: '/images/Dhruv .jpeg', designation: 'Accounts & Finance' },
+  { name: 'Arjun Singh', image: '/images/Arjun.jpeg', designation: 'Accounts & Finance' },
   { name: 'Mahima Suryan', image: '/images/mahima.png', designation: 'Company Secretary' },
-  { name: 'Anushka Chandra', image: '/images/HRAnushkha.jpg', designation: 'HR Executive' },
-  { name: 'Jaayminee Kondru', image: '/images/jamuni.jpeg', designation: 'Sales Executive' },
-  { name: 'Dhruv Chawla', image: '/images/Dhruv .jpeg', designation: 'Finance Associate' },
+  { name: 'Anushka Chandra', image: '/images/HRAnushkha.jpg', designation: 'Human Resources' },
+  
+  
+   { name: 'Ved Prakash', image: '/images/Ved Prakash.png', designation: 'Debt Market' },
+  { name: 'S Ghosh', image: '/images/SGOSH.png', designation: 'Debt Market' },
+  { name: 'Jaayminee Kondru', image: '/images/jamuni.jpeg', designation: 'Debt Market' },
 ];
 
 const highlights = [
@@ -171,7 +174,7 @@ export default function AboutPage() {
                     trading member on the debt segment, with active capability as an Online Bond Platform Provider (OBPP).
                   </p>
                   <p className="text-sm leading-7 md:text-base">
-                    After registration as merchant banker with SEBI, we are also actively engaged in management of capital
+                   Upon registration as merchant banker with SEBI, we are also actively engaged in management of capital
                     issues, equity advisory services, framing of employee benefit schemes - ESOP&apos;S, ESOS, and valuation
                     of sales and business.
                   </p>
