@@ -168,7 +168,7 @@ export default function MerchantBankingPage() {
       <SiteHeader />
       <main id="main-content" tabIndex={-1} className="min-h-screen bg-[#F6F8FA]">
 
-        {/* ── SEBI Registration Banner ── */}
+        {/* ── SEBI Reg. Banner ── */}
         <div className="bg-[#10284a] text-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-center gap-x-6 gap-y-1.5 text-center text-xs sm:text-sm">
             <span className="flex items-center gap-2">
@@ -177,11 +177,6 @@ export default function MerchantBankingPage() {
             </span>
             <span className="hidden sm:block h-3.5 w-px bg-slate-600" />
             <span className="font-bold tracking-widest text-[#00D4FF]">INM000013314</span>
-            <span className="hidden sm:block h-3.5 w-px bg-slate-600" />
-            <span className="flex items-center gap-2">
-              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#FF6900] text-[9px] font-black text-white">✓</span>
-              <span className="font-medium text-slate-300">BSE Debt Segment · INZ000313233</span>
-            </span>
           </div>
         </div>
 
@@ -241,11 +236,9 @@ export default function MerchantBankingPage() {
             </div>
 
             {/* Credential strip */}
-            <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="mt-14 grid grid-cols-2 gap-3">
               {[
-                { label: 'Registration', value: 'INM000013314', sub: 'SEBI Merchant Banker' },
-                { label: 'Exchange', value: 'BSE Member', sub: 'Debt Segment' },
-                { label: 'Broker Reg.', value: 'INZ000313233', sub: 'Stock Broker' },
+                { label: 'SEBI Reg.', value: 'INM000013314', sub: 'Merchant Banker' },
                 { label: 'Execution', value: '100%', sub: 'Compliance-Led' },
               ].map((s) => (
                 <div
@@ -290,14 +283,12 @@ export default function MerchantBankingPage() {
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#00D4FF]/70">Regulatory Credentials</p>
 
                 <div className="mt-2 rounded-2xl border border-[#00D4FF]/20 bg-[#00D4FF]/10 p-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#00D4FF]/60">SEBI Registration No.</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#00D4FF]/60">SEBI Reg. No.</p>
                   <p className="mt-1 font-mono text-xl font-black tracking-widest text-[#00D4FF] md:text-2xl">INM000013314</p>
                   <p className="mt-1 text-xs text-slate-400">Merchant Banker</p>
                 </div>
 
                 {[
-                  { label: 'BSE Member', value: 'Debt Segment' },
-                  { label: 'Stock Broker Reg.', value: 'INZ000313233' },
                   { label: 'Operating Since', value: '2009' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3">

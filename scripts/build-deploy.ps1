@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 $repoRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
-$deployRoot = Join-Path $repoRoot "deploy\iis"
+$deployRoot = Join-Path $repoRoot "deploy\standalone"
 $standaloneRoot = Join-Path $repoRoot ".next\standalone"
 $staticRoot = Join-Path $repoRoot ".next\static"
 $publicRoot = Join-Path $repoRoot "public"
@@ -32,15 +32,22 @@ if (-not (Test-Path -LiteralPath $standaloneRoot)) {
   throw "Standalone output was not generated at $standaloneRoot."
 }
 
-Copy-Item -Path (Join-Path $standaloneRoot "*") -Destination $deployRoot -Recurse -Force
+Get-ChildItem -LiteralPath $standaloneRoot -Force | ForEach-Object {
+  Copy-Item -LiteralPath $_.FullName -Destination $deployRoot -Recurse -Force
+}
 
 $deployStaticRoot = Join-Path $deployRoot ".next\static"
 New-Item -ItemType Directory -Path $deployStaticRoot -Force | Out-Null
-Copy-Item -Path (Join-Path $staticRoot "*") -Destination $deployStaticRoot -Recurse -Force
+Get-ChildItem -LiteralPath $staticRoot -Force | ForEach-Object {
+  Copy-Item -LiteralPath $_.FullName -Destination $deployStaticRoot -Recurse -Force
+}
 
 $deployPublicRoot = Join-Path $deployRoot "public"
 if (Test-Path -LiteralPath $publicRoot) {
-  Copy-Item -Path (Join-Path $publicRoot "*") -Destination $deployPublicRoot -Recurse -Force
+  New-Item -ItemType Directory -Path $deployPublicRoot -Force | Out-Null
+  Get-ChildItem -LiteralPath $publicRoot -Force | ForEach-Object {
+    Copy-Item -LiteralPath $_.FullName -Destination $deployPublicRoot -Recurse -Force
+  }
 }
 
 $webConfig = @"
@@ -52,6 +59,13 @@ $webConfig = @"
     </handlers>
     <rewrite>
       <rules>
+        <rule name="StaticContent" stopProcessing="true">
+          <match url=".*" />
+          <conditions logicalGrouping="MatchAll">
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" />
+          </conditions>
+          <action type="None" />
+        </rule>
         <rule name="NextJsStandalone" stopProcessing="true">
           <match url=".*" />
           <action type="Rewrite" url="server.js" />

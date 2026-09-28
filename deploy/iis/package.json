@@ -8,6 +8,7 @@
     "dev:3001": "node ./node_modules/next/dist/bin/next dev -p 3001",
     "build": "node ./node_modules/next/dist/bin/next build",
     "build:deploy": "powershell -ExecutionPolicy Bypass -File ./scripts/build-deploy.ps1",
+    "build:deploy:iis": "powershell -ExecutionPolicy Bypass -File ./scripts/rebuild-iis-deploy.ps1",
     "build:clean": "npm run clean:next && npm run build",
     "dev:clean": "npm run clean:next && npm run dev",
     "dev:3001:clean": "npm run clean:next && npm run dev:3001",

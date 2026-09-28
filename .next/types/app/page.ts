@@ -1,4 +1,4 @@
-// File: C:\NewDFSCode\app\page.tsx
+// File: C:\Users\5420\OneDrive - DIMENSION FINANCIAL SOLUTIONS PVT LTD\Office Website Project\NewDFSCode\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

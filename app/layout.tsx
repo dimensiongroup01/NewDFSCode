@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
   metadataBase: new URL('https://dimensionfinancial.co.in'),
   title: {
-    default: 'Dimension Financial Solution Private Limited | SEBI-Registered Merchant Banker & Stock Broker',
+    default: 'Dimension Financial Solutions Private Limited | SEBI-Registered Merchant Banker & Stock Broker',
     template: '%s | Dimension Financial Services'
   },
   description:

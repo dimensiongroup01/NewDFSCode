@@ -117,6 +117,16 @@ export default function SiteFooter() {
           </div>
         </div>
       </div>
+
+      <div className="w-full bg-[#0A355D] px-4 py-4 text-center text-xs leading-7 text-white md:px-8 md:text-sm">
+        <p className="w-full text-white">
+          Dimension Financial Solutions Private Limited | CIN: U74140DL2009PTC186563 | Member: BSE Debt Segment
+          (OBPP): Member ID- 6824, SEBI Registration Number- INZ000313233
+          <br className="hidden md:block" />
+          {' '}Merchant Banker, SEBI Registration Number- INM000013314 | Registered Address: 302, Dakha Chamber,
+          38/2068, Naiwala, Karol Bagh, New Delhi, 110005, India
+        </p>
+      </div>
     </footer>
   );
 }

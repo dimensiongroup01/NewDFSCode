@@ -4,14 +4,13 @@ import SiteHeader from '@/components/SiteHeader';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: "About Us",
   description:
-    'Learn about Dimension Financial Solutions Private Limited, our leadership team, regulatory credentials, and institutional debt advisory experience since 2009.',
-  alternates: {git 
-    canonical: '/about-us'
-  }
+    "Learn about Dimension Financial Solutions Private Limited, our leadership team, regulatory credentials, and institutional debt advisory experience since 2009.",
+  alternates: {
+    canonical: "/about-us",
+  },
 };
-
 const leadership = [
   {
     name: 'Ravi Kant Mathur',
@@ -32,28 +31,28 @@ const leadership = [
     bio: 'Mr. Vivek Gautam has 35+ years of experience in Merchant Banking, handling public & rights issues, private placements, mergers, acquisitions, buybacks, delisting, and corporate restructuring. He held senior positions in PNB Capital, Bajaj Capital, SPA Capital & SMC Capitals.'
   },
   {
-    name: 'Surpriya Sharma',
+    name: 'Supriya Sharma',
     role: 'Vice President - Stock Broking',
     image: '/images/ss.png',
-    bio: 'Ms. Surpriya Sharma leads our stock broking operations with exceptional market insight and client service excellence. Her leadership ensures our clients receive top-tier brokerage services and strategic investment guidance.'
+    bio: 'Ms. Supriya Sharma leads our stock broking operations with exceptional market insight and client service excellence. Her leadership ensures our clients receive top-tier brokerage services and strategic investment guidance.'
   },
 ];
 
 const teamMembers = [
   { name: 'CA Pragya Srivastav', image: '/images/Pragyanew.jpeg', designation: 'Accounts & Finance ' },
  
-  { name: 'Shlok Shah', image: '/images/NEWSHLOK.jpeg', designation: 'Software Developer' },
+  { name: 'Shlok Shah', image: '/images/NEWSHLOK.jpeg', designation: 'Senior Software Developer' },
   { name: 'Utkarsh Bhatnagar', image: '/images/ub new.jpeg', designation: 'Debt Associate' },
-  { name: 'Pratik Vishwakarma', image: '/images/Pratik.jpg', designation: 'Software Developer' },
-  { name: 'Dhruv Chawla', image: '/images/Dhruv .jpeg', designation: 'Accounts & Finance' },
+  // { name: 'Pratik Vishwakarma', image: '/images/Pratik.jpg', designation: 'Software Developer' },
+ // { name: 'Dhruv Chawla', image: '/images/Dhruv .jpeg', designation: 'Accounts & Finance' },
   { name: 'Arjun Singh', image: '/images/Arjun.jpeg', designation: 'Accounts & Finance' },
-  { name: 'Mahima Suryan', image: '/images/mahima.png', designation: 'Company Secretary' },
+  { name: 'Shivangi', image: '/images/shivangi.png', designation: 'Company Secretary' },
   { name: 'Anushka Chandra', image: '/images/HRAnushkha.jpg', designation: 'Human Resources' },
   
   
    { name: 'Ved Prakash', image: '/images/Ved Prakash.png', designation: 'Debt Market' },
   { name: 'S Ghosh', image: '/images/SGOSH.png', designation: 'Debt Market' },
-  { name: 'Jaayminee Kondru', image: '/images/jamuni.jpeg', designation: 'Debt Market' },
+  // { name: 'Jaayminee Kondru', image: '/images/jamuni.jpeg', designation: 'Debt Market' },
 ];
 
 const highlights = [
@@ -116,12 +115,18 @@ function TeamCard({ member }: { member: { name: string; image: string; designati
         className="relative w-full overflow-hidden bg-gradient-to-br from-[#EAF8FC] to-[#d0eaf5]"
         style={{ aspectRatio: '4/5' }}
       >
-        <Image
-          src={member.image}
-          alt={member.name}
-          fill
-          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-        />
+ <Image
+  src={member.image}
+  alt={member.name}
+  fill
+  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+  style={{
+    objectPosition:
+      member.name === "Shlok Shah"
+        ? "40% top"
+        : "center top",
+  }}
+/>
 
         {/* Soft legibility gradient on hover */}
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#07203e]/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -335,7 +340,7 @@ export default function AboutPage() {
             </div>
 
             {/* Team Matrix Grid */}
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 md:gap-4 lg:gap-5">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-4 md:gap-4 lg:gap-5">
               {teamMembers.map((member) => (
                 <TeamCard key={member.name} member={member} />
               ))}
