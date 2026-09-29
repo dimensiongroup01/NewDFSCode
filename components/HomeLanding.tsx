@@ -3,6 +3,7 @@ import SiteFooter from '@/components/SiteFooter';
 import dynamic from 'next/dynamic';
 import HomeHeroScene from '@/components/HomeHeroScene';
 import { Suspense } from 'react';
+import { Eyebrow, PointMatrix, StatCard } from '@/components/InfoKit';
 
 const ClientsShowcase = dynamic(() => import('@/components/ClientsShowcase'), {
   loading: () => <section className="section-shell pb-24"><p className="text-center text-slate-400">Loading clients...</p></section>,
@@ -36,6 +37,14 @@ const aboutCards = [
   { label: 'Debt Platform', value: 'Bondsadda  2023', detail: 'OBPPs at BSE' }
 ];
 
+const whyChooseUs = [
+  'Team of Qualified Professionals with extensive experience in Merchant Banking and Debt Securities Markets',
+  'Deep Market Insight and Industry Expertise',
+  'Client-First Approach with Personalized Financial Solutions',
+  'Proven Track Record in Capital Market Transactions',
+  'Trusted Advisory for SMEs, Corporates, and Institutions'
+];
+
 export default function HomeLanding() {
   return (
     <>
@@ -59,38 +68,40 @@ export default function HomeLanding() {
                   Why Choose Us?
                 </h2>
 
-                <ul className="mt-6 space-y-4 text-lg md:text-xl text-slate-700">
-                  <li>✓ Team of Qualified Professionals with extensive experience in Merchant Banking and Debt Securities Markets</li>
-                  <li>✓ Deep Market Insight and Industry Expertise</li>
-                  <li>✓ Client-First Approach with Personalized Financial Solutions</li>
-                  <li>✓ Proven Track Record in Capital Market Transactions</li>
-                  <li>✓ Trusted Advisory for SMEs, Corporates, and Institutions</li>
+                <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+                  {whyChooseUs.map((point) => (
+                    <li
+                      key={point}
+                      className="group relative flex items-start gap-3 overflow-hidden rounded-2xl border border-slate-200 bg-white/85 p-4 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-[#0096B7]/40 hover:shadow-[0_16px_38px_rgba(16,40,74,0.10)]"
+                    >
+                      <span
+                        aria-hidden
+                        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-[#0096B7] to-[#00B4D8] transition-transform duration-500 group-hover:scale-x-100"
+                      />
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#EAF8FC] text-[11px] font-black text-[#007A96] ring-1 ring-[#00B4D8]/30 transition-colors duration-300 group-hover:bg-[#0096B7] group-hover:text-white group-hover:ring-[#0096B7]">
+                        ✓
+                      </span>
+                      <span className="text-sm font-semibold leading-relaxed text-slate-700 md:text-base">
+                        {point}
+                      </span>
+                    </li>
+                  ))}
                 </ul>
 
                 <div className="mt-8 h-1 w-24 rounded-full bg-primary-dark" />
               </div>
 
               {/* Stats */}
-              <div className="grid gap-5 sm:grid-cols-2">
-                {aboutCards.map((item) => (
-                  <div
+              <div className="grid gap-4 sm:grid-cols-2">
+                {aboutCards.map((item, i) => (
+                  <StatCard
                     key={item.label}
-                    className="group rounded-2xl border border-slate-200 bg-white/80 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary-dark/30 hover:shadow-xl"
-                  >
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary-dark">
-                      {item.label}
-                    </p>
-
-                    <p className="mt-4 text-2xl font-bold text-slate-950">
-                      {item.value}
-                    </p>
-
-                    {item.detail && (
-                      <p className="mt-2 text-sm font-medium text-slate-500">
-                        {item.detail}
-                      </p>
-                    )}
-                  </div>
+                    label={item.label}
+                    value={item.value.trim()}
+                    detail={item.detail}
+                    accent={['#0096B7', '#10284a', '#FF6900', '#00B4D8'][i % 4]}
+                    className="bg-white"
+                  />
                 ))}
               </div>
             </div>
@@ -170,13 +181,11 @@ We are a SEBI-registered Merchant Banker actively engaged in capital issue manag
         <section className="section-shell py-10 sm:py-12 md:py-16">
           <div className="rounded-2xl border border-white/90 bg-gradient-to-b from-white to-[#f5faff] p-5 shadow-[0_18px_52px_rgba(15,23,42,0.08)] sm:rounded-[2rem] sm:p-6 md:p-8 lg:p-10">
 
-            <div className="grid gap-8 md:grid-cols-2 md:gap-10 lg:gap-14">
+            <div className="grid gap-8">
 
               {/* Mission points */}
               <div className="flex flex-col">
-                <p data-reveal className="text-xs uppercase tracking-[0.2em] text-aqua">
-                  Our Mission & Vision
-                </p>
+                <Eyebrow variant="primary">Our Mission &amp; Vision</Eyebrow>
                 <h2
                   data-reveal
                   className="mt-2 font-display text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl lg:text-5xl"
@@ -188,21 +197,10 @@ We are a SEBI-registered Merchant Banker actively engaged in capital issue manag
                   conduct, and disciplined market execution.
                 </p>
 
-                <ol data-reveal className="mt-6 flex flex-col gap-3 sm:mt-8 sm:gap-4">
-                  {missionPoints.map((point, index) => (
-                    <li
-                      key={point}
-                      className="rounded-xl border border-blue-100/90 bg-white/92 p-4 shadow-[0_8px_24px_rgba(15,23,42,0.05)] sm:rounded-[1.5rem] sm:p-5"
-                    >
-                      <div className="flex items-start gap-3 sm:gap-4">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#fff7ed] to-white text-sm font-bold text-[#0a355d] shadow-[0_6px_14px_rgba(47,155,255,0.12)] sm:h-10 sm:w-10">
-                          {index + 1}
-                        </span>
-                        <p className="text-sm leading-6 text-slate-700 sm:leading-7 md:text-base">{point}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
+                <PointMatrix
+                  points={missionPoints}
+                  className="mt-6 border-blue-100/90 bg-white/92 p-4 shadow-[0_8px_24px_rgba(15,23,42,0.05)] sm:mt-8 sm:p-5"
+                />
               </div>
 
               {/* Vision and stats */}

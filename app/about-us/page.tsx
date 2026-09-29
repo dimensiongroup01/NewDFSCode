@@ -2,6 +2,7 @@
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import Image from 'next/image';
+import { Eyebrow, InfoCard, StepCard } from '@/components/InfoKit';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -156,9 +157,7 @@ export default function AboutPage() {
           <div className="relative rounded-[2rem] border border-[#DDEAF1] bg-white/88 p-5 shadow-[0_28px_80px_rgba(15,23,42,0.08)] backdrop-blur md:p-8 lg:p-10">
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-start lg:gap-12">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary-dark">
-                  About Us
-                </p>
+                <Eyebrow variant="primary">About Us</Eyebrow>
                 <p className="mt-6 max-w-3xl text-2xl font-semibold leading-snug text-[#0a355d] md:text-3xl md:leading-tight">
                   Dimension Financial Solutions is a SEBI Registered partner delivering merchant banking, debt securities,
                   and institutional financial advisory services.
@@ -226,29 +225,32 @@ export default function AboutPage() {
 
         {/* -- Strengths -- */}
         <section className="section-shell pb-14 md:pb-20">
-          <div className="mb-8 text-center">
-            <p className="text-xs uppercase tracking-[0.18em] text-aqua">Strengths</p>
+          <div className="mb-8 flex flex-col items-center text-center">
+            <Eyebrow center variant="primary">
+              Strengths
+            </Eyebrow>
             <h2 className="mt-2 font-display text-3xl md:text-4xl">Why Institutions Work With Us</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {strengths.map((item) => (
-              <article
+            {strengths.map((item, i) => (
+              <InfoCard
                 key={item.title}
-                className="group relative overflow-hidden rounded-[1.75rem] border border-blue-200/80 bg-white/95 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#10284a] via-blue-400 to-[#10284a] opacity-70" />
-                <h3 className="text-xl font-semibold text-[#10284a]">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink md:text-base">{item.text}</p>
-                <div className="mt-5 h-px w-full bg-gradient-to-r from-blue-100 via-blue-300 to-transparent transition duration-500 group-hover:via-blue-400" />
-              </article>
+                index={i + 1}
+                title={item.title}
+                text={item.text}
+                accent={['#0096B7', '#10284a', '#FF6900', '#00B4D8'][i % 4]}
+                className="h-full"
+              />
             ))}
           </div>
         </section>
 
         {/* -- Leadership -- */}
         <section className="section-shell py-2 pb-16 md:pb-20">
-          <div className="mb-8 text-center">
-            <p className="text-xs uppercase tracking-[0.18em] text-aqua">People</p>
+          <div className="mb-8 flex flex-col items-center text-center">
+            <Eyebrow center variant="primary">
+              People
+            </Eyebrow>
             <h2 className="mt-2 font-display text-3xl md:text-4xl">Management & Leadership</h2>
           </div>
 
@@ -295,19 +297,17 @@ export default function AboutPage() {
         {/* -- Engagement Process -- */}
         <section className="section-shell pb-16 md:pb-20">
           <article className="rounded-3xl border border-blue-200/80 bg-white/90 p-6 shadow-sm md:p-8">
-            <p className="text-xs uppercase tracking-[0.18em] text-aqua">Execution Model</p>
+            <Eyebrow variant="primary">Execution Model</Eyebrow>
             <h2 className="mt-2 font-display text-3xl md:text-4xl">Our Engagement Process</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-4">
               {process.map((item) => (
-                <div
+                <StepCard
                   key={item.step}
-                  className="group rounded-[1.5rem] border border-blue-100 bg-white p-4 transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-aqua">Step {item.step}</p>
-                  <h3 className="mt-2 text-lg font-semibold text-[#10284a]">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink">{item.text}</p>
-                  <div className="mt-4 h-1.5 w-14 rounded-full bg-gradient-to-r from-[#10284a] to-blue-400 transition-all duration-500 group-hover:w-24" />
-                </div>
+                  step={item.step}
+                  label={`Step ${item.step}`}
+                  title={item.title}
+                  text={item.text}
+                />
               ))}
             </div>
           </article>
@@ -348,7 +348,7 @@ export default function AboutPage() {
           <article className="rounded-3xl border border-blue-200/70 bg-gradient-to-r from-blue-50 to-blue-50 p-6 md:p-10">
             <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-center">
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-aqua">Policies & Contact</p>
+                <Eyebrow variant="primary">Policies &amp; Contact</Eyebrow>
                 <h2 className="mt-2 font-display text-2xl md:text-3xl">Need Compliance Documents or Advisory Support?</h2>
                 <p className="mt-3 text-sm leading-relaxed text-ink md:text-base">
                   Reach our team for investor policies, service details, and debt market guidance.

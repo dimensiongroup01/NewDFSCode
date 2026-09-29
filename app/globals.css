@@ -5,14 +5,14 @@
 :root {
   color-scheme: light;
   scroll-behavior: smooth;
-  --color-primary: #00B4D8;
-  --color-primary-dark: #007A96;
-  --color-accent: #FF6900;
-  --color-surface: #F8FAFB;
-  --color-text: #0F172A;
-  --color-border: #E2E8F0;
-  --font-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-primary: #19d3c5;
+  --color-primary-dark: #087f83;
+  --color-accent: #ffb86b;
+  --color-surface: #f5f5f0;
+  --color-text: #102a43;
+  --color-border: #d8e0e3;
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
 }
 
 html,
@@ -23,8 +23,7 @@ body {
   overflow-x: clip;
   background-color: var(--color-surface);
   color: var(--color-text);
-  /* Increased global default font size */
-  font-size: 1.12rem;
+  font-size: 1rem;
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
 }
 
@@ -68,9 +67,9 @@ summary:focus-visible {
 
 .grid-overlay {
   background-image:
-    linear-gradient(rgba(0, 180, 216, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 105, 0, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(16, 42, 67, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 42, 67, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
 .section-shell {
@@ -141,8 +140,7 @@ h4 {
   color: #020617;
   font-weight: 700;
   line-height: 1.15;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
-    Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: var(--font-display), Georgia, serif;
 }
 
 p,
@@ -150,13 +148,40 @@ li,
 td,
 label {
   color: #273142;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.6;
   /* Increased base paragraph/list/label font size */
-  font-size: 1.06rem;
+  font-size: 1rem;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
     Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
+
+/* Institutional redesign: crisp surfaces, editorial type, and restrained motion. */
+::selection { background: #19d3c5; color: #102a43; }
+.section-shell { max-width: 1440px; margin-inline: auto; }
+.card, .card-premium { border-radius: 0.35rem; border-color: #d8e0e3; box-shadow: 0 12px 30px rgba(16,42,67,.06); }
+.card-premium:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(16,42,67,.12); }
+.btn-primary { border-radius: 0.25rem; background: #102a43; padding: .85rem 1.25rem; letter-spacing: .02em; }
+.btn-primary:hover { background: #087f83; }
+.input-shell, .input-field { border-radius: .25rem; border-color: #bdcbd0; background: #fffef9; padding: .8rem 1rem; }
+.input-shell:focus, .input-field:focus { border-color: #19d3c5; box-shadow: 0 0 0 4px rgba(25,211,197,.15); }
+.site-header { background: rgba(245,245,240,.92) !important; border-bottom: 1px solid rgba(16,42,67,.12); backdrop-filter: blur(18px); }
+.site-header > div { max-width: 1440px; margin-inline: auto; }
+.site-header nav a[aria-current="page"] { color: #087f83 !important; }
+.site-header nav a:hover { color: #087f83 !important; }
+.site-header nav a:last-child { background: #102a43 !important; border-radius: .25rem !important; }
+.site-header nav a:last-child:hover { background: #087f83 !important; }
+.page-hero { background: #102a43 !important; border-bottom: 0; padding-block: 5.5rem; }
+.page-hero > div:first-child { opacity: .45; }
+.page-hero .section-shell > div { border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.06); box-shadow: none; border-radius: .35rem; }
+.page-hero h1 { color: #fff !important; font-size: clamp(2.5rem, 7vw, 6.5rem) !important; letter-spacing: -.06em; }
+.page-hero p { color: #c8d9dc !important; }
+.page-hero span[aria-hidden] { background: #19d3c5 !important; }
+.site-footer { background: #102a43 !important; color: #d8e8e8; padding-top: 3rem; padding-bottom: 2rem; }
+.site-footer > div > div { border-color: rgba(255,255,255,.16); background: transparent; box-shadow: none; }
+.site-footer h3, .site-footer h4 { color: #fff !important; }
+.site-footer p, .site-footer a { color: #b5c9cb !important; }
+.site-footer a:hover { color: #19d3c5 !important; }
 
 
 
@@ -729,3 +754,87 @@ label {
     padding: 2rem 2.1rem;
   }
 }
+
+/* ==========================================================================
+   DFS DESIGN SYSTEM v2 — premium visual layer (appended, overrides above)
+   ========================================================================== */
+:root {
+  --dfs-navy: #10284a;
+  --dfs-navy-deep: #08182c;
+  --dfs-aqua: #00b4d8;
+  --dfs-aqua-deep: #0096b7;
+  --dfs-aqua-ink: #007a96;
+  --dfs-orange: #ff6900;
+  --dfs-hair: #e2e8f0;
+  --dfs-shadow-soft: 0 14px 40px rgba(16, 40, 74, 0.07);
+  --dfs-shadow-lift: 0 26px 60px rgba(16, 40, 74, 0.14);
+  --dfs-shadow-glow: 0 18px 46px rgba(0, 180, 216, 0.22);
+  --dfs-grad-brand: linear-gradient(118deg, #10284a 0%, #0096b7 54%, #00b4d8 100%);
+  --dfs-grad-line: linear-gradient(90deg, rgba(0, 180, 216, 0), #00b4d8 22%, #10284a 56%, #ff6900 88%, rgba(255, 105, 0, 0));
+}
+
+/* Layered ambient page background */
+body {
+  background-image:
+    radial-gradient(1100px 520px at 6% -8%, rgba(0, 180, 216, 0.11), transparent 62%),
+    radial-gradient(900px 460px at 98% 2%, rgba(255, 105, 0, 0.07), transparent 60%),
+    radial-gradient(780px 420px at 50% 106%, rgba(16, 40, 74, 0.08), transparent 62%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: -0.022em;
+}
+
+::selection {
+  background: rgba(0, 180, 216, 0.26);
+  color: #06202f;
+}
+
+/* Branded scrollbar */
+html {
+  scrollbar-color: rgba(0, 150, 183, 0.6) transparent;
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: #eaf2f8; }
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 3px solid #eaf2f8;
+  background: linear-gradient(180deg, #00b4d8, #007a96);
+}
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #0096b7, #10284a); }
+
+/* ---------- keyframes ---------- */
+@keyframes dfs-aurora {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(4%, 5%, 0) scale(1.14); }
+}
+@keyframes dfs-aurora-alt {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.06); }
+  50% { transform: translate3d(-5%, -4%, 0) scale(0.94); }
+}
+@keyframes dfs-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes dfs-shine {
+  0% { transform: translateX(-140%) skewX(-18deg); }
+  100% { transform: translateX(260%) skewX(-18deg); }
+}
+@keyframes dfs-pan {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+@keyframes dfs-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes dfs-pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 105, 0, 0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(255, 105, 0, 0); }
+}
+
