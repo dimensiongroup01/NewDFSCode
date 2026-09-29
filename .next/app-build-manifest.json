@@ -16,10 +16,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/about-us/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/about-us/page.js"
+      "static/chunks/app/_not-found/page.js"
+    ],
+    "/home/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/home/page.js"
+    ],
+    "/merchant-banking/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/merchant-banking/page.js"
     ]
   }
 }
