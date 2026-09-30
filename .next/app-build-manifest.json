@@ -64,6 +64,14 @@
       "static/chunks/894-39e95464e509c304.js",
       "static/chunks/app/career/page-51cf710a09dcdd39.js"
     ],
+    "/investor/page": [
+      "static/chunks/webpack-a7f37c8db934be76.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-4f84124391a7dac4.js",
+      "static/chunks/main-app-6710cc4e4b98e4d2.js",
+      "static/chunks/894-39e95464e509c304.js",
+      "static/chunks/app/investor/page-d7d84b57fda7ff44.js"
+    ],
     "/annual/page": [
       "static/chunks/webpack-a7f37c8db934be76.js",
       "static/chunks/4bd1b696-c023c6e3521b1417.js",
@@ -82,6 +90,14 @@
       "static/chunks/616-7e1738be070aa40d.js",
       "static/chunks/app/page-08e55644b79780ca.js"
     ],
+    "/stock-broking/page": [
+      "static/chunks/webpack-a7f37c8db934be76.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-4f84124391a7dac4.js",
+      "static/chunks/main-app-6710cc4e4b98e4d2.js",
+      "static/chunks/894-39e95464e509c304.js",
+      "static/chunks/app/stock-broking/page-ef2550225b23d882.js"
+    ],
     "/services/page": [
       "static/chunks/webpack-a7f37c8db934be76.js",
       "static/chunks/4bd1b696-c023c6e3521b1417.js",
@@ -89,14 +105,6 @@
       "static/chunks/main-app-6710cc4e4b98e4d2.js",
       "static/chunks/894-39e95464e509c304.js",
       "static/chunks/app/services/page-cbd124e2a5a99138.js"
-    ],
-    "/investor/page": [
-      "static/chunks/webpack-a7f37c8db934be76.js",
-      "static/chunks/4bd1b696-c023c6e3521b1417.js",
-      "static/chunks/255-4f84124391a7dac4.js",
-      "static/chunks/main-app-6710cc4e4b98e4d2.js",
-      "static/chunks/894-39e95464e509c304.js",
-      "static/chunks/app/investor/page-d7d84b57fda7ff44.js"
     ],
     "/about-us/page": [
       "static/chunks/webpack-a7f37c8db934be76.js",
@@ -113,14 +121,6 @@
       "static/chunks/main-app-6710cc4e4b98e4d2.js",
       "static/chunks/894-39e95464e509c304.js",
       "static/chunks/app/merchant-banking/page-dbba5f6ad8b17a39.js"
-    ],
-    "/stock-broking/page": [
-      "static/chunks/webpack-a7f37c8db934be76.js",
-      "static/chunks/4bd1b696-c023c6e3521b1417.js",
-      "static/chunks/255-4f84124391a7dac4.js",
-      "static/chunks/main-app-6710cc4e4b98e4d2.js",
-      "static/chunks/894-39e95464e509c304.js",
-      "static/chunks/app/stock-broking/page-ef2550225b23d882.js"
     ]
   }
 }

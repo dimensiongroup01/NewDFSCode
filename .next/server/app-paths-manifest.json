@@ -6,11 +6,11 @@
   "/sitemap-page/page": "app/sitemap-page/page.js",
   "/home/page": "app/home/page.js",
   "/career/page": "app/career/page.js",
+  "/investor/page": "app/investor/page.js",
   "/annual/page": "app/annual/page.js",
   "/page": "app/page.js",
+  "/stock-broking/page": "app/stock-broking/page.js",
   "/services/page": "app/services/page.js",
-  "/investor/page": "app/investor/page.js",
   "/about-us/page": "app/about-us/page.js",
-  "/merchant-banking/page": "app/merchant-banking/page.js",
-  "/stock-broking/page": "app/stock-broking/page.js"
+  "/merchant-banking/page": "app/merchant-banking/page.js"
 }
