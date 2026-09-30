@@ -27,3 +27,8 @@ trace
 
 
 .gitignore
+.next/trace
+.next/cache/.rscinfo
+.next/trace
+.next/cache/.rscinfo
+.next/trace

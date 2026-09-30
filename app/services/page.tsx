@@ -20,7 +20,7 @@ export default function ServicesPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main-content" tabIndex={-1} className="grid-overlay">
+      <main id="main-content" tabIndex={-1} className="min-h-screen">
       <PageHero
         kicker="Core Services"
         title="Capital Market and Debt Advisory Services"

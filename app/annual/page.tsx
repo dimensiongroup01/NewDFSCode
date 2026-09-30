@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import ScrollFusion3D from '@/components/ScrollFusion3D';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -27,7 +27,7 @@ export default function AnnualPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main-content" tabIndex={-1} className="grid-overlay">
+      <main id="main-content" tabIndex={-1} className="min-h-screen">
       <PageHero kicker="Investor Resources" title="Investor Corner" />
       {/* <ScrollFusion3D variant="annual" compact /> */}
       <StoryChapter
@@ -36,62 +36,46 @@ export default function AnnualPage() {
         detail="Investor documentation is presented as a clean disclosure timeline, reinforcing governance quality and institutional trust."
       />
 
-      <section className="section-shell py-14 md:py-20">
-        <p data-reveal className="mb-2 text-xs text-slate-600 md:hidden">Swipe horizontally to view the full table.</p>
-        <div
-          data-reveal
-          className="relative overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white p-2 shadow-sm md:p-4"
-        >
-          <span
-            aria-hidden
-            className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#10284a] via-[#00B4D8] to-[#FF6900]"
-          />
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[560px] text-left text-sm">
-              <thead>
-                <tr className="text-[#10284a]">
-                  <th className="px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.14em]">Year</th>
-                  <th className="px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.14em]">Document</th>
-                  <th className="px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.14em]">View</th>
-                </tr>
-              </thead>
-              <tbody>
-                {docs.map((doc, i) => (
-                  <tr
-                    key={doc.href}
-                    className={`border-t border-[#E2E8F0] transition-colors duration-200 hover:bg-[#F4FAFD] ${
-                      i % 2 === 1 ? 'bg-[#F8FAFC]' : 'bg-white'
-                    }`}
-                  >
-                    <td className="px-4 py-4">
-                      <span className="inline-flex items-center rounded-lg bg-[#EAF8FC] px-3 py-1 font-mono text-xs font-black text-[#007A96] ring-1 ring-[#00B4D8]/25">
-                        {doc.year}
-                      </span>
-                    </td>
-                    <td className="px-4 py-4 font-semibold text-[#10284a]">{doc.name}</td>
-                    <td className="px-4 py-4">
-                      <a
-                        href={doc.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group inline-flex items-center gap-2 rounded-full border border-[#00B4D8]/40 bg-white px-4 py-2 text-xs font-bold text-[#007A96] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0096B7] hover:bg-[#0096B7] hover:text-white hover:shadow-md"
-                      >
-                        Open PDF
-                        <span
-                          aria-hidden
-                          className="transition-transform duration-300 group-hover:translate-x-0.5"
-                        >
-                          ↗
-                        </span>
-                      </a>
-                    </td>
+      <section className="section bg-paper">
+        <div className="section-shell">
+          <p data-reveal className="mb-3 text-xs text-slate-500 md:hidden">Swipe horizontally to view the full table.</p>
+          <div data-reveal className="card overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[560px] text-left">
+                <thead className="bg-navy text-white">
+                  <tr>
+                    <th className="px-6 py-4 font-body text-[0.7rem] font-bold uppercase tracking-[0.18em]">Year</th>
+                    <th className="px-6 py-4 font-body text-[0.7rem] font-bold uppercase tracking-[0.18em]">Document</th>
+                    <th className="px-6 py-4 text-right font-body text-[0.7rem] font-bold uppercase tracking-[0.18em]">View</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-line">
+                  {docs.map((doc) => (
+                    <tr key={doc.href} className="group transition-colors hover:bg-navy-50/60">
+                      <td className="px-6 py-5">
+                        <span className="font-display text-xl font-semibold tabular-nums text-navy">{doc.year}</span>
+                      </td>
+                      <td className="px-6 py-5 text-[0.95rem] font-semibold text-ink">{doc.name}</td>
+                      <td className="px-6 py-5 text-right">
+                        <a
+                          href={doc.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-xs font-bold text-navy transition-colors hover:border-navy hover:bg-navy hover:text-white"
+                        >
+                          Open PDF
+                          <span aria-hidden>↗</span>
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
+
 
       <ScrollReveal />
       </main>

@@ -8,11 +8,13 @@ import type { ReactNode } from 'react';
 
 type Tone = 'accent' | 'primary' | 'navy';
 
-const toneStyles: Record<Tone, { text: string; bar: string; chip: string }> = {
-  accent: { text: 'text-[#FF6900]', bar: 'bg-[#FF6900]/60', chip: 'from-[#FF6900] to-[#00B4D8]' },
-  primary: { text: 'text-[#0096B7]', bar: 'bg-[#0096B7]/60', chip: 'from-[#0096B7] to-[#00B4D8]' },
-  navy: { text: 'text-[#10284a]', bar: 'bg-[#10284a]/40', chip: 'from-[#10284a] to-[#00B4D8]' }
+const toneText: Record<Tone, string> = {
+  accent: 'text-accent',
+  primary: 'text-aqua-700',
+  navy: 'text-navy'
 };
+
+const pad = (n: number | string, width = 2) => (typeof n === 'number' ? String(n).padStart(width, '0') : n);
 
 /* ── Eyebrow ─────────────────────────────────────────────────────────────── */
 export function Eyebrow({
@@ -24,31 +26,15 @@ export function Eyebrow({
   center?: boolean;
   variant?: Tone;
 }) {
-  const styles = toneStyles[variant];
-  return (
-    <p
-      className={`flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] ${styles.text} ${
-        center ? 'justify-center' : ''
-      }`}
-    >
-      <span aria-hidden className={`h-px w-5 ${styles.bar}`} />
-      {children}
-    </p>
-  );
+  return <p className={`eyebrow ${toneText[variant]} ${center ? 'justify-center' : ''}`}>{children}</p>;
 }
 
 /* ── Frame — the standard white content card ─────────────────────────────── */
 export function Frame({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return (
-    <div
-      className={`relative overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white p-6 shadow-sm md:p-10 ${className}`}
-    >
-      {children}
-    </div>
-  );
+  return <div className={`card relative overflow-hidden p-6 md:p-10 ${className}`}>{children}</div>;
 }
 
-/* ── NumberChip — gradient mono number badge ─────────────────────────────── */
+/* ── NumberChip — numbered badge ─────────────────────────────────────────── */
 export function NumberChip({
   value,
   variant = 'navy',
@@ -60,13 +46,11 @@ export function NumberChip({
   size?: 'sm' | 'md' | 'lg';
   decimals?: number;
 }) {
-  const label = typeof value === 'number' ? String(value).padStart(decimals, '0') : value;
-  const box = size === 'lg' ? 'h-11 w-11 text-[13px]' : size === 'sm' ? 'h-7 w-7 text-[10px]' : 'h-9 w-9 text-[11px]';
+  const box = size === 'lg' ? 'h-12 w-12 text-sm' : size === 'sm' ? 'h-7 w-7 text-[10px]' : 'h-10 w-10 text-xs';
+  const bg = variant === 'accent' ? 'bg-accent' : variant === 'primary' ? 'bg-aqua-600' : 'bg-navy';
   return (
-    <span
-      className={`flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${toneStyles[variant].chip} font-mono font-black text-white shadow-md shadow-[#10284a]/15 transition-transform duration-300 group-hover:scale-105 ${box}`}
-    >
-      {label}
+    <span className={`flex shrink-0 items-center justify-center rounded-full font-bold tabular-nums text-white ${bg} ${box}`}>
+      {pad(value, decimals)}
     </span>
   );
 }
@@ -94,22 +78,13 @@ export function SectionHeading({
           {eyebrow}
         </Eyebrow>
       ) : null}
-      <h2 className="mt-2 text-2xl font-bold text-[#10284a] md:text-3xl">{title}</h2>
-      {intro ? (
-        <p
-          className={`mt-3 text-sm leading-relaxed text-slate-500 md:text-base ${
-            center ? 'mx-auto max-w-2xl' : 'max-w-2xl'
-          }`}
-        >
-          {intro}
-        </p>
-      ) : null}
+      <h2 className="heading-lg mt-4">{title}</h2>
+      {intro ? <p className={`lede mt-4 ${center ? 'mx-auto max-w-2xl' : 'max-w-2xl'}`}>{intro}</p> : null}
     </div>
   );
 }
 
-
-/* ── InfoCard — numbered/icon infographic card ───────────────────────────── */
+/* ── InfoCard — numbered/icon card ───────────────────────────────────────── */
 export function InfoCard({
   index,
   icon,
@@ -117,7 +92,6 @@ export function InfoCard({
   title,
   text,
   accent = '#0096B7',
-  variant = 'navy',
   children,
   className = ''
 }: {
@@ -132,50 +106,32 @@ export function InfoCard({
   className?: string;
 }) {
   return (
-    <article
-      className={`group relative overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#00B4D8]/60 hover:shadow-[0_16px_38px_rgba(16,40,74,0.10)] ${className}`}
-    >
-      {/* Top accent bar that wipes in on hover */}
-      <span
-        aria-hidden
-        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
-        style={{ background: `linear-gradient(90deg, ${accent}, #00B4D8)` }}
-      />
-      {/* Ghost index watermark */}
-      {typeof index === 'number' ? (
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -bottom-5 right-2 font-mono text-[58px] font-black leading-none text-[#10284a]/5 transition-colors duration-500 group-hover:text-[#0096B7]/10"
-        >
-          {String(index).padStart(2, '0')}
-        </span>
-      ) : null}
-
-      <div className="relative">
-        <div className="flex items-center gap-3">
-          {typeof index === 'number' ? <NumberChip value={index} variant={variant} /> : null}
-          {icon ? (
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#F0F7FF] to-white text-xl ring-1 ring-[#00B4D8]/25 transition-transform duration-300 group-hover:scale-105">
-              {icon}
-            </span>
-          ) : null}
-          {typeof index === 'number' && icon ? (
-            <span aria-hidden className="h-px flex-1 bg-gradient-to-r from-[#00B4D8]/40 to-transparent" />
-          ) : null}
-        </div>
-
-        {eyebrow ? (
-          <p className="mt-3 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF6900]">{eyebrow}</p>
+    <article className={`card card-hover group relative flex flex-col p-6 ${className}`}>
+      <div className="flex items-center justify-between gap-3">
+        {typeof index === 'number' ? (
+          <span className="font-display text-3xl font-semibold tabular-nums text-navy/15 transition-colors duration-300 group-hover:text-accent">
+            {pad(index)}
+          </span>
         ) : null}
-        <h3 className={`text-base font-bold text-[#10284a] ${eyebrow ? 'mt-1' : 'mt-3'}`}>{title}</h3>
-        {text ? <p className="mt-2 text-sm leading-relaxed text-slate-500">{text}</p> : null}
-        {children}
+        {icon ? (
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-aqua-50 text-xl text-aqua-700">{icon}</span>
+        ) : null}
+        <span aria-hidden className="h-2 w-2 rounded-full" style={{ backgroundColor: accent }} />
       </div>
+
+      {eyebrow ? (
+        <p className="mt-5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-accent">{eyebrow}</p>
+      ) : null}
+      <h3 className={`font-body text-[1.05rem] font-bold leading-snug text-navy ${eyebrow ? 'mt-1.5' : 'mt-5'}`}>
+        {title}
+      </h3>
+      {text ? <p className="mt-2.5 text-[0.925rem] leading-relaxed text-[#526071]">{text}</p> : null}
+      {children}
     </article>
   );
 }
 
-/* ── PointMatrix — infographic checklist panel for bullet points ─────────── */
+/* ── PointMatrix — checklist panel for bullet points ─────────────────────── */
 export function PointMatrix({
   points,
   columns = 1,
@@ -187,19 +143,14 @@ export function PointMatrix({
 }) {
   return (
     <ul
-      className={`group/matrix relative rounded-2xl border border-[#EDF2F7] bg-[#F8FAFC] p-3.5 transition-colors duration-300 hover:border-[#00B4D8]/30 hover:bg-[#F4FAFD] ${
-        columns === 2 ? 'grid gap-x-5 gap-y-2.5 sm:grid-cols-2' : 'space-y-2'
-      } ${className}`}
+      className={`${columns === 2 ? 'grid gap-x-8 sm:grid-cols-2' : ''} divide-y divide-line ${className}`}
     >
       {points.map((point, i) => (
-        <li key={`${i}-${point}`} className="flex items-start gap-3">
-          <span
-            className="mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-white font-mono text-[10px] font-black text-[#0096B7] ring-1 ring-inset ring-[#00B4D8]/30 transition-all duration-300 group-hover/matrix:bg-[#0096B7] group-hover/matrix:text-white group-hover/matrix:ring-[#0096B7]"
-            style={{ transitionDelay: `${i * 45}ms` }}
-          >
-            {String(i + 1).padStart(2, '0')}
+        <li key={`${i}-${point}`} className="flex items-start gap-4 py-3.5 first:pt-0 last:pb-0">
+          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-aqua-50 text-[0.7rem] font-bold tabular-nums text-aqua-700">
+            {pad(i + 1)}
           </span>
-          <span className="text-sm leading-relaxed text-slate-600">{point}</span>
+          <span className="text-[0.95rem] leading-relaxed text-ink">{point}</span>
         </li>
       ))}
     </ul>
@@ -221,22 +172,11 @@ export function StatCard({
   className?: string;
 }) {
   return (
-    <div
-      className={`group relative overflow-hidden rounded-2xl border border-[#E2E8F0] bg-gradient-to-b from-white to-[#F5FBFD] p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#00B4D8]/50 hover:shadow-[0_18px_40px_rgba(16,40,74,0.12)] ${className}`}
-    >
-      <span
-        aria-hidden
-        className="absolute inset-x-0 top-0 h-1 opacity-70 transition-opacity duration-300 group-hover:opacity-100"
-        style={{ background: `linear-gradient(90deg, ${accent}, #00B4D8, ${accent})` }}
-      />
-      <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#007A96]">
-        <span aria-hidden className="h-1 w-1 rounded-full" style={{ backgroundColor: accent }} />
-        {label}
-      </p>
-      <p className="mt-3 font-mono text-lg font-black leading-snug text-[#10284a] md:text-xl">{value}</p>
-      {detail ? (
-        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.08em] text-slate-500">{detail}</p>
-      ) : null}
+    <div className={`card relative overflow-hidden p-6 ${className}`}>
+      <span aria-hidden className="absolute inset-y-0 left-0 w-1" style={{ backgroundColor: accent }} />
+      <p className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-slate-500">{label}</p>
+      <p className="mt-3 font-display text-xl font-semibold leading-snug text-navy md:text-2xl">{value}</p>
+      {detail ? <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-aqua-700">{detail}</p> : null}
     </div>
   );
 }
@@ -246,8 +186,7 @@ export function StepCard({
   step,
   label,
   title,
-  text,
-  showConnector = false
+  text
 }: {
   step: string;
   label?: string;
@@ -256,28 +195,14 @@ export function StepCard({
   showConnector?: boolean;
 }) {
   return (
-    <div className="group relative">
-      {showConnector ? (
-        <span
-          aria-hidden
-          className="pointer-events-none absolute left-[1.35rem] top-12 hidden h-[calc(100%-2rem)] w-px bg-gradient-to-b from-[#00B4D8]/50 to-transparent lg:block"
-        />
-      ) : null}
-      <div className="relative overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#00B4D8]/50 hover:shadow-[0_16px_36px_rgba(16,40,74,0.10)]">
-        <span
-          aria-hidden
-          className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-gradient-to-b from-[#00B4D8] to-[#10284a] transition-transform duration-500 group-hover:scale-y-100"
-        />
-        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#10284a] to-[#0d1f3c] font-mono text-[11px] font-black text-white shadow-md shadow-[#10284a]/20 transition-transform duration-300 group-hover:scale-105">
-          {step}
-        </span>
-        {label ? (
-          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#0096B7]">{label}</p>
-        ) : null}
-        <h3 className={`text-base font-bold text-[#10284a] ${label ? 'mt-1' : 'mt-3'}`}>{title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-slate-500">{text}</p>
-        <div className="mt-4 h-1.5 w-14 rounded-full bg-gradient-to-r from-[#10284a] to-[#00B4D8] transition-all duration-500 group-hover:w-24" />
+    <div className="group relative h-full border-t-2 border-line pt-6 transition-colors duration-300 hover:border-accent">
+      <span className="absolute -top-[0.45rem] left-0 h-3 w-3 rounded-full border-2 border-white bg-navy ring-1 ring-line transition-colors group-hover:bg-accent" />
+      <div className="flex items-baseline gap-3">
+        <span className="font-display text-2xl font-semibold tabular-nums text-accent">{step}</span>
+        {label ? <span className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-slate-400">{label}</span> : null}
       </div>
+      <h3 className="mt-3 font-body text-[1.05rem] font-bold text-navy">{title}</h3>
+      <p className="mt-2 text-[0.925rem] leading-relaxed text-[#526071]">{text}</p>
     </div>
   );
 }
@@ -285,21 +210,17 @@ export function StepCard({
 /* ── QuoteCard — testimonial ─────────────────────────────────────────────── */
 export function QuoteCard({ quote, name }: { quote: string; name: string }) {
   return (
-    <article className="group relative flex min-w-[18rem] snap-start flex-col overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#00B4D8]/50 hover:shadow-[0_16px_38px_rgba(16,40,74,0.10)] md:min-w-[24rem]">
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-2 -top-6 font-display text-[80px] font-black leading-none text-[#00B4D8]/10"
-      >
-        &ldquo;
-      </span>
-      <div className="relative">
-        <p className="text-sm leading-relaxed text-slate-600">{quote}</p>
-        <div className="mt-4 flex items-center gap-3 border-t border-dashed border-slate-200 pt-4">
-          <span aria-hidden className="h-8 w-1 rounded-full bg-gradient-to-b from-[#00B4D8] to-[#10284a]" />
-          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#10284a]">{name}</p>
-        </div>
+    <figure className="card flex h-full min-w-[18rem] snap-start flex-col justify-between p-7 md:min-w-0">
+      <div>
+        <span aria-hidden className="block font-display text-5xl leading-none text-accent">
+          &ldquo;
+        </span>
+        <blockquote className="mt-2 font-display text-lg leading-relaxed text-navy">{quote}</blockquote>
       </div>
-    </article>
+      <figcaption className="mt-6 border-t border-line pt-4 text-xs font-bold uppercase tracking-[0.14em] text-aqua-700">
+        {name}
+      </figcaption>
+    </figure>
   );
 }
 
@@ -307,9 +228,9 @@ export function QuoteCard({ quote, name }: { quote: string; name: string }) {
 export function Chip({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-full border border-[#E2E8F0] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#10284a] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#00B4D8] hover:shadow-sm ${className}`}
+      className={`inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-xs font-semibold text-navy ${className}`}
     >
-      <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#00B4D8]" />
+      <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-aqua" />
       {children}
     </span>
   );
@@ -332,20 +253,14 @@ export function LinkRow({
       <a
         href={href}
         {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-        className="group flex items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 text-sm font-semibold text-[#10284a] transition-all duration-200 hover:border-[#00B4D8]/40 hover:bg-white hover:shadow-[0_10px_26px_rgba(16,40,74,0.07)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00B4D8]"
+        className="group flex items-center gap-4 border-b border-line py-3.5 text-[0.95rem] font-semibold text-navy transition-colors hover:text-aqua-700"
       >
-        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-[#EAF8FC] font-mono text-[10px] font-black text-[#007A96] transition-colors group-hover:bg-[#0096B7] group-hover:text-white">
-          {String(index).padStart(2, '0')}
-        </span>
+        <span className="text-xs font-bold tabular-nums text-accent">{pad(index)}</span>
         <span className="flex-1">{label}</span>
-        <span
-          aria-hidden
-          className="text-[#00B4D8] opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
-        >
+        <span aria-hidden className="text-slate-300 transition-all duration-200 group-hover:translate-x-1 group-hover:text-aqua-700">
           →
         </span>
       </a>
     </li>
   );
 }
-
