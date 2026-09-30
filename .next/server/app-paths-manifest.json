@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "/_not-found/page": "app/_not-found/page.js",
   "/api/message/route": "app/api/message/route.js",
   "/icon.svg/route": "app/icon.svg/route.js",
@@ -13,4 +14,9 @@
   "/page": "app/page.js",
   "/investor/page": "app/investor/page.js",
   "/stock-broking/page": "app/stock-broking/page.js"
+=======
+  "/page": "app/page.js",
+  "/home/page": "app/home/page.js",
+  "/merchant-banking/page": "app/merchant-banking/page.js"
+>>>>>>> main
 }

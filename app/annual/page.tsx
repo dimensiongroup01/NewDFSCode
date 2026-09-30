@@ -38,29 +38,58 @@ export default function AnnualPage() {
 
       <section className="section-shell py-14 md:py-20">
         <p data-reveal className="mb-2 text-xs text-slate-600 md:hidden">Swipe horizontally to view the full table.</p>
-        <div data-reveal className="card overflow-x-auto p-2">
-          <table className="w-full min-w-[560px] text-left text-sm">
-            <thead className="text-ink">
-              <tr>
-                <th className="px-4 py-3">Year</th>
-                <th className="px-4 py-3">Document</th>
-                <th className="px-4 py-3">View</th>
-              </tr>
-            </thead>
-            <tbody>
-              {docs.map((doc) => (
-                <tr key={doc.href} className="border-t border-blue-200/80 text-ink">
-                  <td className="px-4 py-3">{doc.year}</td>
-                  <td className="px-4 py-3">{doc.name}</td>
-                  <td className="px-4 py-3">
-                    <a href={doc.href} target="_blank" rel="noreferrer" className="text-aqua hover:text-[#0f4c81]">
-                      Open PDF
-                    </a>
-                  </td>
+        <div
+          data-reveal
+          className="relative overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white p-2 shadow-sm md:p-4"
+        >
+          <span
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#10284a] via-[#00B4D8] to-[#FF6900]"
+          />
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[560px] text-left text-sm">
+              <thead>
+                <tr className="text-[#10284a]">
+                  <th className="px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.14em]">Year</th>
+                  <th className="px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.14em]">Document</th>
+                  <th className="px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.14em]">View</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {docs.map((doc, i) => (
+                  <tr
+                    key={doc.href}
+                    className={`border-t border-[#E2E8F0] transition-colors duration-200 hover:bg-[#F4FAFD] ${
+                      i % 2 === 1 ? 'bg-[#F8FAFC]' : 'bg-white'
+                    }`}
+                  >
+                    <td className="px-4 py-4">
+                      <span className="inline-flex items-center rounded-lg bg-[#EAF8FC] px-3 py-1 font-mono text-xs font-black text-[#007A96] ring-1 ring-[#00B4D8]/25">
+                        {doc.year}
+                      </span>
+                    </td>
+                    <td className="px-4 py-4 font-semibold text-[#10284a]">{doc.name}</td>
+                    <td className="px-4 py-4">
+                      <a
+                        href={doc.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group inline-flex items-center gap-2 rounded-full border border-[#00B4D8]/40 bg-white px-4 py-2 text-xs font-bold text-[#007A96] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0096B7] hover:bg-[#0096B7] hover:text-white hover:shadow-md"
+                      >
+                        Open PDF
+                        <span
+                          aria-hidden
+                          className="transition-transform duration-300 group-hover:translate-x-0.5"
+                        >
+                          ↗
+                        </span>
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 

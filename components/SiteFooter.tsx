@@ -4,7 +4,7 @@ const footerYear = '2026';
 
 export default function SiteFooter() {
   return (
-    <footer className="relative -mt-px overflow-hidden bg-[#eef6ff] pt-1 before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#eef6ff] before:content-['']">
+    <footer className="site-footer relative -mt-px overflow-hidden bg-[#eef6ff] pt-1 before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[#eef6ff] before:content-['']">
       <div className="section-shell relative z-10">
         <div className="rounded-[2rem] border border-[#E2E8F0] bg-white/92 p-6 shadow-[0_18px_46px_rgba(20,30,51,0.07)] md:p-8">
           <div className="grid gap-8 border-b border-slate-200 pb-8 md:grid-cols-[minmax(0,1.1fr)_auto] md:items-end">

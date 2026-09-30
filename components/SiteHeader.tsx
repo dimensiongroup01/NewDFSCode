@@ -47,7 +47,7 @@ export default function SiteHeader() {
       </Link>
 
       <header
-        className={`sticky top-0 z-40 w-full bg-white transition-shadow duration-300 ${
+        className={`site-header sticky top-0 z-40 w-full bg-white transition-shadow duration-300 ${
           scrolled
             ? 'shadow-[0_2px_24px_rgba(16,40,74,0.08)]'
             : 'border-b border-slate-100 shadow-none'

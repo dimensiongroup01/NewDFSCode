@@ -4,6 +4,7 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
+import { InfoCard, QuoteCard } from '@/components/InfoKit';
 
 export const metadata: Metadata = {
   title: 'Investor Advisory',
@@ -20,6 +21,25 @@ const capabilities = [
   'Debt Structuring',
   'M&A Transactions',
   'Valuation & Due Diligence'
+];
+
+const governance = [
+  {
+    title: 'SEBI Registration',
+    text: 'SEBI-aligned merchant banking and debt segment execution framework.'
+  },
+  {
+    title: 'Due Diligence Process',
+    text: 'Structured process controls from mandate onboarding to final closure reporting.'
+  },
+  {
+    title: 'Risk Framework',
+    text: 'Transaction risk calibration and scenario planning integrated across assignments.'
+  },
+  {
+    title: 'Ethical Standards',
+    text: 'Governance-first execution standards with transparent client communication.'
+  }
 ];
 
 const testimonials = [
@@ -59,11 +79,16 @@ export default function InvestorPage() {
 
       <section className="section-shell py-12 md:py-16">
         <p className="chapter-label">Institutional Capabilities</p>
-        <div className="mt-4 grid gap-4 md:grid-cols-3">
-          {capabilities.map((item) => (
-            <article key={item} data-reveal className="card p-5">
-              <h2 className="font-display text-xl text-slate-900">{item}</h2>
-            </article>
+        <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {capabilities.map((item, i) => (
+            <div key={item} data-reveal>
+              <InfoCard
+                index={i + 1}
+                title={item}
+                accent={['#0096B7', '#10284a', '#FF6900'][i % 3]}
+                className="h-full"
+              />
+            </div>
           ))}
         </div>
       </section>
@@ -71,35 +96,29 @@ export default function InvestorPage() {
       
 
       <section className="section-shell py-12 md:py-16">
-        <p className="chapter-label">Compliance & Governance</p>
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <article data-reveal className="card p-6">
-            <h2 className="font-display text-2xl">SEBI Registration</h2>
-            <p className="mt-2 text-sm text-slate-800">SEBI-aligned merchant banking and debt segment execution framework.</p>
-          </article>
-          <article data-reveal className="card p-6">
-            <h2 className="font-display text-2xl">Due Diligence Process</h2>
-            <p className="mt-2 text-sm text-slate-800">Structured process controls from mandate onboarding to final closure reporting.</p>
-          </article>
-          <article data-reveal className="card p-6">
-            <h2 className="font-display text-2xl">Risk Framework</h2>
-            <p className="mt-2 text-sm text-slate-800">Transaction risk calibration and scenario planning integrated across assignments.</p>
-          </article>
-          <article data-reveal className="card p-6">
-            <h2 className="font-display text-2xl">Ethical Standards</h2>
-            <p className="mt-2 text-sm text-slate-800">Governance-first execution standards with transparent client communication.</p>
-          </article>
+        <p className="chapter-label">Compliance &amp; Governance</p>
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
+          {governance.map((item, i) => (
+            <div key={item.title} data-reveal>
+              <InfoCard
+                index={i + 1}
+                title={item.title}
+                text={item.text}
+                accent={['#0096B7', '#10284a', '#FF6900', '#00B4D8'][i % 4]}
+                className="h-full"
+              />
+            </div>
+          ))}
         </div>
       </section>
 
       <section className="section-shell py-12 md:py-16">
         <p className="chapter-label">Client Testimonials</p>
-        <div className="mt-4 flex snap-x gap-4 overflow-x-auto pb-2">
+        <div className="mt-5 flex snap-x gap-4 overflow-x-auto pb-2">
           {testimonials.map((item) => (
-            <article key={item.name} data-reveal className="card min-w-[18rem] snap-start p-6 md:min-w-[24rem]">
-              <p className="text-sm text-slate-800">{item.quote}</p>
-              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-600">{item.name}</p>
-            </article>
+            <div key={item.name} data-reveal className="flex">
+              <QuoteCard quote={item.quote} name={item.name} />
+            </div>
           ))}
         </div>
       </section>

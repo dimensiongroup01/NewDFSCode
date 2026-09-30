@@ -196,9 +196,15 @@ export default function MerchantBankingPage() {
 
           <div className="section-shell relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* SEBI badge — prominent */}
-            <div className="inline-flex items-center gap-3 rounded-2xl border border-[#00D4FF]/30 bg-[#00D4FF]/10 px-5 py-3 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-3 rounded-2xl border border-[#00D4FF]/30 bg-[#00D4FF]/10 px-5 py-3 shadow-[0_0_40px_rgba(0,212,255,0.12)] backdrop-blur-sm transition-shadow duration-300 hover:shadow-[0_0_55px_rgba(0,212,255,0.2)]">
               <div className="flex flex-col">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#00D4FF]/70">SEBI Registered Merchant Banker</span>
+                <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#00D4FF]/70">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00D4FF]/60" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#00D4FF]" />
+                  </span>
+                  SEBI Registered Merchant Banker
+                </span>
                 <span className="mt-0.5 font-mono text-base font-black tracking-[0.15em] text-[#00D4FF] md:text-lg">INM000013314</span>
               </div>
               <div className="h-10 w-px bg-[#00D4FF]/20" />
@@ -223,13 +229,13 @@ export default function MerchantBankingPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="rounded-xl bg-[#FF6900] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#FF6900]/30 transition hover:bg-[#e05c00] hover:shadow-xl"
+                className="rounded-xl bg-[#FF6900] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#FF6900]/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e05c00] hover:shadow-xl"
               >
                 Discuss a Mandate →
               </Link>
               <Link
                 href="/about-us"
-                className="rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+                className="rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#00D4FF]/40 hover:bg-white/20"
               >
                 Our Team
               </Link>
@@ -243,9 +249,17 @@ export default function MerchantBankingPage() {
               ].map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm"
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#00D4FF]/40 hover:bg-white/10"
                 >
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#00D4FF]/60">{s.label}</p>
+                  {/* Accent line */}
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-[#00D4FF]/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  />
+                  <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#00D4FF]/60">
+                    <span aria-hidden className="h-1 w-1 rounded-full bg-[#00D4FF]/70" />
+                    {s.label}
+                  </p>
                   <p className="mt-1 font-mono text-base font-black text-white md:text-lg">{s.value}</p>
                   <p className="mt-0.5 text-[11px] text-slate-400">{s.sub}</p>
                 </div>
@@ -266,7 +280,10 @@ export default function MerchantBankingPage() {
           <div className="overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white shadow-sm">
             <div className="grid md:grid-cols-[1.3fr_0.7fr]">
               <div className="p-8 md:p-12">
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Who We Are</p>
+                <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">
+                  <span aria-hidden className="h-px w-5 bg-[#FF6900]/60" />
+                  Who We Are
+                </p>
                 <h2 className="mt-3 text-2xl font-bold text-[#10284a] md:text-3xl">
                   A Compliance-First, Execution-Driven<br />Merchant Banking Platform
                 </h2>
@@ -301,10 +318,61 @@ export default function MerchantBankingPage() {
           </div>
         </section>
 
+        {/* ── Disclaimer — Non-SEBI Regulated Activities ── */}
+        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white p-8 shadow-sm md:p-12">
+            {/* Top accent bar */}
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#FF6900] via-[#00B4D8] to-transparent" />
+
+            <article>
+              <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">
+                <span aria-hidden className="h-px w-5 bg-[#FF6900]/60" />
+                Disclaimer
+              </p>
+              <h2 className="mt-2 text-2xl font-bold text-[#10284a] md:text-3xl">
+                Disclaimer for Non-SEBI Regulated Activities
+              </h2>
+
+              <div className="mt-6 space-y-4 text-sm leading-relaxed text-slate-600 md:text-base">
+                <p>
+                  In terms of regulation 13A (1) of the SEBI (Merchant Bankers) Regulations, 1992, a merchant banker
+                  shall undertake the specified &ldquo;permitted activities&rdquo; in the securities market, that are
+                  regulated by the Securities and Exchange Board of India (&ldquo;SEBI&rdquo;). As per regulation 13A (2)
+                  of the said Regulations, a merchant banker may also undertake other activities regulated by SEBI or any
+                  other financial sector regulator or authority, as well as activities that do not fall under the purview
+                  of SEBI or any other financial sector regulator or authority, on an arms-length basis through separate
+                  business units.
+                </p>
+                <p>
+                  Accordingly, Dimension Financial Solutions Private Limited, a SEBI registered Merchant Banker (SEBI
+                  Registration No. INM000013314), in addition to undertaking the Permitted Activities, may from time to
+                  time undertake certain fee-based, non-fund based activities pertaining to the Financial services
+                  sector, which are not regulated by SEBI or any other financial sector regulator. Such activities
+                  include Private Placements of Equity &amp; Debt securities, Debt Advisory and Debt Syndication
+                  Services, Advisory on Mergers and Acquisitions, Non-debt Financial Advisory, Valuation services under
+                  Foreign Exchange Management Act, 1999 and Income Tax Act.
+                </p>
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-800">Note</p>
+                <p className="mt-2 text-sm leading-relaxed text-amber-900 md:text-base">
+                  <span className="font-bold">Note: </span>
+                  None of the SEBI Investor Protection mechanism will be available for any grievances or disputes
+                  arising out of or pertaining to the Non-SEBI regulated activities mentioned below.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
         {/* ── Services Grid ── */}
         <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Our Services</p>
+            <p className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">
+              <span aria-hidden className="h-px w-5 bg-[#FF6900]/60" />
+              Our Services
+            </p>
             <h2 className="mt-2 text-3xl font-bold text-[#10284a] md:text-4xl">
               Comprehensive Merchant Banking Services
             </h2>
@@ -313,52 +381,101 @@ export default function MerchantBankingPage() {
             </p>
           </div>
 
+          {/* Quick-jump service index */}
+          <nav
+            aria-label="Service index"
+            className="mb-8 rounded-2xl border border-[#E2E8F0] bg-white/80 p-3 shadow-sm backdrop-blur-sm"
+          >
+            <div className="flex flex-wrap justify-center gap-2">
+              {services.map((svc) => (
+                <a
+                  key={svc.id}
+                  href={`#service-${svc.id}`}
+                  className="group inline-flex items-center gap-2 rounded-full border border-[#E2E8F0] bg-white px-3.5 py-2 text-xs font-semibold text-slate-600 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#00B4D8] hover:text-[#10284a] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00B4D8]"
+                >
+                  <span className="font-mono text-[10px] font-black text-[#0096B7]">{svc.id}</span>
+                  <span aria-hidden className="h-3 w-px bg-slate-200 transition-colors group-hover:bg-[#00B4D8]/50" />
+                  {svc.title}
+                </a>
+              ))}
+            </div>
+          </nav>
+
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {services.map((svc) => (
               <article
                 key={svc.id}
-                className="group relative overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#00B4D8] hover:shadow-lg"
+                id={`service-${svc.id}`}
+                className="group relative scroll-mt-28 overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#00B4D8]/60 hover:shadow-[0_18px_44px_rgba(16,40,74,0.12)] target:border-[#00B4D8]"
               >
+                {/* Corner glow */}
+                <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#00B4D8]/0 blur-2xl transition-colors duration-500 group-hover:bg-[#00B4D8]/15" />
+
+                {/* Watermark index */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -top-2 right-3 font-mono text-[72px] font-black leading-none text-[#10284a]/5 transition-colors duration-500 group-hover:text-[#0096B7]/10"
+                >
+                  {svc.id}
+                </span>
+
                 {/* Top accent bar */}
                 <div
-                  className="absolute inset-x-0 top-0 h-0.5"
-                  style={{ background: `linear-gradient(90deg, ${svc.accent}, transparent 70%)` }}
+                  className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
+                  style={{ background: `linear-gradient(90deg, ${svc.accent}, #00B4D8)` }}
                 />
 
-                <div className="flex items-start gap-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#F0F7FF] text-xl shadow-inner">
+                <div className="relative flex items-start gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#F0F7FF] to-white text-xl ring-1 ring-[#00B4D8]/25 transition-transform duration-300 group-hover:scale-105">
                     {serviceIcons[svc.id]}
                   </span>
                   <div>
-                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF6900]">
+                    <p className="flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF6900]">
+                      <span aria-hidden className="h-px w-4 bg-[#FF6900]/60" />
                       Service {svc.id}
                     </p>
-                    <h3 className="mt-0.5 text-base font-bold leading-snug text-[#10284a]">
+                    <h3 className="mt-1 text-base font-bold leading-snug text-[#10284a]">
                       {svc.title}
                     </h3>
                   </div>
                 </div>
 
-                <p className="mt-4 text-sm leading-relaxed text-slate-500">{svc.summary}</p>
+                <p className="relative mt-4 text-sm leading-relaxed text-slate-500">{svc.summary}</p>
 
-                <ul className="mt-4 space-y-1.5">
-                  {svc.points.map((pt) => (
-                    <li key={pt} className="flex items-start gap-2.5 text-sm text-slate-600">
+                {/* Points — infographic matrix */}
+                <ul className="relative mt-4 space-y-2 rounded-2xl border border-[#EDF2F7] bg-[#F8FAFC] p-3.5 transition-colors duration-300 group-hover:border-[#00B4D8]/25 group-hover:bg-[#F4FAFD]">
+                  {svc.points.map((pt, i) => (
+                    <li key={`${svc.id}-${i}`} className="flex items-start gap-3">
                       <span
-                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
-                        style={{ backgroundColor: svc.accent }}
-                      />
-                      {pt}
+                        className="mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-white font-mono text-[10px] font-black text-[#0096B7] ring-1 ring-inset ring-[#00B4D8]/30 transition-all duration-300 group-hover:bg-[#0096B7] group-hover:text-white group-hover:ring-[#0096B7]"
+                        style={{ transitionDelay: `${i * 45}ms` }}
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-sm leading-relaxed text-slate-600">{pt}</span>
                     </li>
                   ))}
                 </ul>
 
-                <Link
-                  href="/contact"
-                  className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-[#0096B7] opacity-0 transition-all duration-300 group-hover:opacity-100"
-                >
-                  Discuss this service <span>→</span>
-                </Link>
+                <div className="relative mt-5 flex items-center justify-between gap-3 border-t border-dashed border-slate-200 pt-4">
+                  <Link
+                    href="/contact"
+                    className="group/link inline-flex items-center gap-1.5 text-xs font-bold text-[#0096B7] transition-colors duration-200 hover:text-[#10284a]"
+                  >
+                    Discuss this service
+                    <span
+                      aria-hidden
+                      className="transition-transform duration-300 group-hover/link:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </Link>
+                  <span aria-hidden className="grid shrink-0 grid-cols-3 gap-1 opacity-70">
+                    {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((dot) => (
+                      <span key={dot} className="h-1 w-1 rounded-full bg-[#00B4D8]/50" />
+                    ))}
+                  </span>
+                </div>
               </article>
             ))}
           </div>
@@ -366,9 +483,15 @@ export default function MerchantBankingPage() {
 
         {/* ── Why Choose Us ── */}
         <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-[#E2E8F0] bg-white p-8 shadow-sm md:p-12">
-            <div className="mb-8">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Why Dimension</p>
+          <div className="relative overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white p-8 shadow-sm md:p-12">
+            {/* Ambient glow */}
+            <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#00B4D8]/5 blur-3xl" />
+
+            <div className="relative mb-8">
+              <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">
+                <span aria-hidden className="h-px w-5 bg-[#FF6900]/60" />
+                Why Dimension
+              </p>
               <h2 className="mt-2 text-2xl font-bold text-[#10284a] md:text-3xl">
                 Why Clients Choose Us for Critical Transactions
               </h2>
@@ -377,19 +500,34 @@ export default function MerchantBankingPage() {
               </p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {differentiators.map((item, i) => (
                 <div
                   key={item.title}
-                  className="group rounded-2xl border border-[#E2E8F0] p-5 transition duration-300 hover:-translate-y-1 hover:border-[#00B4D8] hover:shadow-md"
+                  className="group relative overflow-hidden rounded-2xl border border-[#E2E8F0] bg-[#FBFDFE] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#00B4D8]/60 hover:bg-white hover:shadow-[0_14px_34px_rgba(16,40,74,0.10)]"
                 >
-                  <div className="mb-3 flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#10284a] font-mono text-[11px] font-black text-white">
+                  {/* Sliding accent rail */}
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-gradient-to-b from-[#00B4D8] to-[#10284a] transition-transform duration-500 group-hover:scale-y-100"
+                  />
+                  {/* Watermark number */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -bottom-5 right-2 font-mono text-[64px] font-black leading-none text-[#10284a]/5 transition-colors duration-500 group-hover:text-[#0096B7]/10"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+
+                  <div className="relative mb-3 flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#10284a] to-[#0d1f3c] font-mono text-[11px] font-black text-white shadow-md shadow-[#10284a]/20 transition-transform duration-300 group-hover:scale-105">
                       {String(i + 1).padStart(2, '0')}
                     </span>
+                    <span aria-hidden className="h-px flex-1 bg-gradient-to-r from-[#00B4D8]/40 to-transparent" />
                   </div>
-                  <h3 className="text-sm font-bold text-[#10284a]">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-500">{item.text}</p>
+
+                  <h3 className="relative text-sm font-bold text-[#10284a]">{item.title}</h3>
+                  <p className="relative mt-2 text-sm leading-relaxed text-slate-500">{item.text}</p>
                 </div>
               ))}
             </div>
@@ -413,7 +551,10 @@ export default function MerchantBankingPage() {
             <div className="absolute left-1/2 top-0 h-64 w-96 -translate-x-1/2 rounded-full bg-[#0096B7]/30 blur-3xl" />
 
             <div className="relative z-10">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">Ready to Begin?</p>
+              <p className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-[#FF6900]">
+                <span aria-hidden className="h-px w-5 bg-[#FF6900]/60" />
+                Ready to Begin?
+              </p>
               <h2 className="mt-3 text-3xl font-black text-white md:text-5xl">
                 Discuss Your Mandate<br />
                 <span className="bg-gradient-to-r from-[#00D4FF] to-[#00B4D8] bg-clip-text text-transparent">
@@ -426,13 +567,13 @@ export default function MerchantBankingPage() {
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <Link
                   href="/contact"
-                  className="rounded-xl bg-[#FF6900] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#FF6900]/30 transition hover:bg-[#e05c00] hover:shadow-xl"
+                  className="rounded-xl bg-[#FF6900] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#FF6900]/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e05c00] hover:shadow-xl"
                 >
                   Get in Touch →
                 </Link>
                 <Link
                   href="/about-us"
-                  className="rounded-xl border border-white/20 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+                  className="rounded-xl border border-white/20 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#00D4FF]/40 hover:bg-white/20"
                 >
                   Meet the Team
                 </Link>

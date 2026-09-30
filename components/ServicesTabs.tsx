@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import { useState } from 'react';
+import { NumberChip, PointMatrix, StepCard } from '@/components/InfoKit';
 
 type ServiceBlock = {
   id: string;
@@ -54,44 +55,68 @@ export default function ServicesTabs() {
 
   return (
     <section className="section-shell py-14 md:py-20">
-      <div className="flex flex-wrap gap-2" data-reveal>
-        {blocks.map((block) => (
+      <div className="flex flex-wrap gap-2" data-reveal role="tablist" aria-label="Service lines">
+        {blocks.map((block, i) => (
           <button
             key={block.id}
+            type="button"
+            role="tab"
+            aria-selected={active === block.id}
             onClick={() => setActive(block.id)}
-            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+            className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 ${
               active === block.id
-                ? 'bg-[#0096B7] text-white shadow-[0_8px_24px_rgba(0,150,183,0.18)]'
-                : 'border border-[#E2E8F0]/70 bg-white text-[#10284a] hover:border-[#00B4D8]'
+                ? 'bg-gradient-to-r from-[#0096B7] to-[#10284a] text-white shadow-[0_10px_26px_rgba(0,150,183,0.22)]'
+                : 'border border-[#E2E8F0]/70 bg-white text-[#10284a] hover:-translate-y-0.5 hover:border-[#00B4D8] hover:shadow-sm'
             }`}
           >
+            <span
+              className={`font-mono text-[10px] font-black ${
+                active === block.id ? 'text-white/70' : 'text-[#0096B7]'
+              }`}
+            >
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <span aria-hidden className={`h-3 w-px ${active === block.id ? 'bg-white/30' : 'bg-slate-200'}`} />
             {block.label}
           </button>
         ))}
       </div>
 
       <div className="mt-6 grid gap-5 md:grid-cols-2">
-        <article data-reveal className="card p-6">
-          <h3 className="font-display text-2xl">{current.title}</h3>
-          <p className="mt-3 text-sm text-ink">{current.description}</p>
+        <article
+          data-reveal
+          className="group relative overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#00B4D8]/50 hover:shadow-[0_18px_40px_rgba(16,40,74,0.10)]"
+        >
+          <span
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#0096B7] to-[#00B4D8] opacity-80"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -right-14 -top-16 h-44 w-44 rounded-full bg-[#00B4D8]/10 blur-3xl"
+          />
+          <div className="relative flex items-center gap-3">
+            <NumberChip value={blocks.findIndex((block) => block.id === current.id) + 1} size="lg" />
+            <span aria-hidden className="h-px flex-1 bg-gradient-to-r from-[#00B4D8]/40 to-transparent" />
+          </div>
+          <h3 className="relative mt-3 font-display text-2xl text-[#10284a]">{current.title}</h3>
+          <p className="relative mt-3 text-sm leading-relaxed text-slate-600">{current.description}</p>
         </article>
-        <article data-reveal className="card p-6">
-          <h3 className="font-display text-2xl">Deliverables</h3>
-          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-ink">
-            {current.deliverables.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+
+        <article
+          data-reveal
+          className="relative overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#00B4D8]/50 hover:shadow-[0_18px_40px_rgba(16,40,74,0.10)]"
+        >
+          <h3 className="font-display text-2xl text-[#10284a]">Deliverables</h3>
+          <PointMatrix points={current.deliverables} className="mt-4" />
         </article>
       </div>
 
-      <div className="mt-5 grid gap-3 md:grid-cols-4">
+      <div className="mt-5 grid gap-4 md:grid-cols-4">
         {current.process.map((phase, index) => (
-          <article key={phase.step} data-reveal className="card p-5">
-            <p className="text-xs font-semibold text-[#FF6900]">0{index + 1}</p>
-            <h4 className="mt-2 font-display text-lg">{phase.step}</h4>
-            <p className="mt-1 text-sm text-ink">{phase.detail}</p>
-          </article>
+          <div key={phase.step} data-reveal>
+            <StepCard step={`0${index + 1}`} title={phase.step} text={phase.detail} />
+          </div>
         ))}
       </div>
     </section>
