@@ -1,6 +1,6 @@
-﻿'use client';
+'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -17,173 +17,136 @@ const navLinks = [
 
 export default function SiteHeader() {
   const pathname = usePathname();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // The menu is open only on the path it was opened from, so navigating closes it.
+  const [menuOpenOn, setMenuOpenOn] = useState<string | null>(null);
+  const isMenuOpen = menuOpenOn === pathname;
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isMenuOpen]);
 
+  const isActive = (href: string) => pathname === href || (href === '/home' && pathname === '/');
+
   return (
-    <React.Fragment>
-      
-      
-      <Link
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:inline-flex focus:items-center focus:rounded-lg focus:bg-[#10284a] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg focus:outline focus:outline-3 focus:outline-offset-2 focus:outline-[#FF6900]"
-      >
-        Skip to main content
-      </Link>
+    <header
+      className={`sticky top-0 z-40 w-full border-b bg-white/90 backdrop-blur-xl transition-shadow duration-300 ${
+        scrolled ? 'border-line shadow-[0_6px_24px_rgba(16,40,74,0.07)]' : 'border-transparent'
+      }`}
+    >
+      <div className="section-shell flex h-[4.5rem] items-center justify-between gap-6 md:h-20">
+        {/* Logo */}
+        <Link href="/home" prefetch={false} className="flex shrink-0 items-center rounded-lg">
+          <Image
+            src="/images/logo.svg"
+            alt="Dimension Financial"
+            width={340}
+            height={86}
+            priority
+            className="h-12 w-auto object-contain md:h-14"
+          />
+        </Link>
 
-      <header
-        className={`site-header sticky top-0 z-40 w-full bg-white transition-shadow duration-300 ${
-          scrolled
-            ? 'shadow-[0_2px_24px_rgba(16,40,74,0.08)]'
-            : 'border-b border-slate-100 shadow-none'
-        }`}
-      >
-        <div className="flex min-h-20 w-full items-center justify-between gap-4 px-4 sm:px-6 lg:px-10 xl:px-12 2xl:px-16">
+        {/* Desktop nav */}
+        <nav aria-label="Primary" className="hidden items-center gap-1 xl:flex">
+          {navLinks.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                prefetch={false}
+                aria-current={active ? 'page' : undefined}
+                className={`relative rounded-full px-3.5 py-2 text-[0.875rem] font-semibold transition-colors duration-150 ${
+                  active ? 'text-navy' : 'text-slate-500 hover:bg-navy-50 hover:text-navy'
+                }`}
+              >
+                {item.label}
+                <span
+                  aria-hidden
+                  className={`absolute inset-x-3.5 -bottom-[1.375rem] h-[2px] rounded-full bg-accent transition-opacity ${
+                    active ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+              </Link>
+            );
+          })}
+        </nav>
 
-          {/* â”€â”€ Logo â”€â”€ */}
-          <Link
-            href="/home"
-            prefetch={false}
-            className="inline-flex max-w-[15rem] shrink-0 items-center rounded-lg focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#00B4D8] sm:max-w-[17rem] md:max-w-none"
-          >
-            <Image
-              src="/images/logo.svg"
-              alt="Dimension Financial"
-              width={340}
-              height={86}
-              className="h-14 w-auto object-contain sm:h-16 md:h-[4.5rem]"
-            />
+        <div className="flex items-center gap-3">
+          <Link href="/contact" prefetch={false} className="btn-primary hidden !px-5 !py-2.5 sm:inline-flex">
+            Get in Touch
           </Link>
 
-          {/* â”€â”€ Desktop nav (lg+) â”€â”€ */}
-          <nav aria-label="Primary" className="hidden items-center gap-0.5 xl:flex">
-            {navLinks.map((item) => {
-              const isActive =
-                pathname === item.href ||
-                (item.href === '/home' && pathname === '/');
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  prefetch={false}
-                  aria-current={isActive ? 'page' : undefined}
-                  className={`group relative px-3 py-2 text-[0.8125rem] tracking-wide transition-colors duration-150 2xl:px-4 2xl:text-sm ${
-                    isActive
-                      ? 'font-bold text-[#10284a]'
-                      : 'font-medium text-slate-500 hover:text-[#10284a]'
-                  } rounded-lg focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#00B4D8]`}
-                >
-                  <span className={`transition-all duration-150 ${!isActive ? 'group-hover:font-bold' : ''}`}>
-                    {item.label}
-                  </span>
-                  {/* Small blue dot beneath active link */}
-                  <span
-                    className="hidden"
-                  />
-                </Link>
-              );
-            })}
-
-            {/* CTA */}
-            <Link
-              href="/contact"
-              prefetch={false}
-              className="ml-3 inline-flex items-center rounded-lg bg-[#0096B7] px-3.5 py-2 text-[0.8125rem] font-semibold text-white transition-all duration-200 hover:bg-[#007A96] hover:shadow-[0_6px_20px_rgba(0,150,183,0.22)] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#00B4D8] 2xl:text-sm"
-            >
-              Get in Touch
-            </Link>
-          </nav>
-
-          {/* â”€â”€ Hamburger (below lg) â”€â”€ */}
+          {/* Menu button (below xl) */}
           <button
             type="button"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav"
-            onClick={() => setIsMenuOpen((p) => !p)}
-            className="flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-[5px] rounded-lg border border-slate-200 bg-white transition-colors hover:border-[#10284a] hover:bg-slate-50 focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#00B4D8] xl:hidden"
+            onClick={() => setMenuOpenOn(isMenuOpen ? null : pathname)}
+            className="flex h-11 w-11 flex-col items-center justify-center gap-[5px] rounded-full border border-line bg-white transition-colors hover:border-navy xl:hidden"
           >
             <span
-              className={`h-[1.5px] w-5 rounded-full bg-[#10284a] transition-all duration-300 ${
+              className={`h-[1.5px] w-5 rounded-full bg-navy transition-all duration-300 ${
                 isMenuOpen ? 'translate-y-[6.5px] rotate-45' : ''
               }`}
             />
+            <span className={`h-[1.5px] w-5 rounded-full bg-navy transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
             <span
-              className={`h-[1.5px] w-5 rounded-full bg-[#10284a] transition-all duration-300 ${
-                isMenuOpen ? 'opacity-0' : ''
-              }`}
-            />
-            <span
-              className={`h-[1.5px] w-5 rounded-full bg-[#10284a] transition-all duration-300 ${
+              className={`h-[1.5px] w-5 rounded-full bg-navy transition-all duration-300 ${
                 isMenuOpen ? '-translate-y-[6.5px] -rotate-45' : ''
               }`}
             />
           </button>
         </div>
+      </div>
 
-        {/* â”€â”€ Mobile / tablet drawer â”€â”€ */}
-        {isMenuOpen && (
-          <div
-            id="mobile-nav"
-            className="overflow-hidden border-t border-slate-100 bg-white transition-all duration-300 ease-in-out xl:hidden"
-          >
-            <nav aria-label="Primary" className="flex flex-col px-5 py-3 sm:px-8">
-              {navLinks.map((item) => {
-                const isActive =
-                  pathname === item.href ||
-                  (item.href === '/home' && pathname === '/');
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    prefetch={false}
-                    aria-current={isActive ? 'page' : undefined}
-                    className={`flex items-center gap-3 border-b border-slate-50 py-3.5 text-[15px] transition-colors duration-150 last:border-0 ${
-                      isActive
-                        ? 'font-bold text-[#10284a]'
-                        : 'font-medium text-slate-400 hover:font-bold hover:text-[#10284a]'
-                    } rounded-lg focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#00B4D8]`}
-                  >
-                    {/* Blue accent bar for active link */}
-                    <span
-                      className={`h-4 w-[3px] shrink-0 rounded-full transition-all duration-200 ${
-                        isActive ? 'bg-[#00B4D8]' : 'bg-transparent'
-                      }`}
-                    />
+      {/* Mobile / tablet menu */}
+      {isMenuOpen && (
+        <div id="mobile-nav" className="h-[calc(100svh-4.5rem)] overflow-y-auto border-t border-line bg-white xl:hidden">
+          <nav aria-label="Primary" className="section-shell flex flex-col py-4">
+            {navLinks.map((item, i) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  prefetch={false}
+                  aria-current={active ? 'page' : undefined}
+                  className={`flex items-center justify-between border-b border-line py-4 font-display text-xl transition-colors ${
+                    active ? 'text-navy' : 'text-slate-500 hover:text-navy'
+                  }`}
+                >
+                  <span className="flex items-center gap-4">
+                    <span className="font-body text-xs font-bold tabular-nums text-accent">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
                     {item.label}
-                  </Link>
-                );
-              })}
+                  </span>
+                  <span aria-hidden className={active ? 'text-accent' : 'text-slate-300'}>
+                    →
+                  </span>
+                </Link>
+              );
+            })}
 
-              {/* Mobile CTA */}
-              <Link
-                href="/contact"
-                prefetch={false}
-                className="mt-4 mb-1 flex items-center justify-center rounded-lg bg-[#0096B7] px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-[#007A96] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[#00B4D8]"
-              >
-                Get in Touch
-              </Link>
-            </nav>
-          </div>
-        )}
-      </header>
-    </React.Fragment>
+            <Link href="/contact" prefetch={false} className="btn-primary mt-6 w-full !py-3.5">
+              Get in Touch
+            </Link>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 }
-
-

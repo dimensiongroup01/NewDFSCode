@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import ScrollReveal from '@/components/ScrollReveal';
@@ -61,75 +61,85 @@ export default function InvestorPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main-content" tabIndex={-1} className="grid-overlay">
+      <main id="main-content" tabIndex={-1} className="min-h-screen">
 
-      <section className="section-shell py-16 md:py-24">
-        <p className="chapter-label">Investor Landing Page</p>
-        <h1 className="chapter-title">Structured Capital Advisory for Institutional Growth</h1>
-        <p className="chapter-copy mt-4">SEBI-Registered Merchant Banking Expertise</p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/contact" className="future-cta">
-            Schedule Strategic Consultation
-          </Link>
-          <a href="/Documents/Dimension financial Presentation.pdf" target="_blank" rel="noreferrer" className="future-cta">
-            Download Corporate Profile
-          </a>
+      <section className="band-navy">
+        <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 -z-10 h-[28rem] w-[28rem] rounded-full bg-aqua/20 blur-[120px]" />
+        <div className="section-shell py-16 md:py-24">
+          <p className="eyebrow eyebrow-light">Investor Landing Page</p>
+          <h1 className="heading-xl mt-5 max-w-4xl text-white">Structured Capital Advisory for Institutional Growth</h1>
+          <p className="mt-6 border-l-2 border-accent pl-5 text-lg text-slate-300">SEBI-Registered Merchant Banking Expertise</p>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link href="/contact" className="btn-accent">
+              Schedule Strategic Consultation
+            </Link>
+            <a href="/Documents/Dimension financial Presentation.pdf" target="_blank" rel="noreferrer" className="btn-ghost-light">
+              Download Corporate Profile
+            </a>
+          </div>
+        </div>
+        <div aria-hidden className="h-1 w-full bg-gradient-to-r from-aqua via-aqua-600 to-accent" />
+      </section>
+
+      <section className="section bg-paper">
+        <div className="section-shell">
+          <p className="eyebrow">Institutional Capabilities</p>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {capabilities.map((item, i) => (
+              <div key={item} data-reveal>
+                <InfoCard
+                  index={i + 1}
+                  title={item}
+                  accent={['#0096B7', '#10284a', '#FF6900'][i % 3]}
+                  className="h-full"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="section-shell py-12 md:py-16">
-        <p className="chapter-label">Institutional Capabilities</p>
-        <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {capabilities.map((item, i) => (
-            <div key={item} data-reveal>
-              <InfoCard
-                index={i + 1}
-                title={item}
-                accent={['#0096B7', '#10284a', '#FF6900'][i % 3]}
-                className="h-full"
-              />
-            </div>
-          ))}
+      <section className="section border-y border-line bg-white">
+        <div className="section-shell">
+          <p className="eyebrow">Compliance &amp; Governance</p>
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            {governance.map((item, i) => (
+              <div key={item.title} data-reveal>
+                <InfoCard
+                  index={i + 1}
+                  title={item.title}
+                  text={item.text}
+                  accent={['#0096B7', '#10284a', '#FF6900', '#00B4D8'][i % 4]}
+                  className="h-full"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      
-
-      <section className="section-shell py-12 md:py-16">
-        <p className="chapter-label">Compliance &amp; Governance</p>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
-          {governance.map((item, i) => (
-            <div key={item.title} data-reveal>
-              <InfoCard
-                index={i + 1}
-                title={item.title}
-                text={item.text}
-                accent={['#0096B7', '#10284a', '#FF6900', '#00B4D8'][i % 4]}
-                className="h-full"
-              />
-            </div>
-          ))}
+      <section className="section bg-paper">
+        <div className="section-shell">
+          <p className="eyebrow">Client Testimonials</p>
+          <div className="mt-8 flex snap-x gap-5 overflow-x-auto pb-2 md:grid md:grid-cols-3 md:overflow-visible">
+            {testimonials.map((item) => (
+              <div key={item.name} data-reveal className="flex">
+                <QuoteCard quote={item.quote} name={item.name} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="section-shell py-12 md:py-16">
-        <p className="chapter-label">Client Testimonials</p>
-        <div className="mt-5 flex snap-x gap-4 overflow-x-auto pb-2">
-          {testimonials.map((item) => (
-            <div key={item.name} data-reveal className="flex">
-              <QuoteCard quote={item.quote} name={item.name} />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="section-shell py-16 md:py-24">
-        <p className="chapter-label">Final CTA</p>
-        <h2 className="chapter-title">Partner With Institutional Discipline.</h2>
-        <div className="mt-6">
-          <Link href="/contact" className="future-cta">
-            Begin Strategic Engagement
-          </Link>
+      <section className="section-shell pb-20 md:pb-28">
+        <div className="band-navy rounded-[1.75rem] px-6 py-14 text-center md:py-20">
+          <p className="eyebrow">Final CTA</p>
+          <h2 className="mt-5 font-display text-3xl font-semibold md:text-5xl">Partner With Institutional Discipline.</h2>
+          <div className="mt-8">
+            <Link href="/contact" className="btn-accent">
+              Begin Strategic Engagement
+            </Link>
+          </div>
         </div>
       </section>
 

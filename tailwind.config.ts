@@ -8,37 +8,47 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        body: ['var(--font-body)'],
-        display: ['var(--font-display)']
+        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Georgia', 'serif']
       },
       colors: {
+        navy: {
+          DEFAULT: '#10284a',
+          950: '#071427',
+          900: '#0b1d36',
+          700: '#1b3a63',
+          50: '#eef3f9'
+        },
+        aqua: {
+          DEFAULT: '#00B4D8',
+          600: '#0096B7',
+          700: '#007A96',
+          50: '#e8f7fb'
+        },
+        accent: {
+          DEFAULT: '#FF6900',
+          600: '#e25c00',
+          50: '#fff3ea'
+        },
         primary: {
           DEFAULT: '#00B4D8',
           dark: '#007A96'
         },
-        accent: '#FF6900',
-        aqua: '#00B4D8',
         gold: '#FF6900',
         mist: '#64748B',
-        surface: '#F8FAFB',
+        paper: '#F6F7F9',
+        surface: '#F6F7F9',
         text: '#0F172A',
-        border: '#E2E8F0',
-        ink: '#111827'
+        line: '#E3E8EF',
+        border: '#E3E8EF',
+        ink: '#1E293B'
       },
       boxShadow: {
-        glow: '0 0 90px rgba(0, 180, 216, 0.2)'
+        soft: '0 1px 2px rgba(16,40,74,0.04), 0 8px 24px rgba(16,40,74,0.06)',
+        lift: '0 2px 4px rgba(16,40,74,0.04), 0 18px 40px rgba(16,40,74,0.12)'
       },
-      fontSize: {
-        'xs': ['0.64rem', { lineHeight: '1.4' }],
-        'sm': ['0.74rem', { lineHeight: '1.5' }],
-        'base': ['0.82rem', { lineHeight: '1.6' }],
-        'lg': ['0.92rem', { lineHeight: '1.6' }],
-        'xl': ['1rem', { lineHeight: '1.5' }],
-        '2xl': ['1.12rem', { lineHeight: '1.4' }],
-        '3xl': ['1.26rem', { lineHeight: '1.3' }],
-        '4xl': ['1.44rem', { lineHeight: '1.2' }],
-        '5xl': ['1.62rem', { lineHeight: '1.15' }],
-        '6xl': ['1.8rem', { lineHeight: '1.1' }]
+      maxWidth: {
+        shell: '80rem'
       }
     }
   },

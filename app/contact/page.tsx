@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import PageHero from '@/components/PageHero';
 import ScrollReveal from '@/components/ScrollReveal';
-import StoryChapter from '@/components/StoryChapter';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 
@@ -106,12 +105,12 @@ export default function ContactPage() {
     return (
       <form
         onSubmit={handleReview}
-        className="space-y-6"
+        className="space-y-5"
         aria-labelledby="contact-form-heading"
         aria-describedby={errorMsg ? 'contact-form-feedback' : undefined}
       >
         <div>
-          <h2 id="contact-form-heading" className="text-2xl font-semibold text-[#10284a]">
+          <h2 id="contact-form-heading" className="heading-md">
             Send a Message
           </h2>
           <p className="mt-2 text-sm text-slate-600">
@@ -120,7 +119,7 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <label htmlFor="contact-name" className="mb-2 block text-sm font-semibold text-slate-800">
+          <label htmlFor="contact-name" className="field-label">
             Full Name
           </label>
           <input
@@ -137,7 +136,7 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <label htmlFor="contact-email" className="mb-2 block text-sm font-semibold text-slate-800">
+          <label htmlFor="contact-email" className="field-label">
             Email Address
           </label>
           <input
@@ -154,7 +153,7 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <label htmlFor="contact-phone" className="mb-2 block text-sm font-semibold text-slate-800">
+          <label htmlFor="contact-phone" className="field-label">
             Phone Number
           </label>
           <input
@@ -172,7 +171,7 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <label htmlFor="contact-service" className="mb-2 block text-sm font-semibold text-slate-800">
+          <label htmlFor="contact-service" className="field-label">
             Service Area
           </label>
           <select
@@ -189,7 +188,7 @@ export default function ContactPage() {
         </div>
 
         <div>
-          <label htmlFor="contact-message" className="mb-2 block text-sm font-semibold text-slate-800">
+          <label htmlFor="contact-message" className="field-label">
             Message
           </label>
           <textarea
@@ -208,7 +207,7 @@ export default function ContactPage() {
           </p>
         )}
 
-        <button className="btn-primary" type="submit">
+        <button className="btn-primary w-full !py-3.5 sm:w-auto" type="submit">
           Review & Submit
         </button>
 
@@ -220,9 +219,9 @@ export default function ContactPage() {
   function renderReview() {
     return (
       <div className="space-y-4">
-        <h3 className="text-lg font-bold text-[#10284a]">Review Your Details</h3>
+        <h3 className="heading-md">Review Your Details</h3>
 
-        <div className="space-y-2.5 rounded-2xl border border-[#EDF2F7] bg-[#F8FAFC] p-4">
+        <div className="divide-y divide-line rounded-2xl border border-line bg-paper px-5">
           {[
             { label: 'Name', value: data.name },
             { label: 'Email', value: data.email },
@@ -232,22 +231,22 @@ export default function ContactPage() {
           ].map((row) => (
             <div
               key={row.label}
-              className="flex flex-col gap-1 border-b border-dashed border-slate-200 pb-2.5 last:border-0 last:pb-0 sm:flex-row sm:items-start sm:gap-4"
+              className="flex flex-col gap-1 py-3.5 sm:flex-row sm:items-start sm:gap-4"
             >
-              <span className="w-24 shrink-0 text-xs font-bold uppercase tracking-[0.14em] text-[#007A96]">
+              <span className="w-24 shrink-0 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-aqua-700">
                 {row.label}
               </span>
-              <span className="text-sm leading-relaxed text-slate-700">{row.value}</span>
+              <span className="text-[0.95rem] leading-relaxed text-ink">{row.value}</span>
             </div>
           ))}
         </div>
 
         <div className="flex gap-3">
-          <button type="button" onClick={() => setStep('form')} className="btn-secondary transition-all duration-300 hover:-translate-y-0.5">
+          <button type="button" onClick={() => setStep('form')} className="btn-secondary">
             Edit
           </button>
 
-          <button type="button" onClick={handleConfirm} className="btn-primary transition-all duration-300 hover:-translate-y-0.5">
+          <button type="button" onClick={handleConfirm} className="btn-primary" disabled={submitting}>
             {submitting ? 'Sending...' : 'Confirm & Send'}
           </button>
         </div>
@@ -258,7 +257,7 @@ export default function ContactPage() {
   function renderSuccess() {
     return (
       <div className="space-y-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-5" role="alert">
-        <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-sm font-black text-white shadow-md">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-sm font-black text-white">
           ✓
         </span>
         <h3 className="text-base font-bold text-emerald-800">Message Sent Successfully</h3>
@@ -269,7 +268,7 @@ export default function ContactPage() {
             setResult('');
             setStep('form');
           }}
-          className="rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-md"
+          className="btn bg-emerald-600 text-white hover:bg-emerald-700"
         >
           Send Again
         </button>
@@ -287,7 +286,7 @@ export default function ContactPage() {
             setResult('');
             setStep('form');
           }}
-          className="rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-md"
+          className="btn bg-red-600 text-white hover:bg-red-700"
         >
           Try Again
         </button>
@@ -299,37 +298,37 @@ export default function ContactPage() {
     <>
       <SiteHeader />
 
-      <main className="p-6">
+      <main id="main-content" tabIndex={-1} className="min-h-screen">
         <PageHero kicker="Get In Touch" title="Contact Us" subtitle="Send us a message" />
 
-        <div className="section-shell">
-          <div className="relative mx-auto mt-10 max-w-2xl overflow-hidden rounded-3xl border border-[#E2E8F0] bg-white p-6 shadow-[0_22px_54px_rgba(15,23,42,0.08)] md:p-8">
-            <span
-              aria-hidden
-              className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#10284a] via-[#00B4D8] to-[#FF6900]"
-            />
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -right-16 -top-20 h-52 w-52 rounded-full bg-[#00B4D8]/10 blur-3xl"
-            />
-            <div aria-live="polite" aria-atomic="true" role="status" className="sr-only">
-              {step === 'success' && 'Message sent successfully. Thank you for contacting us.'}
-              {step === 'error' && errorMsg}
-              {submitting && 'Sending your message. Please wait.'}
+        <section className="section bg-paper">
+          <div className="section-shell grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+            <div data-reveal className="lg:sticky lg:top-32 lg:self-start">
+              <span aria-hidden className="block h-1 w-12 rounded-full bg-accent" />
+              <h2 className="heading-lg mt-5">Building Trust Through Every Conversation</h2>
+              <p className="lede mt-5">
+                Our team is ready to discuss your financial objectives and craft tailored solutions.
+              </p>
             </div>
-            <div className="relative">
+
+            <div className="card relative overflow-hidden p-6 md:p-10">
+              <span
+                aria-hidden
+                className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-aqua via-aqua-600 to-accent"
+              />
+              <div aria-live="polite" aria-atomic="true" role="status" className="sr-only">
+                {step === 'success' && 'Message sent successfully. Thank you for contacting us.'}
+                {step === 'error' && errorMsg}
+                {submitting && 'Sending your message. Please wait.'}
+              </div>
               {step === 'form' && renderForm()}
               {step === 'review' && renderReview()}
               {step === 'success' && renderSuccess()}
               {step === 'error' && renderError()}
             </div>
           </div>
-        </div>
+        </section>
 
-        <StoryChapter
-          title="Building Trust Through Every Conversation"
-          detail="Our team is ready to discuss your financial objectives and craft tailored solutions."
-        />
         <ScrollReveal />
       </main>
 

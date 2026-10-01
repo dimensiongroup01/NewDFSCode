@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { FormEvent, useState } from 'react';
 
@@ -42,12 +42,13 @@ export default function CareerApplyWhatsAppForm() {
   };
 
   return (
-    <form className="mt-4 space-y-3" onSubmit={onWhatsAppSubmit}>
+    <form className="mt-8 grid gap-4 sm:grid-cols-2" onSubmit={onWhatsAppSubmit}>
       <input
-        className="input-shell"
+        className="input-shell sm:col-span-2"
         type="text"
         required
         placeholder="Full Name"
+        aria-label="Full Name"
         value={fullName}
         onChange={(event) => setFullName(event.target.value)}
       />
@@ -56,6 +57,7 @@ export default function CareerApplyWhatsAppForm() {
         type="email"
         required
         placeholder="Email Address"
+        aria-label="Email Address"
         value={email}
         onChange={(event) => setEmail(event.target.value)}
       />
@@ -64,11 +66,13 @@ export default function CareerApplyWhatsAppForm() {
         type="tel"
         required
         placeholder="Phone Number"
+        aria-label="Phone Number"
         value={phone}
         onChange={(event) => setPhone(event.target.value)}
       />
       <select
         className="input-shell"
+        aria-label="Position"
         value={position}
         onChange={(event) => setPosition(event.target.value)}
       >
@@ -81,42 +85,43 @@ export default function CareerApplyWhatsAppForm() {
         className="input-shell"
         type="text"
         placeholder="Years of Experience (e.g. 3 years)"
+        aria-label="Years of Experience"
         value={experience}
         onChange={(event) => setExperience(event.target.value)}
       />
       <input
-        className="input-shell"
+        className="input-shell cursor-pointer file:mr-4 file:rounded-full file:border-0 file:bg-navy-50 file:px-4 file:py-1.5 file:text-xs file:font-semibold file:text-navy sm:col-span-2"
         type="file"
         accept=".pdf,.doc,.docx"
+        aria-label="Resume"
         onChange={(event) => setResumeName(event.target.files?.[0]?.name ?? '')}
       />
       <textarea
-        className="input-shell"
+        className="input-shell sm:col-span-2"
         rows={4}
         placeholder="Short profile summary (optional)"
+        aria-label="Short profile summary"
         value={message}
         onChange={(event) => setMessage(event.target.value)}
       />
-      <div className="grid gap-2 sm:grid-cols-2">
-        <button
-          type="submit"
-          className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5"
-        >
+      <div className="grid gap-3 sm:col-span-2 sm:grid-cols-2">
+        <button type="submit" className="btn-accent w-full !py-3.5">
           Apply via WhatsApp
         </button>
         <button
           type="button"
           onClick={onEmailClick}
-          className="rounded-full border border-blue-300 bg-white px-6 py-3 text-sm font-semibold text-blue-700 transition hover:-translate-y-0.5"
+          className="btn-secondary w-full !py-3.5"
           aria-describedby="mailto-warning"
         >
           Apply via Email
         </button>
       </div>
-      <p className="text-xs leading-relaxed text-slate-700">
+      <p className="text-xs leading-relaxed text-slate-500 sm:col-span-2">
         WhatsApp: +91 96507 99560. Email: hr@dimensiongrouo.co.in. Attach your resume in the selected channel.
       </p>
     </form>
+
   );
 }
 

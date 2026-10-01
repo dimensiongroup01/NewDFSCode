@@ -11,11 +11,7 @@ const nonSebiActivities = [
 ];
 
 export default function DisclaimerModal() {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    setOpen(true);
-  }, []);
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     if (!open) {

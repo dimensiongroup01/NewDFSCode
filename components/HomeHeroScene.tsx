@@ -90,61 +90,50 @@ export default function HomeHeroScene() {
   }, []);
 
   return (
-    <section
-      ref={rootRef}
-      className="relative overflow-hidden border-b border-border bg-surface/95"
-    >
-      {/* Background Glow */}
-      <div className="absolute left-[-10%] top-[-10%] h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(0,180,216,0.14),rgba(0,180,216,0))] blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,180,216,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,105,0,0.025)_1px,transparent_1px)] bg-[size:44px_44px] pointer-events-none" />
+    <section ref={rootRef} className="relative overflow-hidden border-b border-line bg-white">
+      {/* Soft brand wash */}
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[46%] bg-gradient-to-br from-aqua-50 via-white to-accent-50/60 lg:block" />
+      <div className="pointer-events-none absolute -left-40 top-1/3 h-[26rem] w-[26rem] rounded-full bg-aqua/10 blur-[110px]" />
 
-      <div className="section-shell relative z-10 grid min-h-[calc(100svh-5rem)] items-center gap-12 py-12 sm:py-16 md:py-20 lg:grid-cols-12 lg:gap-8 xl:gap-12 lg:py-20">
+      <div className="section-shell relative z-10 grid min-h-[calc(100svh-5rem)] items-center gap-12 py-14 md:py-20 lg:grid-cols-12 lg:gap-10">
 
-        {/* LEFT SIDE CONTENT - Spans 7 columns on large screens */}
-        <div className="hero-copy lg:col-span-7 w-full space-y-6 sm:space-y-8 self-center">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-primary-dark/95 sm:text-sm">
+        {/* Copy */}
+        <div className="hero-copy w-full space-y-7 lg:col-span-7">
+          <p className="eyebrow">
             Dimension Financial Solutions Private Limited
           </p>
 
-          <div className="inline-block max-w-full">
-            <h1 className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-[10px] font-bold uppercase leading-tight tracking-[0.12em] text-primary-dark shadow-[0_4px_12px_rgba(0,180,216,0.06)] sm:px-5 sm:py-2.5 sm:text-xs md:text-sm">
-              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-              SEBI Registered - Merchant Banker & Stock Broker
-            </h1>
-          </div>
+          <h1 className="inline-flex max-w-full items-center gap-2.5 rounded-full border border-navy/10 bg-navy-50 px-4 py-2 font-body text-[0.7rem] font-bold uppercase leading-tight tracking-[0.12em] text-navy sm:text-xs">
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            SEBI Registered - Merchant Banker & Stock Broker
+          </h1>
 
-          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-[3.25rem] lg:leading-[1.12] xl:text-[4.25rem] xl:leading-[1.08] max-w-[20ch]">
+          <h2 className="max-w-[18ch] font-display text-[2.6rem] font-semibold leading-[1.04] tracking-tight text-navy sm:text-5xl lg:text-[3.6rem] xl:text-[4.25rem]">
             Merchant Banking Services & Debt Securities Market
           </h2>
 
-          <p className="max-w-2xl text-base text-slate-600 sm:text-lg md:text-xl leading-relaxed">
+          <p className="max-w-xl text-base leading-relaxed text-[#526071] md:text-lg">
             Delivering comprehensive financial advisory, merchant banking and debt securities services.
             We provide focused and customized solutions in the areas of Investment Banking and Debt advisory.
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-wrap gap-4 pt-2">
-            <Link
-              href="/contact"
-              className="btn-primary rounded-full px-6 py-3 sm:px-8 sm:py-3.5 text-sm sm:text-base font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
-            >
+          <div className="flex flex-wrap gap-3 pt-1">
+            <Link href="/contact" className="btn-accent !px-7 !py-3.5">
               Start a Conversation
+              <span aria-hidden>→</span>
             </Link>
-
-            <Link
-              href="/about-us"
-              className="rounded-full border border-border bg-white px-6 py-3 sm:px-8 sm:py-3.5 text-sm sm:text-base font-semibold text-text transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-50 hover:border-slate-300 shadow-sm"
-            >
+            <Link href="/about-us" className="btn-secondary !px-7 !py-3.5">
               Explore the Firm
             </Link>
           </div>
         </div>
 
-        {/* RIGHT SIDE GRAPHIC - Spans 5 columns on large screens */}
-        <div className="lg:col-span-5 w-full flex items-center justify-center self-center lg:justify-end">
-          
-          <div className="relative w-full max-w-[32rem] aspect-square flex items-center justify-center p-2">
-            
+        {/* Graphic */}
+        <div className="flex w-full items-center justify-center lg:col-span-5 lg:justify-end">
+          <div className="relative flex aspect-square w-full max-w-[32rem] items-center justify-center rounded-[2rem] border border-line bg-white/80 p-3 shadow-lift backdrop-blur">
             {/* SVG Graphic */}
             <svg
               viewBox="0 0 500 500"
@@ -344,7 +333,7 @@ export default function HomeHeroScene() {
                 <path d="M 59.5 118.5 L 61 120 L 65 116" stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                 
                 {/* Text */}
-                <text x="80" y="115" fill="#0F172A" fontSize="10.5" fontWeight="700" fontFamily="sans-serif">Merchant Banking</text>
+                <text x="80" y="115" fill="#10284a" fontSize="10.5" fontWeight="700" fontFamily="sans-serif">Merchant Banking</text>
                 <text x="80" y="128" fill="#64748B" fontSize="8.5" fontWeight="600" fontFamily="sans-serif">SEBI Reg. Since 2025</text>
               </g>
 
@@ -357,13 +346,13 @@ export default function HomeHeroScene() {
                 <path d="M 301 341 L 301 337 M 304 341 L 304 333 M 307 341 L 307 335" stroke="#00B4D8" strokeWidth="1.5" strokeLinecap="round" fill="none" />
                 
                 {/* Text */}
-                <text x="322" y="334" fill="#0F172A" fontSize="10.5" fontWeight="700" fontFamily="sans-serif">Debt Syndication</text>
+                <text x="322" y="334" fill="#10284a" fontSize="10.5" fontWeight="700" fontFamily="sans-serif">Debt Syndication</text>
                 <text x="322" y="347" fill="#FF6900" fontSize="9.5" fontWeight="800" fontFamily="sans-serif">INR 1000 Cr+ AUM</text>
               </g>
 
               {/* Panel 3: Stock Broking / BSE (Right Top Floating - Dark theme) */}
               <g className="hero-svg-card svg-float-p3" style={{ transformOrigin: '350px 80px' }}>
-                <rect x="265" y="50" width="175" height="56" rx="12" fill="#0A355D" fillOpacity="0.96" stroke="#1E293B" strokeWidth="1" filter="url(#panel-shadow)" />
+                <rect x="265" y="50" width="175" height="56" rx="12" fill="#10284a" fillOpacity="0.96" stroke="#1E293B" strokeWidth="1" filter="url(#panel-shadow)" />
                 
                 {/* Icon Circle */}
                 <circle cx="289" cy="78" r="9" fill="#38BDF8" fillOpacity="0.15" />

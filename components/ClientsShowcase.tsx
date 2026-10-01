@@ -1,6 +1,6 @@
-﻿'use client';
+'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 
@@ -113,12 +113,6 @@ function ClientLogo({ srcs, name, initials, color }: {
   const [srcIndex, setSrcIndex] = useState(0);
   const [failed, setFailed] = useState(false);
 
-  // Reset when the client changes (srcs array reference changes)
-  useEffect(() => {
-    setSrcIndex(0);
-    setFailed(false);
-  }, [srcs]);
-
   const handleError = () => {
     if (srcIndex + 1 < srcs.length) {
       setSrcIndex((i) => i + 1);
@@ -131,16 +125,16 @@ function ClientLogo({ srcs, name, initials, color }: {
     // Styled initials fallback â€” always looks intentional
     return (
       <div
-        className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-7"
+        className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-5"
         aria-label={name}
       >
         <div
-          className="flex h-56 w-full max-w-[620px] items-center justify-center rounded-3xl shadow-2xl text-white font-black text-3xl tracking-tight"
+          className="flex h-52 w-full max-w-[460px] items-center justify-center rounded-2xl font-display text-4xl font-semibold tracking-tight text-white shadow-lift"
           style={{ backgroundColor: color }}
         >
           {initials}
         </div>
-        <p className="text-center text-base font-semibold text-[#10284a] max-w-[260px] leading-snug">
+        <p className="max-w-[280px] text-center text-sm font-semibold leading-snug text-slate-500">
           {name}
         </p>
       </div>
@@ -149,7 +143,7 @@ function ClientLogo({ srcs, name, initials, color }: {
 
   return (
     <div
-      className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-7"
+      className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-5"
       aria-label={name}
     >
       <img
@@ -160,9 +154,9 @@ function ClientLogo({ srcs, name, initials, color }: {
         loading="lazy"
         decoding="async"
         referrerPolicy="no-referrer"
-        className="h-56 w-full max-w-[620px] rounded-3xl bg-white object-contain p-6 shadow-2xl"
+        className="h-52 w-full max-w-[460px] rounded-2xl bg-white object-contain p-8 shadow-lift ring-1 ring-line"
       />
-      <p className="text-center text-base font-semibold text-[#10284a] max-w-[260px] leading-snug">
+      <p className="max-w-[280px] text-center text-sm font-semibold leading-snug text-slate-500">
         {name}
       </p>
     </div>
@@ -223,20 +217,20 @@ export default function ClientsShowcase() {
   return (
     <section
       id="clients-slider"
-      className="w-full bg-[#eef6ff] px-6 py-8 overflow-hidden"
+      className="section overflow-hidden bg-paper"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="flex w-full flex-col gap-3">
+      <div className="section-shell">
 
         {/* Header */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-1 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-[#274b7b]"
+              className="eyebrow"
             >
               Client Network
             </motion.p>
@@ -245,99 +239,98 @@ export default function ClientsShowcase() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="font-display text-2xl font-bold leading-tight text-[#10284a] md:text-3xl"
+              className="heading-lg mt-5"
             >
               Trusted Relationships. Proven Expertise.
             </motion.h2>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-3">
+            <div className="mr-2 text-sm font-bold tabular-nums tracking-[0.2em] text-navy">
+              {String(activeIndex + 1).padStart(2, '0')} <span className="text-slate-300">/</span> {String(clients.length).padStart(2, '0')}
+            </div>
             <button
               onClick={prevSlide}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#10284a] shadow-sm transition hover:bg-[#10284a] hover:text-white"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-navy transition hover:border-navy hover:bg-navy hover:text-white"
               aria-label="Previous client"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={nextSlide}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#10284a] shadow-sm transition hover:bg-[#10284a] hover:text-white"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-navy transition hover:border-navy hover:bg-navy hover:text-white"
               aria-label="Next client"
             >
               <ChevronRight size={20} />
             </button>
-            <div className="font-mono text-xs font-semibold tracking-[0.28em] text-[#10284a]">
-              {String(activeIndex + 1).padStart(2, '0')} / {String(clients.length).padStart(2, '0')}
+          </div>
+        </div>
+
+        <div className="card mt-10 grid overflow-hidden lg:grid-cols-2">
+          <div className="flex flex-col justify-center gap-5 p-8 md:p-12">
+            <motion.div
+              key={`tag-${activeClient.id}`}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex w-fit rounded-full bg-aqua-50 px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-aqua-700"
+            >
+              Featured Identity
+            </motion.div>
+
+            <motion.h3
+              key={`short-${activeClient.id}`}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="font-display text-4xl font-semibold leading-tight text-navy md:text-5xl"
+            >
+              {activeClient.short}
+            </motion.h3>
+
+            <motion.p
+              key={`name-${activeClient.id}`}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 }}
+              className="text-base font-semibold text-navy/80"
+            >
+              {activeClient.name}
+            </motion.p>
+
+            <motion.p
+              key={`desc-${activeClient.id}`}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="max-w-lg body-copy"
+            >
+              {activeClient.description}
+            </motion.p>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a href="/contact" className="btn-primary">
+                Case Study
+                <ExternalLink size={14} />
+              </a>
+              <button className="btn-secondary">
+                Partnership Details
+              </button>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center border-t border-line bg-gradient-to-br from-navy-50 via-white to-aqua-50 p-8 md:p-12 lg:border-l lg:border-t-0">
+            <div className="relative h-[280px] w-full max-w-[480px]">
+              <ClientLogo
+                key={activeClient.id}
+                srcs={activeClient.imageSrcs}
+                name={activeClient.name}
+                initials={activeClient.initials}
+                color={activeClient.color}
+              />
             </div>
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-[2rem] bg-[#dce9ff] p-5 shadow-[0_26px_70px_rgba(13,47,132,0.08)] sm:p-6">
-          <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-white/90 to-transparent" />
-          <div className="relative grid min-h-[300px] gap-5 lg:grid-cols-[minmax(320px,0.95fr)_minmax(360px,1.05fr)] items-center">
-            <div className="space-y-4">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-flex rounded-full bg-white/90 px-3 py-1.5 text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-[#10284a] shadow-sm"
-              >
-                Featured Identity
-              </motion.div>
-
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="font-display text-3xl font-black leading-tight text-[#10284a]"
-              >
-                {activeClient.short}
-              </motion.h3>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 }}
-                className="text-base font-semibold text-[#1f365d]"
-              >
-                {activeClient.name}
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="max-w-xl text-sm leading-6 text-[#394d72]"
-              >
-                {activeClient.description}
-              </motion.p>
-
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-full bg-[#10284a] px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-[#0c2f65]"
-                >
-                  Case Study
-                  <ExternalLink size={14} className="ml-2" />
-                </a>
-                <button className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-[#10284a] transition hover:bg-[#f3f7ff]">
-                  Partnership Details
-                </button>
-              </div>
-            </div>
-
-            <div className="flex justify-center">
-              <div className="relative h-[260px] w-full max-w-[520px]">
-                <ClientLogo
-                  srcs={activeClient.imageSrcs}
-                  name={activeClient.name}
-                  initials={activeClient.initials}
-                  color={activeClient.color}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
           {clients.map((client, idx) => (
             <button
               key={client.id}
@@ -345,8 +338,8 @@ export default function ClientsShowcase() {
                 setDirection(idx > activeIndex ? 1 : -1);
                 setActiveIndex(idx);
               }}
-              className={`h-3 rounded-full transition-all duration-300 ${
-                idx === activeIndex ? 'w-10 bg-[#274b7b]' : 'w-3 bg-white shadow-sm'
+              className={`h-2 rounded-full transition-all duration-300 ${
+                idx === activeIndex ? 'w-10 bg-accent' : 'w-2 bg-navy/20 hover:bg-navy/40'
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />

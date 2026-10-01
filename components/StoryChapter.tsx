@@ -1,5 +1,3 @@
-﻿'use client';
-
 type StoryChapterProps = {
   label?: string;
   title: string;
@@ -9,22 +7,20 @@ type StoryChapterProps = {
 
 export default function StoryChapter({ title, detail, extraDetail }: StoryChapterProps) {
   return (
-    <section className="section-shell py-10 md:py-14">
-      <article data-reveal className="story-chapter group relative overflow-hidden">
-        <span
-          aria-hidden
-          className="absolute inset-y-0 left-0 w-[3px] bg-gradient-to-b from-[#10284a] via-[#00B4D8] to-[#FF6900]"
-        />
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-[#00B4D8]/8 blur-2xl"
-        />
-        <div className="relative">
-          <h2 className="story-title">{title}</h2>
-          <p className="story-detail">{detail}</p>
-          {extraDetail ? <p className="story-detail">{extraDetail}</p> : null}
+    <section className="border-b border-line bg-white">
+      <div
+        data-reveal
+        className="section-shell grid gap-6 py-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-16 md:py-20"
+      >
+        <h2 className="heading-lg">
+          <span aria-hidden className="mb-5 block h-1 w-12 rounded-full bg-accent" />
+          {title}
+        </h2>
+        <div className="space-y-4 md:pt-9">
+          <p className="lede">{detail}</p>
+          {extraDetail ? <p className="lede">{extraDetail}</p> : null}
         </div>
-      </article>
+      </div>
     </section>
   );
 }
