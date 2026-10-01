@@ -43,8 +43,8 @@ const leadership = [
 const teamMembers = [
   { name: 'CA Pragya Srivastav', image: '/images/Pragyanew.jpeg', designation: 'Accounts & Finance ' },
  
-  { name: 'Shlok Shah', image: '/images/NEWSHLOK.jpeg', designation: 'Software Developer' },
-  { name: 'Utkarsh Bhatnagar', image: '/images/ub new.jpeg', designation: 'Debt Associate' },
+  { name: 'Shlok Shah', image: '/images/NEWSHLOK.jpeg', designation: 'Assistant Manager' },
+  { name: 'Utkarsh Bhatnagar', image: '/images/ub new.jpeg', designation: 'Assistant Manager' },
   { name: 'Arjun Singh', image: '/images/Arjun.jpeg', designation: 'Accounts & Finance' },
   { name: 'Anushka Chandra', image: '/images/HRAnushkha.jpg', designation: 'Human Resources' },
   
