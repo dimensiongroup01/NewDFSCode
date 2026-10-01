@@ -181,11 +181,6 @@ export default function MerchantBankingPage() {
             </span>
             <span className="hidden h-3.5 w-px bg-white/15 sm:block" />
             <span className="font-bold tracking-widest text-aqua">INM000013314</span>
-            <span className="hidden h-3.5 w-px bg-white/15 sm:block" />
-            <span className="flex items-center gap-2">
-              <ShieldCheck aria-hidden size={15} className="text-accent" />
-              <span className="font-medium text-slate-300">BSE Debt Segment · INZ000313233</span>
-            </span>
           </div>
         </div>
 
@@ -208,10 +203,6 @@ export default function MerchantBankingPage() {
                   </span>
                   <span className="h-4 w-px bg-white/20" />
                   <span className="font-bold tracking-[0.12em] text-aqua">INM000013314</span>
-                  <span className="hidden h-4 w-px bg-white/20 sm:block" />
-                  <span className="hidden text-[0.68rem] font-bold uppercase tracking-[0.18em] text-slate-400 sm:inline">
-                    Operating Since <span className="text-white">2009</span>
-                  </span>
                 </div>
 
                 <h1 className="mt-8 max-w-4xl font-display text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-[4.25rem]">
@@ -237,11 +228,9 @@ export default function MerchantBankingPage() {
             </div>
 
             {/* Credential strip */}
-            <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-4">
+            <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10">
               {[
                 { label: 'Registration', value: 'INM000013314', sub: 'SEBI Merchant Banker' },
-                { label: 'Exchange', value: 'BSE Member', sub: 'Debt Segment' },
-                { label: 'Broker Reg.', value: 'INZ000313233', sub: 'Stock Broker' },
                 { label: 'Execution', value: '100%', sub: 'Compliance-Led' },
               ].map((s) => (
                 <div key={s.label} className="bg-navy p-5 md:p-6">
@@ -280,19 +269,6 @@ export default function MerchantBankingPage() {
                 <p className="mt-2 font-display text-2xl font-semibold tracking-wide md:text-3xl">INM000013314</p>
                 <p className="mt-1 text-xs text-slate-400">Merchant Banker</p>
               </div>
-
-              <dl className="mt-2 divide-y divide-line">
-                {[
-                  { label: 'BSE Member', value: 'Debt Segment' },
-                  { label: 'Stock Broker Reg.', value: 'INZ000313233' },
-                  { label: 'Operating Since', value: '2009' },
-                ].map((item) => (
-                  <div key={item.label} className="flex items-center justify-between gap-4 py-4">
-                    <dt className="text-sm text-slate-500">{item.label}</dt>
-                    <dd className="text-sm font-bold text-navy">{item.value}</dd>
-                  </div>
-                ))}
-              </dl>
             </div>
           </div>
         </section>

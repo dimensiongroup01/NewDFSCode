@@ -43,18 +43,14 @@ const leadership = [
 const teamMembers = [
   { name: 'CA Pragya Srivastav', image: '/images/Pragyanew.jpeg', designation: 'Accounts & Finance ' },
  
-  { name: 'Shlok Shah', image: '/images/NEWSHLOK.jpeg', designation: 'Software Developer' },
-  { name: 'Utkarsh Bhatnagar', image: '/images/ub new.jpeg', designation: 'Debt Associate' },
-  { name: 'Pratik Vishwakarma', image: '/images/Pratik.jpg', designation: 'Software Developer' },
-  { name: 'Dhruv Chawla', image: '/images/Dhruv .jpeg', designation: 'Accounts & Finance' },
+  { name: 'Shlok Shah', image: '/images/NEWSHLOK.jpeg', designation: 'Assistant Manager' },
+  { name: 'Utkarsh Bhatnagar', image: '/images/ub new.jpeg', designation: 'Assistant Manager' },
   { name: 'Arjun Singh', image: '/images/Arjun.jpeg', designation: 'Accounts & Finance' },
-  { name: 'Mahima Suryan', image: '/images/mahima.png', designation: 'Company Secretary' },
   { name: 'Anushka Chandra', image: '/images/HRAnushkha.jpg', designation: 'Human Resources' },
   
   
    { name: 'Ved Prakash', image: '/images/Ved Prakash.png', designation: 'Debt Market' },
   { name: 'S Ghosh', image: '/images/SGOSH.png', designation: 'Debt Market' },
-  { name: 'Jaayminee Kondru', image: '/images/jamuni.jpeg', designation: 'Debt Market' },
 ];
 
 const highlights = [
@@ -300,9 +296,15 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5 lg:grid-cols-5">
+            {/* 4 per row on desktop; a short last row is centred */}
+            <div className="flex flex-wrap justify-center gap-4 md:gap-5">
               {teamMembers.map((member) => (
-                <TeamCard key={member.name} member={member} />
+                <div
+                  key={member.name}
+                  className="w-[calc((100%-1rem)/2)] sm:w-[calc((100%-2rem)/3)] md:w-[calc((100%-2.5rem)/3)] lg:w-[calc((100%-3.75rem)/4)]"
+                >
+                  <TeamCard member={member} />
+                </div>
               ))}
             </div>
           </div>
