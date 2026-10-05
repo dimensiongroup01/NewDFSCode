@@ -5,6 +5,8 @@ import PageHero from '@/components/PageHero';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
+import { Mail, MapPin, Phone } from 'lucide-react';
+import { ADDRESS_LINE } from '@/lib/seo';
 
 type FormData = {
   name: string;
@@ -309,6 +311,40 @@ export default function ContactPage() {
               <p className="lede mt-5">
                 Our team is ready to discuss your financial objectives and craft tailored solutions.
               </p>
+
+              <ul className="mt-8 space-y-3">
+                <li className="card flex items-start gap-4 p-5">
+                  <span className="icon-tile !h-11 !w-11 bg-navy-50">
+                    <MapPin aria-hidden size={20} strokeWidth={1.75} />
+                  </span>
+                  <div>
+                    <p className="font-display text-[0.7rem] font-bold uppercase tracking-[0.16em] text-muted">Office</p>
+                    <address className="mt-1 not-italic leading-relaxed text-navy">{ADDRESS_LINE}</address>
+                  </div>
+                </li>
+                <li>
+                  <a href="mailto:contact@dimensionfinancial.co.in" className="card card-hover flex items-start gap-4 p-5">
+                    <span className="icon-tile !h-11 !w-11 bg-navy-50">
+                      <Mail aria-hidden size={20} strokeWidth={1.75} />
+                    </span>
+                    <span>
+                      <span className="block font-display text-[0.7rem] font-bold uppercase tracking-[0.16em] text-muted">Email</span>
+                      <span className="mt-1 block break-all text-navy">contact@dimensionfinancial.co.in</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="tel:01204151349" className="card card-hover flex items-start gap-4 p-5">
+                    <span className="icon-tile !h-11 !w-11 bg-navy-50">
+                      <Phone aria-hidden size={20} strokeWidth={1.75} />
+                    </span>
+                    <span>
+                      <span className="block font-display text-[0.7rem] font-bold uppercase tracking-[0.16em] text-muted">Phone</span>
+                      <span className="mt-1 block text-navy">0120-4151349</span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
             </div>
 
             <div className="card relative overflow-hidden p-6 md:p-10">
@@ -332,7 +368,7 @@ export default function ContactPage() {
         <ScrollReveal />
       </main>
 
-      <SiteFooter />
+      <SiteFooter cta={false} />
     </>
   );
 }

@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 /**
  * InfoKit — shared, dependency-free presentation pieces used across all pages.
  * Plain server components (no hooks) so they work from server and client pages.
- * Palette: navy #10284a, aqua #00B4D8, deep aqua #0096B7, orange #FF6900.
+ * Palette: navy #063B70, aqua #35A9E0, deep aqua #1687C9, orange #35A9E0.
  */
 
 type Tone = 'accent' | 'primary' | 'navy';
@@ -91,7 +91,7 @@ export function InfoCard({
   eyebrow,
   title,
   text,
-  accent = '#0096B7',
+  accent = '#1687C9',
   children,
   className = ''
 }: {
@@ -125,7 +125,7 @@ export function InfoCard({
       <h3 className={`font-body text-[1.05rem] font-bold leading-snug text-navy ${eyebrow ? 'mt-1.5' : 'mt-5'}`}>
         {title}
       </h3>
-      {text ? <p className="mt-2.5 text-[0.925rem] leading-relaxed text-[#526071]">{text}</p> : null}
+      {text ? <p className="mt-2.5 text-[0.925rem] leading-relaxed text-muted">{text}</p> : null}
       {children}
     </article>
   );
@@ -162,7 +162,7 @@ export function StatCard({
   label,
   value,
   detail,
-  accent = '#0096B7',
+  accent = '#1687C9',
   className = ''
 }: {
   label: string;
@@ -202,7 +202,7 @@ export function StepCard({
         {label ? <span className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-slate-400">{label}</span> : null}
       </div>
       <h3 className="mt-3 font-body text-[1.05rem] font-bold text-navy">{title}</h3>
-      <p className="mt-2 text-[0.925rem] leading-relaxed text-[#526071]">{text}</p>
+      <p className="mt-2 text-[0.925rem] leading-relaxed text-muted">{text}</p>
     </div>
   );
 }

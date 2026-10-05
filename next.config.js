@@ -1,4 +1,4 @@
-﻿/** @type {import('next').NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -40,6 +40,7 @@ const nextConfig = {
 
   async redirects() {
     return [
+      { source: '/index.html', destination: '/', permanent: true },
       { source: '/about-us.html', destination: '/about-us', permanent: true },
       { source: '/services.html', destination: '/services', permanent: true },
       { source: '/deals.html', destination: '/services', permanent: true },

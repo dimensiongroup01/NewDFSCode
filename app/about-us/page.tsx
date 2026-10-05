@@ -1,17 +1,25 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import Image from 'next/image';
 import { Eyebrow, InfoCard, StepCard } from '@/components/InfoKit';
+import { engagementProcess } from '@/lib/content';
 
-export const metadata: Metadata = {
-  title: 'About Us',
+export const metadata: Metadata = pageMetadata({
+  title: 'About Us – Leadership, Team & SEBI Credentials',
   description:
-    'Learn about Dimension Financial Solutions Private Limited, our leadership team, regulatory credentials, and institutional debt advisory experience since 2009.',
-  alternates: {
-    canonical: '/about-us'
-  }
-};
+    'Established in 2009, Dimension Financial Solutions is a SEBI Merchant Banker (INM000013314) and debt segment Stock Broker (INZ000313233). Meet our leadership.',
+  path: '/about-us',
+  keywords: [
+    'about Dimension Financial Solutions',
+    'merchant banking team',
+    'SEBI registration INM000013314',
+    'SEBI stock broker INZ000313233',
+    'financial advisory firm India',
+    'leadership team'
+  ]
+});
 
 const leadership = [
   {
@@ -79,29 +87,6 @@ const strengths = [
   }
 ];
 
-const process = [
-  {
-    step: '01',
-    title: 'Discovery',
-    text: 'Understand funding objectives, risk profile, and market constraints.'
-  },
-  {
-    step: '02',
-    title: 'Structuring',
-    text: 'Design instrument strategy and execution path aligned with regulations.'
-  },
-  {
-    step: '03',
-    title: 'Placement',
-    text: 'Coordinate with institutions and investors for timely transaction closure.'
-  },
-  {
-    step: '04',
-    title: 'Ongoing Support',
-    text: 'Continue advisory support for portfolio and recurring market requirements.'
-  }
-];
-
 /// -- TeamCard -----------------------------------------------------------------
 // Photo with an always-visible name plate (no hover-only content, so it works
 // identically on touch devices).
@@ -139,10 +124,10 @@ export default function AboutPage() {
           <div className="section-shell grid gap-12 py-16 md:py-24 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:gap-16">
             <div>
               <p className="eyebrow eyebrow-light">About Us</p>
-              <p className="mt-6 max-w-3xl font-display text-3xl font-semibold leading-tight text-white md:text-[2.6rem] md:leading-[1.12]">
+              <h1 className="mt-6 max-w-3xl font-display text-3xl font-semibold leading-tight text-white md:text-[2.6rem] md:leading-[1.12]">
                 Dimension Financial Solutions is a SEBI Registered partner delivering merchant banking, debt securities,
                 and institutional financial advisory services.
-              </p>
+              </h1>
               <p className="mt-8 inline-flex max-w-3xl items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold leading-6 text-slate-200">
                 <span aria-hidden className="h-2 w-2 shrink-0 rounded-full bg-accent" />
                 Built on Governance, Market Insight, and a Client-First Execution Culture
@@ -182,7 +167,7 @@ export default function AboutPage() {
             </div>
 
             <div className="rounded-2xl bg-paper p-7 md:p-10">
-              <h1 className="heading-lg">What we do</h1>
+              <h2 className="heading-lg">What we do</h2>
               <p className="body-copy mt-5">
                 Dimension Financial Solutions Private Limited is a SEBI-registered Merchant Banker and Stock Broker
                 (debt market). We are committed to deliver comprehensive financial advisory and capital market services.
@@ -217,7 +202,7 @@ export default function AboutPage() {
                   index={i + 1}
                   title={item.title}
                   text={item.text}
-                  accent={['#0096B7', '#10284a', '#FF6900', '#00B4D8'][i % 4]}
+                  accent={['#1687C9', '#063B70', '#35A9E0', '#35A9E0'][i % 4]}
                   className="h-full"
                 />
               ))}
@@ -254,7 +239,7 @@ export default function AboutPage() {
                     <p className="mt-2 text-xs font-bold uppercase leading-relaxed tracking-[0.12em] text-accent">
                       {leader.role}
                     </p>
-                    <p className="mt-4 border-t border-line pt-4 text-[0.925rem] leading-relaxed text-[#526071]">{leader.bio}</p>
+                    <p className="mt-4 border-t border-line pt-4 text-[0.925rem] leading-relaxed text-muted">{leader.bio}</p>
                   </div>
                 </article>
               ))}
@@ -270,7 +255,7 @@ export default function AboutPage() {
               <h2 className="heading-lg mt-5">Our Engagement Process</h2>
             </div>
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-              {process.map((item) => (
+              {engagementProcess.map((item) => (
                 <StepCard
                   key={item.step}
                   step={item.step}

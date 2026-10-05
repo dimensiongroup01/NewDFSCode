@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/PageHero';
 import ScrollFusion3D from '@/components/ScrollFusion3D';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -7,14 +8,26 @@ import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import { Chip, InfoCard } from '@/components/InfoKit';
 
-export const metadata: Metadata = {
-  title: 'Stock Broking',
+export const metadata: Metadata = pageMetadata({
+  title: 'Debt Segment Stock Broking & Bond Placement – Bondsadda',
   description:
-    'Debt segment stock broking, bond placement, and fixed-income platform access through Bondsadda for institutions, trusts, and investors.',
-  alternates: {
-    canonical: '/stock-broking'
-  }
-};
+    'SEBI-registered BSE debt segment stock broker. Placement of government securities, bonds and debentures for PF trusts, corporates and institutions via Bondsadda.',
+  path: '/stock-broking',
+  keywords: [
+    'debt segment stock broker',
+    'BSE debt segment',
+    'bond broker India',
+    'government securities placement',
+    'corporate bonds',
+    'debentures',
+    'PF trust investment',
+    'superannuation trust investment',
+    'Online Bond Platform Provider',
+    'OBPP',
+    'Bondsadda',
+    'fixed income investment'
+  ]
+});
 
 const items = [
   'Debt Securities Placement - Placement of Government securities, bonds, and debentures to PF trusts, superannuation trusts, corporates, institutions, and finance companies.',
@@ -110,7 +123,7 @@ export default function StockBrokingPage() {
                     index={i + 1}
                     title={title}
                     text={detail}
-                    accent={['#0096B7', '#10284a', '#FF6900'][i % 3]}
+                    accent={['#1687C9', '#063B70', '#35A9E0'][i % 3]}
                     className="h-full"
                   />
                 </div>

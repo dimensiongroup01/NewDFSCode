@@ -1,67 +1,51 @@
-﻿'use client';
+'use client';
 
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
+/**
+ * Fade-up on scroll for every `[data-reveal]` element on the page.
+ * - `data-reveal`            → fade + slide up
+ * - `data-reveal="line"`     → horizontal line draws left → right
+ * - `data-reveal="line-y"`   → vertical line draws top → bottom
+ * - `style={{ '--reveal-delay': '120ms' }}` staggers an item
+ *
+ * Hidden states live in globals.css under `.reveal-ready`, which is only added
+ * here — so without JS (or with reduced motion) everything simply renders.
+ */
 export default function ScrollReveal() {
-  const isMounted = useRef(false);
-
   useEffect(() => {
-    isMounted.current = true;
-  }, []);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  useLayoutEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      return;
-    }
-
+    const root = document.documentElement;
     const items = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
-    if (!items.length) {
-      return;
-    }
+    if (!items.length) return;
 
-    // Only apply initial styles after mount
-    if (isMounted.current) {
-      items.forEach((item) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        item.style.transition = 'opacity 520ms ease, transform 520ms ease';
-        item.style.willChange = 'opacity, transform';
-      });
-    }
+    // Anything already on screen is revealed immediately, so it never flickers.
+    const vh = window.innerHeight;
+    items.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.92 && r.bottom > 0) el.classList.add('is-revealed');
+    });
+    root.classList.add('reveal-ready');
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-          const element = entry.target as HTMLElement;
-          if (isMounted.current) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-            element.style.willChange = 'auto';
-          }
-          observer.unobserve(element);
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
         });
       },
-      {
-        root: null,
-        rootMargin: '0px 0px -8% 0px',
-        threshold: 0.14
-      }
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.12 }
     );
 
-    items.forEach((item) => observer.observe(item));
+    items.forEach((el) => {
+      if (!el.classList.contains('is-revealed')) observer.observe(el);
+    });
 
     return () => {
       observer.disconnect();
-      items.forEach((item) => {
-        item.style.removeProperty('opacity');
-        item.style.removeProperty('transform');
-        item.style.removeProperty('transition');
-        item.style.removeProperty('will-change');
-      });
+      root.classList.remove('reveal-ready');
     };
   }, []);
 

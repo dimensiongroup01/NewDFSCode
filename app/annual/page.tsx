@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/PageHero';
 import ScrollFusion3D from '@/components/ScrollFusion3D';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -6,14 +7,19 @@ import StoryChapter from '@/components/StoryChapter';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 
-export const metadata: Metadata = {
-  title: 'Investor Corner',
+export const metadata: Metadata = pageMetadata({
+  title: 'Investor Corner – Annual Returns & Disclosures',
   description:
-    'Access annual returns, investor disclosures, and statutory documents published by Dimension Financial Solutions.',
-  alternates: {
-    canonical: '/annual'
-  }
-};
+    'Annual returns (Form MGT-7), investor disclosures and statutory documents published by Dimension Financial Solutions Private Limited.',
+  path: '/annual',
+  keywords: [
+    'annual return MGT-7',
+    'investor disclosures',
+    'statutory documents',
+    'investor corner',
+    'annual report'
+  ]
+});
 
 const docs = [
   { year: '2024-25', name: 'Annual Return DFSPL', href: '/Documents/Annual report/MGT-7_21_10_2025_signed.pdf' },

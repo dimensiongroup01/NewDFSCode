@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 
 import ScrollReveal from '@/components/ScrollReveal';
@@ -6,14 +7,20 @@ import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import { InfoCard, QuoteCard } from '@/components/InfoKit';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Investor Advisory',
   description:
-    'Investor-focused advisory solutions including ECM support, private placements, debt structuring, M&A, and valuation guidance.',
-  alternates: {
-    canonical: '/investor'
-  }
-};
+    'Investor-focused advisory including ECM support, private placements, debt structuring, M&A and valuation guidance from a SEBI-registered Merchant Banker.',
+  path: '/investor',
+  keywords: [
+    'investor advisory',
+    'private placements',
+    'debt structuring',
+    'M&A advisory',
+    'valuation advisory',
+    'equity capital markets'
+  ]
+});
 
 const capabilities = [
   'IPO & ECM Advisory',
@@ -90,7 +97,7 @@ export default function InvestorPage() {
                 <InfoCard
                   index={i + 1}
                   title={item}
-                  accent={['#0096B7', '#10284a', '#FF6900'][i % 3]}
+                  accent={['#1687C9', '#063B70', '#35A9E0'][i % 3]}
                   className="h-full"
                 />
               </div>
@@ -109,7 +116,7 @@ export default function InvestorPage() {
                   index={i + 1}
                   title={item.title}
                   text={item.text}
-                  accent={['#0096B7', '#10284a', '#FF6900', '#00B4D8'][i % 4]}
+                  accent={['#1687C9', '#063B70', '#35A9E0', '#35A9E0'][i % 4]}
                   className="h-full"
                 />
               </div>
