@@ -1,7 +1,0 @@
-{
-  "/merchant-banking/page": "app/merchant-banking/page.js",
-  "/home/page": "app/home/page.js",
-  "/services/page": "app/services/page.js",
-  "/stock-broking/page": "app/stock-broking/page.js",
-  "/contact/page": "app/contact/page.js"
-}
