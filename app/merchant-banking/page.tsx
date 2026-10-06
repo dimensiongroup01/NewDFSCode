@@ -123,7 +123,7 @@ export default function MerchantBankingPage() {
               <p className="lede mt-6">
                 Dimension Financial Solutions Private Limited is a SEBI-registered Merchant Banker, since September 2025 and backed by over 17 years of capital market expertise. We partner with corporates, promoter groups, institutions, and trusts to execute complex financial mandates, including SME listings, IPOs, M&A transactions, buybacks, and institutional debt placements.
               </p>
-              <p className="body-copy mt-5">
+              <p className="lede mt-5">
                 Our operating philosophy positions us as a value center inside each transaction — not merely an execution agent. We invest in understanding each mandate deeply, structure solutions with regulatory precision, and maintain full transparency with all stakeholders through to closure.
               </p>
             </div>
