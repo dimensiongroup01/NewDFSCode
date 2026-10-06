@@ -1,6 +1,18 @@
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import { LinkRow } from '@/components/InfoKit';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Sitemap',
+  description:
+    'Browse every page, investor document and policy on the Dimension Financial Solutions website.',
+  path: '/sitemap-page',
+  keywords: [
+    'sitemap'
+  ]
+});
 
 type SitemapLink = { href: string; label: string; external?: boolean };
 

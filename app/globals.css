@@ -3,28 +3,33 @@
 @tailwind utilities;
 
 /* ==========================================================================
-   DFS design system
-   Brand: navy #10284a · aqua #00B4D8 / #0096B7 · orange #FF6900
-   Type:  display serif (--font-display) for headings, sans (--font-body) for text
+   Dimension design system — "Blue. Professional. Human. Structured. Trusted."
+   Brand: primary blue #1687C9 · deep navy #063B70 · light blue #35A9E0
+   Type:  Manrope (--font-display) for headings, Inter (--font-body) for text
+   Signature: the "Dimension Line" — thin blue rule with nodes
+   (Connection → Support → Process → Growth)
    ========================================================================== */
 
 :root {
   color-scheme: light;
-  --navy: #10284a;
-  --navy-900: #0b1d36;
-  --aqua: #00b4d8;
-  --aqua-600: #0096b7;
-  --aqua-700: #007a96;
-  --accent: #ff6900;
-  --paper: #f6f7f9;
-  --line: #e3e8ef;
-  --text: #0f172a;
-  --muted: #526071;
+  --blue: #1687c9;
+  --blue-600: #0f75b0;
+  --blue-700: #0f6fa8;
+  --navy: #063b70;
+  --navy-deep: #062b50;
+  --light-blue: #35a9e0;
+  --soft-blue: #eaf6fc;
+  --paper: #f5f9fc;
+  --line: #d9e8f1;
+  --text: #102a43;
+  --muted: #66788a;
+  --header-h: 80px;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 16px);
     -webkit-text-size-adjust: 100%;
   }
 
@@ -40,25 +45,31 @@
     color: var(--text);
     font-family: var(--font-body), system-ui, -apple-system, 'Segoe UI', sans-serif;
     font-size: 1rem;
-    line-height: 1.65;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 1.0625rem;
+    }
   }
 
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-display), Georgia, serif;
+    font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
     color: var(--navy);
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.15;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.022em;
   }
 
   ::selection {
-    background: rgba(0, 180, 216, 0.24);
-    color: #06202f;
+    background: rgba(22, 135, 201, 0.2);
+    color: #062b50;
   }
 
   a:focus-visible,
@@ -67,7 +78,7 @@
   select:focus-visible,
   textarea:focus-visible,
   summary:focus-visible {
-    outline: 3px solid rgba(0, 150, 183, 0.45);
+    outline: 3px solid rgba(22, 135, 201, 0.5);
     outline-offset: 3px;
   }
 
@@ -83,62 +94,85 @@
   }
 
   .section {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-28;
   }
 
-  /* Small uppercase label that sits above headings */
+  /* Small uppercase label with a node + line, echoing the Dimension Line */
   .eyebrow {
-    @apply inline-flex items-center gap-2.5 text-[0.7rem] font-bold uppercase tracking-[0.2em] text-accent;
+    @apply inline-flex items-center gap-3 font-display text-[0.72rem] font-bold uppercase tracking-[0.2em] text-aqua-700;
   }
   .eyebrow::before {
     content: '';
-    @apply h-px w-6 bg-current opacity-60;
+    width: 1.75rem;
+    height: 7px;
+    flex-shrink: 0;
+    background:
+      radial-gradient(circle at 3.5px 50%, currentColor 3px, transparent 3.5px),
+      linear-gradient(currentColor, currentColor) 7px 50% / calc(100% - 7px) 1px no-repeat;
+    opacity: 0.85;
+  }
+  .eyebrow.justify-center::after {
+    content: '';
+    width: 1.75rem;
+    height: 7px;
+    flex-shrink: 0;
+    background:
+      radial-gradient(circle at calc(100% - 3.5px) 50%, currentColor 3px, transparent 3.5px),
+      linear-gradient(currentColor, currentColor) 0 50% / calc(100% - 7px) 1px no-repeat;
+    opacity: 0.85;
   }
   .eyebrow-light {
     @apply text-aqua;
   }
 
   .heading-xl {
-    @apply font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl;
+    @apply font-display text-[2.5rem] font-extrabold leading-[1.06] tracking-[-0.03em] sm:text-5xl lg:text-[3.75rem];
   }
   .heading-lg {
-    @apply font-display text-3xl font-semibold leading-tight md:text-4xl;
+    @apply font-display text-[1.9rem] font-bold leading-[1.15] tracking-[-0.025em] md:text-[2.5rem];
   }
   .heading-md {
-    @apply font-display text-2xl font-semibold leading-snug md:text-[1.75rem];
+    @apply font-display text-2xl font-bold leading-snug tracking-[-0.02em] md:text-[1.75rem];
   }
   .lede {
-    @apply text-base leading-relaxed text-[#526071] md:text-lg;
+    @apply text-base leading-[1.75] text-muted md:text-lg;
   }
   .body-copy {
-    @apply text-[0.95rem] leading-7 text-[#526071];
+    @apply text-[0.975rem] leading-[1.8] text-muted;
   }
 
-  /* Buttons */
+  /* Buttons — 44px+ touch targets */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[10px] px-6 py-3 font-display text-sm font-bold tracking-[-0.005em] transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn > [aria-hidden] {
+    @apply transition-transform duration-200;
+  }
+  .btn:hover > [aria-hidden] {
+    transform: translateX(3px);
   }
   .btn-primary {
-    @apply btn bg-navy text-white shadow-soft hover:bg-aqua-700;
+    @apply btn bg-navy text-white shadow-soft hover:-translate-y-px hover:bg-navy-700;
   }
   .btn-accent {
-    @apply btn bg-accent text-white shadow-[0_10px_24px_rgba(255,105,0,0.25)] hover:bg-accent-600;
+    @apply btn bg-accent text-white shadow-[0_10px_24px_rgba(22,135,201,0.28)] hover:-translate-y-px hover:bg-accent-600;
   }
   .btn-secondary {
-    @apply btn border border-line bg-white text-navy hover:border-navy;
+    @apply btn border border-line bg-white text-navy hover:-translate-y-px hover:border-accent hover:text-accent;
   }
   .btn-ghost-light {
-    @apply btn border border-white/25 text-white hover:border-white hover:bg-white/10;
+    @apply btn border border-white/25 text-white hover:border-white/60 hover:bg-white/10;
   }
 
   /* Surfaces */
   .card {
-    @apply rounded-2xl border border-line bg-white shadow-soft;
+    @apply rounded-[18px] border border-line bg-white shadow-soft;
   }
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-0.5 hover:border-aqua/40 hover:shadow-lift;
+    @apply transition-all duration-300 ease-out hover:-translate-y-[5px] hover:border-accent/60 hover:shadow-ring;
   }
 
+  /* Deep navy band with the geometric D pattern */
   .band-navy {
     @apply relative isolate overflow-hidden bg-navy text-white;
   }
@@ -148,23 +182,66 @@
     inset: 0;
     z-index: -1;
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+      radial-gradient(rgba(53, 169, 224, 0.28) 1px, transparent 1.4px),
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px, 64px 64px, 64px 64px;
+    background-position: -0.5px -0.5px, 0 0, 0 0;
+    mask-image: linear-gradient(180deg, #000 0%, transparent 90%);
+  }
+  .band-navy::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    right: -6%;
+    top: 50%;
+    width: min(46vw, 560px);
+    aspect-ratio: 1;
+    transform: translateY(-50%);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'%3E%3Cpath d='M40 20h60a80 80 0 0 1 0 160H40z' stroke='%2335A9E0' stroke-opacity='.22' stroke-width='1'/%3E%3Cpath d='M58 40h42a60 60 0 0 1 0 120H58z' stroke='%2335A9E0' stroke-opacity='.14' stroke-width='1'/%3E%3Cpath d='M76 60h24a40 40 0 0 1 0 80H76z' stroke='%2335A9E0' stroke-opacity='.1' stroke-width='1'/%3E%3C/svg%3E")
+      center / contain no-repeat;
+    pointer-events: none;
   }
   .band-navy h1,
   .band-navy h2,
   .band-navy h3 {
     color: #fff;
   }
+  /* Primary blue lacks contrast on navy; lift it to light blue there */
+  .band-navy .text-accent,
+  .band-navy .eyebrow:not(.eyebrow-light) {
+    color: var(--light-blue);
+  }
+
+  /* Signature "Dimension Line": ●────●────● */
+  .dimension-line {
+    @apply relative flex items-center justify-between;
+  }
+  .dimension-line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue) 12%, var(--blue) 88%, transparent);
+    opacity: 0.45;
+  }
+  .dimension-node {
+    @apply relative z-10 block h-2.5 w-2.5 rounded-full border-2 border-accent bg-white;
+  }
+
+  /* Soft-blue icon tile */
+  .icon-tile {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-line bg-white text-accent transition-colors duration-300;
+  }
 
   /* Form fields */
   .input-shell {
-    @apply block w-full rounded-xl border border-[#cfd8e3] bg-white px-4 py-3 text-[0.95rem] text-text outline-none transition placeholder:text-slate-400 focus:border-aqua-600 focus:ring-4 focus:ring-aqua/15;
+    @apply block min-h-[44px] w-full rounded-[10px] border border-line bg-white px-4 py-3 text-[0.95rem] text-text outline-none transition placeholder:text-slate-400 focus:border-accent focus:ring-4 focus:ring-accent/15;
   }
   .field-label {
-    @apply mb-2 block text-sm font-semibold text-navy;
+    @apply mb-2 block font-display text-sm font-bold text-navy;
   }
 
   .skip-link {
@@ -173,7 +250,7 @@
     top: 1rem;
     z-index: 1000;
     transform: translateY(-160%);
-    border-radius: 9999px;
+    border-radius: 10px;
     background: var(--navy);
     color: #fff;
     padding: 0.75rem 1.1rem;
@@ -186,9 +263,67 @@
   }
 }
 
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* Scroll reveal (driven by components/ScrollReveal.tsx) */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-ready [data-reveal='line'] {
+  opacity: 1;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.reveal-ready [data-reveal='line-y'] {
+  opacity: 1;
+  transform: scaleY(0);
+  transform-origin: center top;
+  transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero SVG line drawing */
+.draw-path {
+  stroke-dasharray: var(--len, 1000);
+  stroke-dashoffset: var(--len, 1000);
+  animation: draw-path 2.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes draw-path {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.fade-in-late {
+  opacity: 0;
+  animation: fade-in 0.9s ease forwards;
+  animation-delay: var(--delay, 1s);
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
 /* Scrollbar */
 html {
-  scrollbar-color: rgba(16, 40, 74, 0.35) transparent;
+  scrollbar-color: rgba(6, 59, 112, 0.35) transparent;
   scrollbar-width: thin;
 }
 
@@ -198,6 +333,7 @@ html {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }

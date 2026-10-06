@@ -32,3 +32,4 @@ trace
 .next/trace
 .next/cache/.rscinfo
 .next/trace
+*.tsbuildinfo

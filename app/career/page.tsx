@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/PageHero';
 import ScrollFusion3D from '@/components/ScrollFusion3D';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -8,14 +9,19 @@ import SiteHeader from '@/components/SiteHeader';
 import CareerApplyWhatsAppForm from '@/components/CareerApplyWhatsAppForm';
 import { Chip, Eyebrow, InfoCard } from '@/components/InfoKit';
 
-export const metadata: Metadata = {
-  title: 'Careers',
+export const metadata: Metadata = pageMetadata({
+  title: 'Careers in Merchant Banking & Debt Markets',
   description:
-    'Explore career opportunities at Dimension Financial Services in merchant banking, debt advisory, and institutional transaction execution.',
-  alternates: {
-    canonical: '/career'
-  }
-};
+    'Explore career opportunities at Dimension Financial Solutions in merchant banking, debt advisory and institutional transaction execution.',
+  path: '/career',
+  keywords: [
+    'merchant banking jobs',
+    'finance careers India',
+    'debt market jobs',
+    'capital markets careers',
+    'jobs Dimension Financial Solutions'
+  ]
+});
 
 const benefits = [
   {
@@ -65,7 +71,7 @@ export default function CareerPage() {
                   index={i + 1}
                   title={benefit.title}
                   text={benefit.text}
-                  accent={['#0096B7', '#10284a', '#FF6900'][i % 3]}
+                  accent={['#1687C9', '#063B70', '#35A9E0'][i % 3]}
                   className="h-full"
                 />
               ))}

@@ -65,7 +65,7 @@ export default function DisclaimerModal() {
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="rounded-lg bg-[#0096B7] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#007A96]"
+            className="rounded-lg bg-[#1687C9] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0F6FA8]"
           >
             I Understand
           </button>

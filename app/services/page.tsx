@@ -1,4 +1,5 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/PageHero';
 import ScrollFusion3D from '@/components/ScrollFusion3D';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -7,14 +8,22 @@ import StoryChapter from '@/components/StoryChapter';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 
-export const metadata: Metadata = {
-  title: 'Services',
+export const metadata: Metadata = pageMetadata({
+  title: 'Services – Merchant Banking, Debt Placement & Stock Broking',
   description:
-    'Explore Dimension Financial services including merchant banking, debt placement, debt advisory, and debt segment stock broking across institutional and corporate mandates.',
-  alternates: {
-    canonical: '/services'
-  }
-};
+    'Integrated services across merchant banking, debt placement, debt advisory and debt segment stock broking for corporates, institutions and trusts in India.',
+  path: '/services',
+  keywords: [
+    'financial services India',
+    'merchant banking',
+    'debt placement',
+    'debt advisory',
+    'debt segment stock broking',
+    'capital market advisory',
+    'issue management',
+    'underwriting public issues'
+  ]
+});
 
 export default function ServicesPage() {
   return (
